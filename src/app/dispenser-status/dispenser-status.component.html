@@ -1,0 +1,193 @@
+<app-fuel-indicator></app-fuel-indicator>
+<br />
+
+<mat-divider></mat-divider>
+
+<div class="dispenserstatus_page">
+    <h2 class="page_tittle">Dispenser Status and Electronic Totals</h2>
+
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> Dispenser</th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Dispenser State </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Nozzle State </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="volume">
+                <th mat-header-cell *matHeaderCellDef> Volume </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator> -->
+
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 class="page_tittle">Delivery Totals</h2>
+
+    <form flexLayout="row">
+        <div class="form_set" style="display: flex;">
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>From Date</mat-label>
+                <input matInput [matDatepicker]="picker1" [formControl]="date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field> -->
+
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>To Date</mat-label>
+                <input matInput [matDatepicker]="picker1" [formControl]="date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field> -->
+
+            <div class="form_btnset">
+                <button class="apply_btn" mat-raised-button color="accent">Apply</button>
+                <button class="clear_btn" mat-raised-button>Clear</button>
+            </div>
+        </div>
+    </form>
+
+    <mat-divider></mat-divider>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> Dispenser</th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Dispenser State </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Nozzle State </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="volume">
+                <th mat-header-cell *matHeaderCellDef> Volume </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator> -->
+
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 class="page_tittle">
+        Electronic Totals</h2>
+
+    <form flexLayout="row">
+        <div class="form_set" style="display: flex;">
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>At Date</mat-label>
+                <input matInput [matDatepicker]="picker1" [formControl]="date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field> -->
+
+            <div class="form_btnset">
+                <button class="apply_btn" mat-raised-button color="accent">Apply</button>
+                <button class="clear_btn" mat-raised-button>Clear</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="mat-elevation-z8">
+        <!-- <table mat-table [dataSource]="dataSource"> -->
+            <!-- Position Column -->
+            <!-- <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> Dispenser</th>
+                <td mat-cell *matCellDef="let element"> {{element.dispenser}} </td>
+            </ng-container> -->
+
+            <!-- Name Column -->
+            <!-- <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Dispenser State </th>
+                <td mat-cell *matCellDef="let element"> {{element.dispenserState}} </td>
+            </ng-container> -->
+
+            <!-- Weight Column -->
+            <!-- <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Nozzle State </th>
+                <td mat-cell *matCellDef="let element"> {{element.nozzleState}} </td>
+            </ng-container> -->
+
+            <!-- Symbol Column -->
+            <!-- <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+            </ng-container> -->
+
+            <!-- <ng-container matColumnDef="volume">
+                <th mat-header-cell *matHeaderCellDef> Volume </th>
+                <td mat-cell *matCellDef="let element"> {{element.volume}} </td>
+            </ng-container> -->
+
+            <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+        <!-- </table> -->
+
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                           showFirstLastButtons
+                           aria-label="Select page of periodic elements">
+            </mat-paginator> -->
+
+
+    </div>
+</div>

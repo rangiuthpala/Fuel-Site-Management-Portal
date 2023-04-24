@@ -1,0 +1,58 @@
+<app-fuel-indicator></app-fuel-indicator>
+
+<mat-divider></mat-divider>
+
+<br />
+
+<app-back-button></app-back-button>
+
+<div class="total_sales">
+
+    <h2>Total Sales</h2>
+
+    <div class="example-form-fields">
+        <mat-form-field appearance="outline">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="picker1" [formControl]="date">
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <!-- <div>
+            <input type="time" matInput name="week" min="09:00" max="18:00" />
+        </div> -->
+        <mat-form-field class="time_field" appearance="outline">
+            <mat-label>Input type time</mat-label>
+            <input type="time" matInput name="week" min="09:00" max="18:00">
+         </mat-form-field>
+
+         
+
+        <mat-form-field appearance="outline">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="picker1" [formControl]="date">
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Input type time</mat-label>
+            <input type="time" matInput name="week" min="09:00" max="18:00">
+         </mat-form-field>
+         
+        <!-- <div>
+            <input type="time" matInput name="week" min="09:00" max="18:00" />
+        </div> -->
+
+    
+    </div>
+
+    <div class="btn_set">
+        <button mat-raised-button color="accent">Open Report</button>
+        <button mat-raised-button color="primary">Download Report</button>
+        <button mat-raised-button color="warn">Print Report</button>
+        <button mat-raised-button>Clear</button>
+    </div>
+
+
+
+</div>

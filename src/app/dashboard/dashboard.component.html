@@ -1,0 +1,119 @@
+<app-fuel-indicator></app-fuel-indicator>
+
+<mat-divider></mat-divider>
+
+<br />
+
+<div fxLayout="row" fxLayoutAlign="space-between">
+    <div fxFlex="33">
+        <mat-card>
+            <app-population-grade></app-population-grade>
+        </mat-card>
+    </div>
+    <div fxFlex="33">
+        <mat-card>
+            <app-current-grade></app-current-grade>
+        </mat-card>
+    </div>
+    <div fxFlex="33">
+        <mat-card>
+            <app-current-terminal></app-current-terminal>
+        </mat-card>
+    </div>
+</div>
+<br />
+<div fxLayout="row" fxLayoutAlign="space-between">
+
+    <div fxFlex="55">
+
+        <mat-card>
+            <app-hourly-sales-grade></app-hourly-sales-grade>
+        </mat-card>
+
+    </div>
+
+    <div fxFlex="40">
+        <mat-card>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource">
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="PumpID">
+                        <th mat-header-cell *matHeaderCellDef> PumpID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.PumpID}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="transaction">
+                        <th mat-header-cell *matHeaderCellDef> Last Transaction Time </th>
+                        <td mat-cell *matCellDef="let element"> {{element.transaction}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="time">
+                        <th mat-header-cell *matHeaderCellDef> Idle Time(Hrs) </th>
+                        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </div>
+        </mat-card>
+    </div>
+
+</div>
+
+<br />
+
+<div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="space-between">
+
+    <div fxFlex="55">
+
+        <mat-card>
+            <app-avarage-hourly-grade></app-avarage-hourly-grade>
+        </mat-card>
+
+    </div>
+
+    <div fxFlex="40">
+        <mat-card>
+            <div>
+                <table mat-table [dataSource]="dataSource">
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="PumpID">
+                        <th mat-header-cell *matHeaderCellDef> PumpID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.PumpID}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="transaction">
+                        <th mat-header-cell *matHeaderCellDef> Last Transaction Time </th>
+                        <td mat-cell *matCellDef="let element"> {{element.transaction}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="time">
+                        <th mat-header-cell *matHeaderCellDef> Idle Time(Hrs) </th>
+                        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </div>
+        </mat-card>
+    </div>
+
+</div>
+
+<br/>
+<br/>

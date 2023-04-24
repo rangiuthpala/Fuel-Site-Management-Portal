@@ -1,0 +1,15 @@
+.dispenserstatus_page{
+    padding-bottom:  50px;
+    .form_set{
+        mat-form-field + mat-form-field {
+            margin-left: 10px;
+            margin-bottom: 10px;
+          }
+          .form_btnset{
+            padding: 10px;
+            .apply_btn{
+              margin-right: 10px;
+            }
+           }
+    }
+}
