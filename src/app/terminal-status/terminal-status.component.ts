@@ -12,13 +12,15 @@ import { Observable } from 'rxjs';
 })
 export class TerminalStatusComponent {
   constructor(private terminalService: TerminalService) {}
-  ELEMENT_DATA: Observable<TerminalStatus[]> = this.terminalService.getFuelIndicatorlist();
+  // element: Observable<TerminalStatus[]> = this.terminalService.getFuelIndicatorlist();
   displayedColumns: string[] = ['serial', 'ipAddress','paperLevel', 'printerStatus', 'status'];
-  dataSource = new MatTableDataSource<TerminalStatus>(this.ELEMENT_DATA);
+  
+  dataSource: Observable<TerminalStatus[]> = this.terminalService.getFuelIndicatorlist();
+  
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  ngOnInit() {
+    // this.dataSource.paginator = this.paginator;
   }
 
   

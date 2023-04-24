@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TerminalStatus } from './terminal-status';
+import { Buffer } from 'buffer';
 
 @Injectable({
   providedIn: 'root'
