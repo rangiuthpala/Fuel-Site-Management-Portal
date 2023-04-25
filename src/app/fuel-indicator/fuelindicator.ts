@@ -1,10 +1,10 @@
 export interface Fuelindicator {
-    panelId: string;
-    productID: string;
-    productName: string;
+    productId: string;
+    itemName: string;
+    backColour: string;
+    noOfSales: string;
+    totalAmount: string;
     productPrice: string;
-    updatedBy: string;
-    updatedAt: string;
 
 }
 

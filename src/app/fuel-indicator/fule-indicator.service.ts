@@ -3,24 +3,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Fuelindicator } from './fuelindicator';
 import { Buffer } from 'buffer';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FuleIndicatorService {
 
-  private apiServerUrl = 'http://202.92.217.56:8182';
+  private apiServerUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
 
 
   getFuelIndicatorlist(): Observable<Fuelindicator[]>{
-    const username = 'flexapiuser@felxapi.com';
-    const password = 'f!3x@P1u8eRUt';
-    const basicAuth: string = `${username}:${password}`;
-
-    // const basicAuth: string = 'flexapiuser@felxapi.com:f!3x@P1u8eRUt'; 
+    const basicAuth: string = `${environment.apiUserName}:${environment.apiPassword}`;
 
     const encoded: string = Buffer.from(basicAuth).toString('base64');
 
@@ -28,6 +25,6 @@ export class FuleIndicatorService {
     const headers = new HttpHeaders().set("Content-Type", "application/json")
       .set("Authorization", "Basic " + encoded);
 
-    return this.http.get<Fuelindicator[]>(`${this.apiServerUrl}/flexapi/PriceSign`, {headers});
+    return this.http.get<Fuelindicator[]>(`${this.apiServerUrl}/flexapi/Dashboard/Thumbs/2024-04-25`, {headers});
   }
 }
