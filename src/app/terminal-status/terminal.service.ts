@@ -21,8 +21,6 @@ export class TerminalService {
     
     const basicAuth: string = `${environment.apiUserName}:${environment.apiPassword}`;
 
-    // const basicAuth: string = 'flexapiuser@felxapi.com:f!3x@P1u8eRUt'; 
-
     const encoded: string = Buffer.from(basicAuth).toString('base64');
 
     // Set the headers with the Authorization header
