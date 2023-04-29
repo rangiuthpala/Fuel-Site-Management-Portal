@@ -15,11 +15,12 @@ import { TotalSalesComponent } from './reports-gen/total-sales/total-sales.compo
 import { MethodPaymentComponent } from './reports-gen/total-sales/method-payment/method-payment.component';
 import { DispenserTerminalComponent } from './reports-gen/dispenser-terminal/dispenser-terminal.component';4
 import { SalesComparisonComponent } from './reports-gen/sales-comparison/sales-comparison.component'
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
   { path: 'Login-page', component: LoginPageComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
   { path: 'Transactions', component: TransactionsComponent },
   { path: 'fuel-indicator', component: FuelIndicatorComponent },
   { path: 'dispenser-status', component: DispenserStatusComponent },

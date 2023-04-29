@@ -3,13 +3,13 @@
         <mat-card-content>
             <div fxLayout="row" fxLayout.xs="column">
                 <div fxFlex="75" [fxFlex.xs]="100" fxLayoutAlign="space-between">
-                    <form class="example-form" fxFlex="100">
+                    <form class="example-form" [formGroup]="loginform" fxFlex="100">
                         <mat-form-field fxLayout="column" appearance="outline">
-                            <input matInput placeholder="User Name" name="username" [(ngModel)]="model.username" autocomplete="off" required>
+                            <input matInput placeholder="User Name" formControlName="username" autocomplete="off" required>
                         </mat-form-field>
 
                         <mat-form-field fxLayout="column" appearance="outline">
-                            <input placeholder="password" name="password" [(ngModel)]="model.password" matInput [type]="hide ? 'password' : 'text'" required>
+                            <input placeholder="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'" required>
                             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                 [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

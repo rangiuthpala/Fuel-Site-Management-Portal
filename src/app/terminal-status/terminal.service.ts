@@ -27,6 +27,6 @@ export class TerminalService {
     const headers = new HttpHeaders().set("Content-Type", "application/json")
       .set("Authorization", "Basic " + encoded);
 
-    return this.http.get<TerminalStatus[]>(`${this.apiServerUrl}/flexapi/Terminals`, {headers});
+    return this.http.get<TerminalStatus[]>(`${this.apiServerUrl}/Terminals`, {headers});
   }
 }

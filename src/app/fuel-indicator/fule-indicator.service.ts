@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Fuelindicator } from './fuelindicator';
 import { Buffer } from 'buffer';
 import { environment } from 'src/environments/environment.development';
+import { AuthService } from '../service/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class FuleIndicatorService {
 
   private apiServerUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private service:AuthService) { }
 
 
 
@@ -25,6 +26,8 @@ export class FuleIndicatorService {
     const headers = new HttpHeaders().set("Content-Type", "application/json")
       .set("Authorization", "Basic " + encoded);
 
-    return this.http.get<Fuelindicator[]>(`${this.apiServerUrl}/flexapi/Dashboard/Thumbs/2024-04-25`, {headers});
+      //Get now date
+    const date = this.service.formatDate(new Date());
+    return this.http.get<Fuelindicator[]>(`${this.apiServerUrl}/Dashboard/Thumbs/${date}`, {headers});
   }
 }
