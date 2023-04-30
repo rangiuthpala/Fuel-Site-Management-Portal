@@ -11,11 +11,6 @@ import { FormBuilder, Validators } from "@angular/forms";
 export class LoginPageComponent {
   hide = true;
 
-  model: any = {};
-  getData: any;
-
-  
-
   constructor(
     private builder: FormBuilder,
     private service: AuthService,
@@ -24,7 +19,6 @@ export class LoginPageComponent {
     sessionStorage.clear();
   }
   userdata: any;
-  
 
   loginform = this.builder.group({
     username: this.builder.control("", Validators.required),
@@ -32,22 +26,21 @@ export class LoginPageComponent {
   });
 
   loginUser() {
-    if(this.loginform.valid) {
-      this.service.getUsersById(this.loginform.value.username).subscribe(response => {
-        this.userdata = response[0];
-        console.log(this.userdata);
-        console.log(this.userdata.id);
-        console.log(this.loginform.value.password);
-        if (this.userdata.password===this.loginform.value.password) {
-          if (this.userdata.isActive==="Y" || this.userdata.isActive==="y") {
-            sessionStorage.setItem('username', this.userdata.id);
-            this.router.navigate(["/dashboard"]);
+    if (this.loginform.valid) {
+      this.service
+        .getUsersById(this.loginform.value.username)
+        .subscribe((response) => {
+          this.userdata = response[0];
+          console.log(this.userdata);
+          console.log(this.userdata.id);
+          console.log(this.loginform.value.password);
+          if (this.userdata.password === this.loginform.value.password) {
+            sessionStorage.setItem("username", this.userdata.id);
+            this.router.navigate(["dashboard"]);
+          } else {
+            console.log("Invalid User");
           }
-        } else {
-          console.log("Invalid User");
-        }
-        
-      });
+        });
     }
   }
 }

@@ -19,20 +19,20 @@ import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
-  { path: 'Login-page', component: LoginPageComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
-  { path: 'Transactions', component: TransactionsComponent },
-  { path: 'fuel-indicator', component: FuelIndicatorComponent },
-  { path: 'dispenser-status', component: DispenserStatusComponent },
-  { path: 'terminal-status', component: TerminalStatusComponent },
-  { path: 'update-price', component: UpdatePriceComponent },
-  { path: 'creat-user', component: CreateUserComponent },
-  { path: 'reports', component: ReportsComponent },
-  { path: 'tank-info', component: TankInfoComponent },
-  { path: '1', component: TotalSalesComponent},
-  { path: '2', component: MethodPaymentComponent},
-  { path: '3', component: DispenserTerminalComponent},
-  { path: '4', component: SalesComparisonComponent}
+  { path: 'login', component: LoginPageComponent },
+  { path: 'dashboard', component: DashboardComponent , canActivate:[AuthGuard]  },
+  { path: 'Transactions', component: TransactionsComponent, canActivate:[AuthGuard]  },
+  { path: 'fuel-indicator', component: FuelIndicatorComponent, canActivate:[AuthGuard]   },
+  { path: 'dispenser-status', component: DispenserStatusComponent, canActivate:[AuthGuard]   },
+  { path: 'terminal-status', component: TerminalStatusComponent , canActivate:[AuthGuard]  },
+  { path: 'update-price', component: UpdatePriceComponent , canActivate:[AuthGuard]  },
+  { path: 'creat-user', component: CreateUserComponent, canActivate:[AuthGuard]   },
+  { path: 'reports', component: ReportsComponent, canActivate:[AuthGuard]   },
+  { path: 'tank-info', component: TankInfoComponent, canActivate:[AuthGuard]   },
+  { path: '1', component: TotalSalesComponent, canActivate:[AuthGuard]  },
+  { path: '2', component: MethodPaymentComponent, canActivate:[AuthGuard]  },
+  { path: '3', component: DispenserTerminalComponent, canActivate:[AuthGuard]  },
+  { path: '4', component: SalesComparisonComponent, canActivate:[AuthGuard]  }
 ];
 
 @NgModule({

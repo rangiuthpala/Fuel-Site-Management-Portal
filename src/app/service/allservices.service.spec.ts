@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FuleIndicatorService } from './fule-indicator.service';
+import { AllservicesService } from './allservices.service';
 
-describe('FuleIndicatorService', () => {
-  let service: FuleIndicatorService;
+describe('AllservicesService', () => {
+  let service: AllservicesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FuleIndicatorService);
+    service = TestBed.inject(AllservicesService);
   });
 
   it('should be created', () => {

@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { Login } from '../login-page/login';
 import { Buffer } from 'buffer';
 
 @Injectable({
@@ -49,13 +48,6 @@ export class AuthService {
 
     return this.http.get<TerminalStatus[]>(`${this.apiServerUrl}/Terminals`, {headers});
   }
-
-  //format Date
-  formatDate(date: Date) {
-    const dateSring = date.toISOString();
-    let converteDate = dateSring.slice(0,10);
-    return converteDate;
-  }
 }
 
 export interface TerminalStatus {
@@ -68,4 +60,12 @@ export interface TerminalStatus {
   status: string;
   audioVolume: string;
   lastUpdatedAt: string;
+}
+
+export interface Login {
+  id: string;
+  userName: string;
+  password: string;
+  isActive: string;
+
 }

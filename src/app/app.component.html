@@ -1,5 +1,5 @@
 <!-- Navigation bar -->
-<mat-toolbar color="primary" class="nav_bar">
+<mat-toolbar color="primary" *ngIf="ismenurequired" class="nav_bar">
   <button mat-icon-button (click)="drawer.toggle()" class="example-icon"
     aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
@@ -90,13 +90,13 @@
   <router-outlet></router-outlet>
 
   <!-- Page-Components -->
-  <div style="display: none;">
+  <!-- <div style="display: none;">
     <app-fuel-indicator></app-fuel-indicator>
     <app-dashboard></app-dashboard>
     <app-login-page></app-login-page>
     <app-transactions></app-transactions>
 
-  </div>
+  </div> -->
 
   <!-- End Page-Components -->
 

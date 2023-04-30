@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FuleIndicatorService } from './fule-indicator.service';
 import { Observable } from 'rxjs';
-import { Fuelindicator } from './fuelindicator';
+import { AllservicesService, Fuelindicator } from '../service/allservices.service';
 
 @Component({
   selector: 'app-fuel-indicator',
@@ -12,7 +11,7 @@ export class FuelIndicatorComponent {
 
   fuelindicator: Observable<Fuelindicator[]> | undefined;
 
-  constructor(private fuelindicatorservice: FuleIndicatorService) {
+  constructor(private service: AllservicesService) {
 
   }
 
@@ -23,7 +22,7 @@ export class FuelIndicatorComponent {
 
   reloadData() {
 
-    this.fuelindicator = this.fuelindicatorservice.getFuelIndicatorlist();
+    this.fuelindicator = this.service.getFuelIndicatorlist();
 
   }
 

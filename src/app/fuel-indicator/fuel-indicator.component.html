@@ -4,8 +4,8 @@
   <div class="content" fxLayout="row" fxLayoutAlign.md="space-between stretch" fxLayout.xs="column" fxFlexFill>
     <div fxFlex="24" *ngFor="let price of fuelindicator | async ">
       <!-- Dashboard Card -->
-      <div class="sec1" *ngIf="price.productId === '101'">
-        <mat-card class="dashboard-card" [style.background]="'rgb(15, 154, 51)'">
+      <div class="sec1">
+        <mat-card class="dashboard-card" [style.background]="price.backColour">
           <div fxLayout='row' class="zero">
             <div fxFlex="60">
               <div class="card-tittle"> {{price.itemName}}</div>
@@ -14,82 +14,14 @@
             </div>
             <div fxFlex="40" style="text-align: right;">
               <div class="card-tittle"> ${{price.productPrice}} </div>
-              <div>0</div>
-              <div> $0.000 </div>
+              <div>{{price.noOfSales}}</div>
+              <div> ${{price.totalAmount}} </div>
             </div>
           </div>
           <div>
             <mat-icon class="footer-icon" matListItemIcon>local_gas_station</mat-icon>
           </div>
         </mat-card>
-      </div>
-
-      <!-- End Dashboard Card -->
-
-      <!-- Dashboard Card -->
-      <div class="sec2" *ngIf="price.productId === '102'">
-        <mat-card class="dashboard-card" [style.background]="'rgb(227, 6, 20)'">
-          <div fxLayout='row' class="zero">
-            <div fxFlex="60">
-              <div class="card-tittle"> {{price.itemName}} </div>
-              <div>No of Sales</div>
-              <div>Total Orders</div>
-            </div>
-            <div fxFlex="40" style="text-align: right;">
-              <div class="card-tittle"> ${{price.productPrice}} </div>
-              <div>0</div>
-              <div> $0.000 </div>
-            </div>
-          </div>
-          <div>
-            <mat-icon class="footer-icon" matListItemIcon>local_gas_station</mat-icon>
-          </div>
-        </mat-card>
-      </div>
-      <!-- End Dashboard Card -->
-
-      <div *ngIf="price.productId === '103'" class="sec3">
-        <!-- Dashboard Card -->
-        <mat-card class="dashboard-card" [style.background]="'rgb(28, 28, 26)'">
-          <div fxLayout='row' class="zero">
-            <div fxFlex="60">
-              <div class="card-tittle"> {{price.itemName}} </div>
-              <div>No of Sales</div>
-              <div>Total Orders</div>
-            </div>
-            <div fxFlex="40" style="text-align: right;">
-              <div class="card-tittle"> ${{price.productPrice}} </div>
-              <div>0</div>
-              <div> $0.000 </div>
-            </div>
-          </div>
-          <div>
-            <mat-icon class="footer-icon" matListItemIcon>local_gas_station</mat-icon>
-          </div>
-        </mat-card>
-        <!-- End Dashboard Card -->
-      </div>
-
-      <div *ngIf="price.productId === '106'" class="sec3">
-        <!-- Dashboard Card -->
-        <mat-card class="dashboard-card" [style.background]="'rgb(227, 6, 20)'">
-          <div fxLayout='row' class="zero">
-            <div fxFlex="60">
-              <div class="card-tittle"> {{price.itemName}} </div>
-              <div>No of Sales</div>
-              <div>Total Orders</div>
-            </div>
-            <div fxFlex="40" style="text-align: right;">
-              <div class="card-tittle" layout.al> ${{price.productPrice}} </div>
-              <div>0</div>
-              <div> $0.000 </div>
-            </div>
-          </div>
-          <div>
-            <mat-icon class="footer-icon" matListItemIcon>local_gas_station</mat-icon>
-          </div>
-        </mat-card>
-        <!-- End Dashboard Card -->
       </div>
 
     </div>
