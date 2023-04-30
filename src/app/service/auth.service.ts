@@ -38,28 +38,6 @@ export class AuthService {
   isLoggedIn() {
     return sessionStorage.getItem('username') != null;
   }
-
-  //terminal service
-  getFuelIndicatorlist(): Observable<TerminalStatus[]>{
-
-    // Set the headers with the Authorization header
-    const headers = new HttpHeaders().set("Content-Type", "application/json")
-      .set("Authorization", "Basic " + this.encoded);
-
-    return this.http.get<TerminalStatus[]>(`${this.apiServerUrl}/Terminals`, {headers});
-  }
-}
-
-export interface TerminalStatus {
-  id: string;
-  deviceType: string;
-  serieal: string;
-  ipAddress: string;
-  printerStatus: string;
-  paperLevel: string;
-  status: string;
-  audioVolume: string;
-  lastUpdatedAt: string;
 }
 
 export interface Login {

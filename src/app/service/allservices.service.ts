@@ -28,6 +28,15 @@ export class AllservicesService {
     return this.http.get<Fuelindicator[]>(`${this.apiServerUrl}/Dashboard/Thumbs/${date}`, {headers});
   }
 
+  getAllTerminalStatus(): Observable<TerminalStatus[]>{
+
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders().set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<TerminalStatus[]>(`${this.apiServerUrl}/Terminals`, {headers});
+  }
+
   //format Date
   formatDate(date: Date) {
     const dateSring = date.toISOString();
@@ -44,5 +53,18 @@ export interface Fuelindicator {
   totalAmount: string;
   productPrice: string;
 
+}
+
+//Terminal Status
+export interface TerminalStatus {
+  id: string;
+  deviceType: string;
+  serieal: string;
+  ipAddress: string;
+  printerStatus: string;
+  paperLevel: string;
+  status: string;
+  audioVolume: string;
+  lastUpdatedAt: string;
 }
 
