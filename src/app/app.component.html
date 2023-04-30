@@ -1,89 +1,130 @@
 <!-- Navigation bar -->
 <mat-toolbar color="primary" *ngIf="ismenurequired" class="nav_bar">
-  <button mat-icon-button (click)="drawer.toggle()" class="example-icon"
-    aria-label="Example icon-button with menu icon">
+  <button
+    mat-icon-button
+    (click)="drawer.toggle()"
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>menu</mat-icon>
   </button>
   <span>Fuel Site Management Portal</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
     <mat-icon>settings</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
     <mat-icon>help</mat-icon>
   </button>
 
-  <button mat-button class="example-icon"><mat-icon>person</mat-icon> Admin</button>
+  <!-- <button mat-button class="example-icon"><mat-icon>person</mat-icon> Admin </button> -->
+  <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon> Admin</button>
+  <mat-menu #menu="matMenu">
+    <button routerLink="/login" mat-menu-item><mat-icon>logout</mat-icon>Logout</button>
+  </mat-menu>
 </mat-toolbar>
 <!-- End Navigation bar -->
 
 <!-- Main container -->
 <mat-drawer-container class="example-container" autosize>
-
   <!-- Side Navigation -->
   <mat-drawer #drawer class="example-sidenav-content site-sidenav" mode="side">
-
     <div class="profile-card">
-
       <div class="sidebar-header">
         <div>
-          <img class="user-img" src="https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg">
-        </div>  
+          <img
+            class="user-img"
+            src="https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg"
+          />
+        </div>
         <div class="user_info">
           <h3 class="user_name">User's name</h3>
           <h4 class="role">Admin</h4>
-        </div>  
+        </div>
       </div>
     </div>
     <mat-divider></mat-divider>
     <mat-list>
-
-
       <mat-nav-list>
-        <a mat-list-item routerLink="/dashboard" routerLinkActive="activebutton" ariaCurrentWhenActive="page"> <mat-icon
-            matListItemIcon>dashboard</mat-icon> Dashboard </a>
+        <a
+          mat-list-item
+          routerLink="/dashboard"
+          routerLinkActive="activebutton"
+          ariaCurrentWhenActive="page"
+        >
+          <mat-icon matListItemIcon>dashboard</mat-icon> Dashboard
+        </a>
       </mat-nav-list>
 
       <mat-nav-list>
-        <a mat-list-item routerLink="/Transactions" ariaCurrentWhenActive="page">
-          <mat-icon matListItemIcon>bar_chart</mat-icon> Transactions </a>
+        <a
+          mat-list-item
+          routerLink="/Transactions"
+          ariaCurrentWhenActive="page"
+        >
+          <mat-icon matListItemIcon>bar_chart</mat-icon> Transactions
+        </a>
       </mat-nav-list>
 
       <mat-nav-list>
-        <a mat-list-item routerLink="/dispenser-status" ariaCurrentWhenActive="page">
-          <mat-icon matListItemIcon>local_gas_station</mat-icon> Dispenser Status</a>
+        <a
+          mat-list-item
+          routerLink="/dispenser-status"
+          ariaCurrentWhenActive="page"
+        >
+          <mat-icon matListItemIcon>local_gas_station</mat-icon> Dispenser
+          Status</a
+        >
       </mat-nav-list>
 
       <mat-nav-list>
         <a mat-list-item routerLink="/tank-info" ariaCurrentWhenActive="page">
-          <mat-icon matListItemIcon>av_timer</mat-icon>Tank Information </a>
-      </mat-nav-list>
-
-       <mat-nav-list>
-        <a mat-list-item routerLink="/terminal-status" ariaCurrentWhenActive="page">
-          <mat-icon matListItemIcon>vignette</mat-icon> Terminal Status </a>
+          <mat-icon matListItemIcon>av_timer</mat-icon>Tank Information
+        </a>
       </mat-nav-list>
 
       <mat-nav-list>
-        <a mat-list-item routerLink="/update-price" ariaCurrentWhenActive="page">
-          <mat-icon matListItemIcon>price_change</mat-icon> Update Prices </a>
+        <a
+          mat-list-item
+          routerLink="/terminal-status"
+          ariaCurrentWhenActive="page"
+        >
+          <mat-icon matListItemIcon>vignette</mat-icon> Terminal Status
+        </a>
+      </mat-nav-list>
+
+      <mat-nav-list>
+        <a
+          mat-list-item
+          routerLink="/update-price"
+          ariaCurrentWhenActive="page"
+        >
+          <mat-icon matListItemIcon>price_change</mat-icon> Update Prices
+        </a>
       </mat-nav-list>
 
       <mat-nav-list>
         <a mat-list-item routerLink="/reports" ariaCurrentWhenActive="page">
-          <mat-icon matListItemIcon>library_books</mat-icon> Reports </a>
+          <mat-icon matListItemIcon>library_books</mat-icon> Reports
+        </a>
       </mat-nav-list>
 
       <mat-nav-list>
         <a mat-list-item routerLink="/create-user" ariaCurrentWhenActive="page">
-          <mat-icon matListItemIcon>person</mat-icon> Create User </a>
+          <mat-icon matListItemIcon>person</mat-icon> Create User
+        </a>
       </mat-nav-list>
-
     </mat-list>
-
   </mat-drawer>
   <!-- End Side Navigation -->
-
 
   <br />
 
@@ -99,6 +140,5 @@
   </div> -->
 
   <!-- End Page-Components -->
-
 </mat-drawer-container>
 <!-- End Main Container -->

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'Fuel-Site-Management-Portal';
@@ -13,7 +13,11 @@ export class AppComponent {
 
   ismenurequired=false;
 
-  constructor(private router:Router) {}
+  constructor(private router:Router) {
+  }
+
+  
+
   ngDoCheck(): void {
     let currenturl=this.router.url;
     if(currenturl=='/login') {

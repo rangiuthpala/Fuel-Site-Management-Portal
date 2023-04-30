@@ -48,6 +48,9 @@ import { MethodPaymentComponent } from './reports-gen/total-sales/method-payment
 import { DispenserTerminalComponent } from './reports-gen/dispenser-terminal/dispenser-terminal.component';
 import { SalesComparisonComponent } from './reports-gen/sales-comparison/sales-comparison.component';
 import { BackButtonComponent } from './reports-gen/back-button/back-button.component';
+import { ToastrModule } from 'ngx-toastr';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +82,7 @@ import { BackButtonComponent } from './reports-gen/back-button/back-button.compo
   ],
   entryComponents: [CreateUserDialogComponent],
   imports: [
+    MatMenuModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -101,7 +105,7 @@ import { BackButtonComponent } from './reports-gen/back-button/back-button.compo
     ReactiveFormsModule,
     MatDialogModule,
     HighchartsChartModule,
-    HttpClientModule,
+    HttpClientModule,ToastrModule.forRoot(),
     RouterModule.forRoot([
       {path: 'dashboard', component: DashboardComponent},
       {path: 'login', component: LoginPageComponent},

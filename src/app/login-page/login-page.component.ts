@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "../service/auth.service";
 import { FormBuilder, Validators } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-login-page",
@@ -14,6 +15,7 @@ export class LoginPageComponent {
   constructor(
     private builder: FormBuilder,
     private service: AuthService,
+    private toastr: ToastrService,
     private router: Router
   ) {
     sessionStorage.clear();
@@ -31,14 +33,12 @@ export class LoginPageComponent {
         .getUsersById(this.loginform.value.username)
         .subscribe((response) => {
           this.userdata = response[0];
-          console.log(this.userdata);
-          console.log(this.userdata.id);
-          console.log(this.loginform.value.password);
           if (this.userdata.password === this.loginform.value.password) {
             sessionStorage.setItem("username", this.userdata.id);
+            sessionStorage.setItem("name", this.userdata.userName);
             this.router.navigate(["dashboard"]);
           } else {
-            console.log("Invalid User");
+            this.toastr.error('Please contact admin', 'Invalid User credentials');
           }
         });
     }

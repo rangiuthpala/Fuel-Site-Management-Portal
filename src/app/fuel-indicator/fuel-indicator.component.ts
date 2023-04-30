@@ -12,11 +12,6 @@ export class FuelIndicatorComponent {
   fuelindicator: Observable<Fuelindicator[]> | undefined;
 
   constructor(private service: AllservicesService) {
-
-  }
-
-  ngOnInit() {
-    console.log("inside ng")
     this.reloadData();
   }
 
