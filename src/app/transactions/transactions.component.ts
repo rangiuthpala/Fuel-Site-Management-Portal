@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';  
+import { AllservicesService } from '../service/allservices.service';
 
 export interface PeriodicElement {
   name: string;
@@ -26,6 +27,35 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent {
+  constructor(private service: AllservicesService) {
+    this.loadPumps();
+    this.loadFuelGrades();
+    this.loadTerminals();
+  }
+
+  pumpDataSource: any;
+  fuelDataSource: any;
+  terminalsDataSource: any;
+
+  loadPumps() {
+    this.service.getAllPums().subscribe(response => {
+      this.pumpDataSource = response;
+    });
+  }
+
+  loadFuelGrades() {
+    this.service.getAllFuelGrades().subscribe(response => {
+      this.fuelDataSource = response;
+    });
+  }
+
+  loadTerminals(){
+    this.service.getAllTerminals().subscribe(response => {
+      this.terminalsDataSource = response;
+    });
+  }
+
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','card', 'product', 'receipt'];
   dataSource = ELEMENT_DATA;
   date = new FormControl(new Date());

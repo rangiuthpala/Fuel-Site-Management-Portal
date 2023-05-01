@@ -1,60 +1,33 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import {FormGroup, FormControl} from '@angular/forms'; 
-import { DispenserstatusService } from './dispenserstatus.service';
-import { Dispenser } from './dispenser';
-import { error } from 'highcharts';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-@Component({
-  selector: 'app-dispenser-status',
-  templateUrl: './dispenser-status.component.html',
-  styleUrls: ['./dispenser-status.component.scss']
-})
-export class DispenserStatusComponent implements OnInit{
-  public dispensers: Dispenser[] = [];
-
-  displayedColumns: string[] = ['Dispenser', 'Dispenser State', 'Nozzle State', 'Amount', 'Volume'];
-  dataSource: any = [];
-
-  dispenser: Observable<Dispenser[]> | undefined
-  constructor(private dispenserstatusService: DispenserstatusService) { }
-  
-  ngOnInit() {
-    // this.getDispenserStatus();
-  }
-
-  reloadData(){
-  this.dispenser = this.dispenserstatusService.getDispensers();
-  }
-
-  // public getDispenserStatus(): void {
-  //   this.dispenserstatusService.getDispenserStatus().subscribe(
-  //     (response: Dispenser[]) => {
-  //       this.dispensers = response;
-  //       this.dataSource = response;
-  //       console.log(this.dispensers);
-  //     });
-  // }
-  // dataSource = new MatTableDataSource<Dispenser>();
-  // date = new FormControl(new Date());
-
-
-}
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
+import {MatTableModule} from '@angular/material/table';
+import {FormGroup, FormControl} from '@angular/forms';
+import { error } from "highcharts";
 
 export interface PeriodicElement {
   dispenser: string;
-    dispenserState: string;
-    nozzleState: string;
-    amount: string;
-    volume: string;
+  dispenserState: string;
+  nozzleState: string;
+  amount: string;
+  volume: string;
+
+  
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {dispenser: '1', dispenserState: 'Hydrogen', nozzleState: '1.0079', amount: 'H', volume: 'aa'},
+  {dispenser: '2', dispenserState: 'Helium', nozzleState: '4.0026', amount: 'He', volume: 'ss'},
+];
+
+@Component({
+  selector: "app-dispenser-status",
+  templateUrl: "./dispenser-status.component.html",
+  styleUrls: ["./dispenser-status.component.scss"],
+})
+export class DispenserStatusComponent{
+  displayedColumns: string[] = ['dispenser', 'dispenserState', 'nozzleState', 'amount', 'volume'];
+  dataSource = ELEMENT_DATA;
 }
 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  // {position: 1, name: 'Hydrogen', weight: 1.007989, symbol: 'H', volume: "1"},
-  // {position: 1, name: 'Hydrogen', weight: 1.007989, symbol: 'H', volume: "1"},
-  // {position: 1, name: 'Hydrogen', weight: 1.007989, symbol: 'H', volume: "1"}
-];
+
