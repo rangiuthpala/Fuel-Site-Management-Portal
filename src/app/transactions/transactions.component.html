@@ -1,146 +1,189 @@
 <app-fuel-indicator></app-fuel-indicator>
 
-
 <div class="transaction_page">
+  <mat-divider></mat-divider>
+
+  <h2 class="page_tittle">Transactions</h2>
+
+  <div class="example-container">
+    <form [formGroup]="registerform">
+      <div flexLayout="row">
+        <mat-form-field appearance="outline">
+          <mat-label>FuelGrade</mat-label>
+          <mat-select formControlName="blendID">
+            <mat-option
+              *ngFor="let grade of fuelDataSource"
+              value="{{ grade.id }}"
+            >
+              {{ grade.itemName }}
+            </mat-option>
+          </mat-select>
+          <mat-hint> <strong>Filter</strong> by fuel Grade </mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Pump</mat-label>
+          <mat-select formControlName="pumpID">
+            <mat-option
+              *ngFor="let pump of pumpDataSource"
+              value="{{ pump.id }}"
+            >
+              {{ pump.itemName }}
+            </mat-option>
+          </mat-select>
+          <mat-hint> <strong>Filter</strong> by pump </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Terminal</mat-label>
+          <mat-select formControlName="terminalID">
+            <mat-option
+              *ngFor="let terminal of terminalsDataSource"
+              value="{{ terminal.id }}"
+            >
+              {{ terminal.itemName }}
+            </mat-option>
+          </mat-select>
+          <mat-hint> <strong>Filter</strong> by terminal </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="fromDate"/>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>To Date</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="toDate"/>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div flexLayout="row">
+        <div fxFlex="50" style="margin-right: 10px">
+          <mat-form-field
+            class="search_string"
+            appearance="outline"
+          >
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Placeholder" 
+            formControlName="searchText"/>
+            <mat-hint>Search by string</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="form_btnset">
+          <button
+            class="apply_btn"
+            mat-raised-button
+            color="accent"
+            (click)="loadTrasnactionResponse()"
+          >
+            Apply
+          </button>
+          <button class="clear_btn" mat-raised-button>Clear</button>
+        </div>
+      </div>
+    </form>
+
+    <br />
 
     <mat-divider></mat-divider>
 
-    <h2 class="page_tittle">Transactions</h2>
+    <br />
 
-
-    <div class="example-container">
-        <form>
-            <div flexLayout="row">
-                <mat-form-field appearance="outline">
-                    <mat-label>FuelGrade</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let grade of fuelDataSource" value="grade.id"> {{grade.itemName}} </mat-option>
-                    </mat-select>
-                    <mat-hint> <strong>Filter</strong> by fuel Grade </mat-hint>
-                </mat-form-field>
-                <mat-form-field  appearance="outline">
-                    <mat-label>Pump</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let pump of pumpDataSource" value="pump.id"> {{pump.itemName}} </mat-option>
-                    </mat-select>
-                    <mat-hint> <strong>Filter</strong> by pump </mat-hint>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Terminal</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let terminal of terminalsDataSource" value="terminal.id"> {{terminal.itemName}} </mat-option>
-                    </mat-select>
-                    <mat-hint> <strong>Filter</strong> by terminal </mat-hint>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>From Date</mat-label>
-                    <input matInput [matDatepicker]="picker1" [formControl]="date">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                    <mat-datepicker #picker1></mat-datepicker>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>To Date</mat-label>
-                    <input matInput [matDatepicker]="picker1" [formControl]="date">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                    <mat-datepicker #picker1></mat-datepicker>
-                </mat-form-field>
-            </div>
-
-            <div flexLayout="row">
-                <div fxFlex="50" style=" margin-right: 10px;">
-                    <mat-form-field class="search_string" appearance="outline">
-                        <mat-label>Search</mat-label>
-                        <input matInput placeholder="Placeholder">
-                        <mat-hint>Search by string</mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="form_btnset">
-                    <button class="apply_btn" mat-raised-button color="accent">Apply</button>
-                    <button class="clear_btn" mat-raised-button>Clear</button>
-                </div>
-            </div>
-
-
-        </form>
-
-        <br/>
-
-        <mat-divider></mat-divider>
-
-        <br/>
-
-        <div fxLayout="row" class="table_content" fxLayout.sm="column"  fxLayoutGap="10px">
-
-            <div  class="trans_table">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                    <!--- Note that these columns can be defined in any order.
+    <div
+      fxLayout="row"
+      class="table_content"
+      fxLayout.sm="column"
+      fxLayoutGap="10px"
+    >
+      <div class="trans_table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!--- Note that these columns can be defined in any order.
                       The actual rendered columns are set as a property on the row definition" -->
 
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="position">
-                        <th mat-header-cell *matHeaderCellDef> Transaction ID </th>
-                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                    </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="transactionId">
+            <th mat-header-cell *matHeaderCellDef>Transaction ID</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.transactionID }}
+            </td>
+          </ng-container>
 
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef> Terminal ID </th>
-                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                    </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="terminalId">
+            <th mat-header-cell *matHeaderCellDef>Terminal ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.terminalID }}</td>
+          </ng-container>
 
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="weight">
-                        <th mat-header-cell *matHeaderCellDef> Card Number </th>
-                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                    </ng-container>
+          <!-- Weight Column -->
+          <ng-container matColumnDef="cardNumber">
+            <th mat-header-cell *matHeaderCellDef>Card Number</th>
+            <td mat-cell *matCellDef="let element">{{ element.cardNumber }}</td>
+          </ng-container>
 
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="symbol">
-                        <th mat-header-cell *matHeaderCellDef> Amount </th>
-                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                    </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef>Amount</th>
+            <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+          </ng-container>
 
-                    <ng-container matColumnDef="card">
-                        <th mat-header-cell *matHeaderCellDef> Transaction Date </th>
-                        <td mat-cell *matCellDef="let element"> {{element.card}} </td>
-                    </ng-container>
+          <ng-container matColumnDef="transactionData">
+            <th mat-header-cell *matHeaderCellDef>Transaction Date</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.transactionDate }}
+            </td>
+          </ng-container>
 
-                  <ng-container matColumnDef="product">
-                        <th mat-header-cell *matHeaderCellDef> Product </th>
-                        <td mat-cell *matCellDef="let element"> {{element.product}} </td>
-                    </ng-container>  
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef>Product</th>
+            <td mat-cell *matCellDef="let element">{{ element.fuelGrade }}</td>
+          </ng-container>
 
-                    <ng-container matColumnDef="receipt">
-                        <th mat-header-cell *matHeaderCellDef> Receipt </th>
-                        <td mat-cell *matCellDef="let element"> {{element.receipt}} </td>
-                    </ng-container>
+          <ng-container matColumnDef="receipt">
+            <th mat-header-cell *matHeaderCellDef>Receipt</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Example icon button with a home icon"
+                (click)="viewReceipt(element.receipt)"
+              >
+                <mat-icon>launch</mat-icon>
+              </button>
+            </td>
+          </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-            </div>
-            <div fxFlex="30">
-                <mat-card>
-                    <mat-card-content class="receipt_card">
-                        <mat-form-field appearance="fill" class="receipt_field">
-                            <mat-label>Receipt</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                    </mat-card-content>
-                </mat-card>
-
-            </div>
-
-        </div>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
+      <div fxFlex="15">
+        <mat-card>
+          <mat-card-content class="receipt_card">
+            <mat-form-field appearance="fill" class="receipt_field">
+              <mat-label>Receipt</mat-label>
+              <input matInput />{{receiptValue}}
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
-
-
-
-
+  </div>
 </div>

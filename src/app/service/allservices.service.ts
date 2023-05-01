@@ -68,6 +68,15 @@ export class AllservicesService {
     return this.http.get<Items[]>(`${this.apiServerUrl}/Transactions/Terminals`, {headers});
   }
 
+  postTransactions(inputData: any): Observable<TrasnactionResponse[]> {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    
+    return this.http.post<TrasnactionResponse[]>(`${this.apiServerUrl}/Transactions`, inputData, {headers})
+  }
+
   //format Date
   formatDate(date: Date) {
     const dateSring = date.toISOString();
@@ -99,7 +108,7 @@ export interface TerminalStatus {
 }
 
 //Transaction Request
-export interface Transaction {
+export interface TransactionRequest {
   fromDate: string;
   toDate: string;
   searchText: string;
