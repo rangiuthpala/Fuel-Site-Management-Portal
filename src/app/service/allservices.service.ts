@@ -147,6 +147,10 @@ export class AllservicesService {
     const dateSring = date.toISOString();
     return dateSring.slice(0, 10);
   }
+
+  formatDateNew(date: any):string {
+    return date.substring(6, 10) + '-' + date.substring(3, 5) + '-' + date.substring(0, 2);
+  }
 }
 
 //Fuel Indicator Interface

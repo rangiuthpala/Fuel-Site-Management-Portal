@@ -11,7 +11,6 @@ import { UpdatePriceComponent } from './update-price/update-price.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TankInfoComponent } from './tank-info/tank-info.component';
-import { TotalSalesComponent } from './reports-gen/total-sales/total-sales.component';
 import { AuthGuard } from './guard/auth.guard';
 import { ReportsGenComponent } from './reports/reports-gen/reports-gen.component';
 
