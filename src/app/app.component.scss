@@ -4,8 +4,6 @@
 
 .example-container {
   height: 100%;
-  padding-top: 50px;
-
 }
 
 :host {
@@ -17,15 +15,14 @@
 }
 
 .nav_bar{
-  position: fixed;
-  top: 0;
-  z-index: 2;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .site-sidenav {
   background-color: #303063;
   width: 350px;
-  margin-top: 64px;
 
   .profile-card .sidebar-header {
     display: flex;

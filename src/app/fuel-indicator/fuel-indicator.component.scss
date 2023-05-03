@@ -2,12 +2,13 @@
     margin-bottom: 20px;
     .content{
         justify-content: space-between;
+        display: flex;
         .dashboard-card {
             padding: 12px;
             overflow: hidden;
             cursor: pointer;
             color: #fff;
-            
+            height: 155px;
         
             .card-tittle {
                 color: #fff;
