@@ -12,10 +12,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TankInfoComponent } from './tank-info/tank-info.component';
 import { TotalSalesComponent } from './reports-gen/total-sales/total-sales.component';
-import { MethodPaymentComponent } from './reports-gen/total-sales/method-payment/method-payment.component';
-import { DispenserTerminalComponent } from './reports-gen/dispenser-terminal/dispenser-terminal.component';4
-import { SalesComparisonComponent } from './reports-gen/sales-comparison/sales-comparison.component'
 import { AuthGuard } from './guard/auth.guard';
+import { ReportsGenComponent } from './reports/reports-gen/reports-gen.component';
 
 
 const routes: Routes = [
@@ -29,10 +27,7 @@ const routes: Routes = [
   { path: 'creat-user', component: CreateUserComponent, canActivate:[AuthGuard]   },
   { path: 'reports', component: ReportsComponent, canActivate:[AuthGuard]   },
   { path: 'tank-info', component: TankInfoComponent, canActivate:[AuthGuard]   },
-  { path: '1', component: TotalSalesComponent, canActivate:[AuthGuard]  },
-  { path: '2', component: MethodPaymentComponent, canActivate:[AuthGuard]  },
-  { path: '3', component: DispenserTerminalComponent, canActivate:[AuthGuard]  },
-  { path: '4', component: SalesComparisonComponent, canActivate:[AuthGuard]  }
+  { path: 'reports/reports-gen/:id', component: ReportsGenComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({
