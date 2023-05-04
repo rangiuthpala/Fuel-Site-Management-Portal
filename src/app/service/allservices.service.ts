@@ -217,7 +217,6 @@ export interface Items {
   itemName: string;
 }
 
-<<<<<<< HEAD
 //Delivery Totals
 export interface DeliveryTotal {
   deliveryID: number;
@@ -231,7 +230,7 @@ export interface DeliveryTotal {
   amount: string;
   transDate: string;
   transTime: string;
-=======
+}
 //Total Sales Report
 export interface TotalSalesReport {
   transactionNumber: string;
@@ -268,5 +267,4 @@ export interface TerminalWiseSale {
   quantity: string;
   totalAmt: string;
   dDate: string;
->>>>>>> ff2c95573a79c02ea97b13dbccfc6810803c1e9b
 }
