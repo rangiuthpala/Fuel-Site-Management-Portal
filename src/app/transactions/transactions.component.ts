@@ -23,12 +23,12 @@ export class TransactionsComponent {
   fuelDataSource: any;
   terminalsDataSource: any;
   dataSource: any;
-  receiptValue: any;
+  receiptValue: string = '';
   
 
   registerform = new FormGroup({
-    fromDate: new FormControl(new Date().toISOString().slice(0, 10)),
-    toDate: new FormControl(new Date().toISOString().slice(0, 10)),
+    fromDate: new FormControl<Date | null>(new Date()),
+    toDate: new FormControl<Date | null>(new Date()),
     searchText: this.builder.control(''),
     pumpID: this.builder.control(''),
     terminalID: this.builder.control(''),
@@ -54,17 +54,27 @@ export class TransactionsComponent {
     });
   }
 
-  viewReceipt(receipt:any) {
+  viewReceipt(receipt:string) {
     console.log(receipt);
     this.receiptValue = receipt;
   }
 
-
   loadTrasnactionResponse() {
-    this.service.postTransactions(this.registerform.value).subscribe(response => {
+    const requestObj = {
+      "fromDate": this.service.formatDateNew(this.registerform.value.fromDate?.toLocaleDateString()),
+      "toDate": this.service.formatDateNew(this.registerform.value.toDate?.toLocaleDateString()),
+      "searchText": this.registerform.value.searchText,
+      "pumpID": this.registerform.value.pumpID,
+      "terminalID": this.registerform.value.terminalID,
+      "blendID": this.registerform.value.blendID
+    };
+    this.service.postTransactions(requestObj).subscribe(response => {
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator=this.paginator;
-      console.log(this.registerform.value);
+      console.log(requestObj);
+      console.log(this.registerform.value.toDate);
+      console.log(JSON.stringify(this.registerform.value.toDate));
+      console.log(this.service.formatDateNew(this.registerform.value.toDate?.toLocaleDateString()));
     });
   }
   displayedColumns: string[] = ['transactionId', 'terminalId', 'cardNumber', 'amount','transactionData', 'product', 'receipt'];

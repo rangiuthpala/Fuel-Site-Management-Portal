@@ -43,13 +43,10 @@ import { CurrentGradeComponent } from './charts/current-grade/current-grade.comp
 import { CurrentTerminalComponent } from './charts/current-terminal/current-terminal.component';
 import { HourlySalesGradeComponent } from './charts/hourly-sales-grade/hourly-sales-grade.component';
 import { AvarageHourlyGradeComponent } from './charts/avarage-hourly-grade/avarage-hourly-grade.component';
-import { TotalSalesComponent } from './reports-gen/total-sales/total-sales.component';
-import { MethodPaymentComponent } from './reports-gen/total-sales/method-payment/method-payment.component';
-import { DispenserTerminalComponent } from './reports-gen/dispenser-terminal/dispenser-terminal.component';
-import { SalesComparisonComponent } from './reports-gen/sales-comparison/sales-comparison.component';
-import { BackButtonComponent } from './reports-gen/back-button/back-button.component';
 import { ToastrModule } from 'ngx-toastr';
 import {MatMenuModule} from '@angular/material/menu';
+import { ReportsGenComponent } from './reports/reports-gen/reports-gen.component';
+import { BackButtonComponent } from './back-button/back-button.component';
 
 
 @NgModule({
@@ -74,10 +71,7 @@ import {MatMenuModule} from '@angular/material/menu';
     CurrentTerminalComponent,
     HourlySalesGradeComponent,
     AvarageHourlyGradeComponent,
-    TotalSalesComponent,
-    MethodPaymentComponent,
-    DispenserTerminalComponent,
-    SalesComparisonComponent,
+    ReportsGenComponent,
     BackButtonComponent
   ],
   entryComponents: [CreateUserDialogComponent],

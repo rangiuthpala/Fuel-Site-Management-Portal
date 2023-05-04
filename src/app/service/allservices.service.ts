@@ -46,8 +46,10 @@ export class AllservicesService {
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
-    
-    return this.http.get<Items[]>(`${this.apiServerUrl}/Transactions/Pumps`, {headers});
+
+    return this.http.get<Items[]>(`${this.apiServerUrl}/Transactions/Pumps`, {
+      headers,
+    });
   }
 
   getAllFuelGrades(): Observable<Items[]> {
@@ -55,8 +57,11 @@ export class AllservicesService {
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
-    
-    return this.http.get<Items[]>(`${this.apiServerUrl}/Transactions/Products`, {headers});
+
+    return this.http.get<Items[]>(
+      `${this.apiServerUrl}/Transactions/Products`,
+      { headers }
+    );
   }
 
   getAllTerminals(): Observable<Items[]> {
@@ -64,8 +69,11 @@ export class AllservicesService {
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
-    
-    return this.http.get<Items[]>(`${this.apiServerUrl}/Transactions/Terminals`, {headers});
+
+    return this.http.get<Items[]>(
+      `${this.apiServerUrl}/Transactions/Terminals`,
+      { headers }
+    );
   }
 
   postTransactions(inputData: any): Observable<TrasnactionResponse[]> {
@@ -73,8 +81,65 @@ export class AllservicesService {
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
-    
-    return this.http.post<TrasnactionResponse[]>(`${this.apiServerUrl}/Transactions`, inputData, {headers})
+
+    return this.http.post<TrasnactionResponse[]>(
+      `${this.apiServerUrl}/Transactions`,
+      inputData,
+      { headers }
+    );
+  }
+
+  getSalesTotalReport(fromDate: any, toDate: any): Observable<TotalSalesReport[]> {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<TotalSalesReport[]>(
+      `${this.apiServerUrl}/Reports/GetSales?FromDate=${fromDate}&ToDate=${toDate}`,
+      { headers }
+    );
+  }
+
+  getPMWiseReport(fromDate: any, toDate: any): Observable<PayModeWiseSale[]>  {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    return this.http.get<PayModeWiseSale[]>(
+      `${this.apiServerUrl}/Reports/PayModeWiseSales?FromDate=${fromDate}&ToDate=${toDate}`,
+      { headers }
+    );
+  }
+  getPumpWiseReport(fromDate: any, toDate: any): Observable<PumpWiseSale[]>  {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    return this.http.get<PumpWiseSale[]>(
+      `${this.apiServerUrl}/Reports/PumpWiseSales?FromDate=${fromDate}&ToDate=${toDate}`,
+      { headers }
+    );
+  }
+  getTerminalWiseReport(fromDate: any, toDate: any): Observable<TerminalWiseSale[]>  {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    return this.http.get<TerminalWiseSale[]>(
+      `${this.apiServerUrl}/Reports/TerminalWiseSales?FromDate=${fromDate}&ToDate=${toDate}`,
+      { headers }
+    );
+  }
+  getSalesComparison(fromDate: any, toDate: any) {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    return this.http.get(
+      `${this.apiServerUrl}/Reports/SalesComparison?FromDate=${fromDate}&ToDate=${toDate}`,
+      { headers }
+    );
   }
 
   getAllDeliveryTotals(fromDate: any, toDate: any): Observable<DeliveryTotal[]> {
@@ -90,6 +155,10 @@ export class AllservicesService {
   formatDate(date: Date) {
     const dateSring = date.toISOString();
     return dateSring.slice(0, 10);
+  }
+
+  formatDateNew(date: any):string {
+    return date.substring(6, 10) + '-' + date.substring(3, 5) + '-' + date.substring(0, 2);
   }
 }
 
@@ -148,6 +217,7 @@ export interface Items {
   itemName: string;
 }
 
+<<<<<<< HEAD
 //Delivery Totals
 export interface DeliveryTotal {
   deliveryID: number;
@@ -161,4 +231,42 @@ export interface DeliveryTotal {
   amount: string;
   transDate: string;
   transTime: string;
+=======
+//Total Sales Report
+export interface TotalSalesReport {
+  transactionNumber: string;
+  quantity: string;
+  unitPrice: string;
+  pumpID: string;
+  amount: string;
+  dDate: string;
+  dTime: string;
+  terminalID: string;
+  productName: string;
+  cardType: string;
+}
+
+//Pay Mode Wise Sale report
+export interface PayModeWiseSale {
+  cardType: string;
+  quantity: string;
+  totalAmt: string;
+  dDate: string;
+}
+
+//Pump Wise sale report
+export interface PumpWiseSale {
+  pumpID: string;
+  quantity: string;
+  totalAmount: string;
+  dDate: string;
+}
+
+//Terminal Wise Sale Report
+export interface TerminalWiseSale {
+  terminalID: string;
+  quantity: string;
+  totalAmt: string;
+  dDate: string;
+>>>>>>> ff2c95573a79c02ea97b13dbccfc6810803c1e9b
 }
