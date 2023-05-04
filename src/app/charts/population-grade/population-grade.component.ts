@@ -31,11 +31,15 @@ export class PopulationGradeComponent {
       },
     ],
     
-    chart: {
-      height: '340',
-      width: '310',
-  },
+  //   chart: {
+  //     height: '340',
+  //     width: '310',
+  // },
 
+  credits:{
+    enabled: false
+  },
+  
     title: {
       text: 'Population of Grades',
       align: 'center'
