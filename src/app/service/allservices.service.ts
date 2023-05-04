@@ -77,6 +77,15 @@ export class AllservicesService {
     return this.http.post<TrasnactionResponse[]>(`${this.apiServerUrl}/Transactions`, inputData, {headers})
   }
 
+  getAllDeliveryTotals(fromDate: any, toDate: any): Observable<DeliveryTotal[]> {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    
+    return this.http.get<DeliveryTotal[]>(`${this.apiServerUrl}/Transactions/DeliveryTotals?fromDate=${fromDate}&toDate=${toDate}`, {headers})
+  }
+
   //format Date
   formatDate(date: Date) {
     const dateSring = date.toISOString();
@@ -137,4 +146,19 @@ export interface TrasnactionResponse {
 export interface Items {
   id: string;
   itemName: string;
+}
+
+//Delivery Totals
+export interface DeliveryTotal {
+  deliveryID: number;
+  pump: number;
+  productID: number;
+  productName: string;
+  mode: string;
+  limit: string;
+  volume: string;
+  price: string;
+  amount: string;
+  transDate: string;
+  transTime: string;
 }

@@ -1,23 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
-import {MatTableModule} from '@angular/material/table';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {FormGroup, FormControl} from '@angular/forms';
 import { error } from "highcharts";
+import { AllservicesService } from "../service/allservices.service";
 
-export interface PeriodicElement {
-  dispenser: string;
-  dispenserState: string;
-  nozzleState: string;
-  amount: string;
-  volume: string;
-
-  
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {dispenser: '1', dispenserState: 'Hydrogen', nozzleState: '1.0079', amount: 'H', volume: 'aa'},
-  {dispenser: '2', dispenserState: 'Helium', nozzleState: '4.0026', amount: 'He', volume: 'ss'},
-];
 
 @Component({
   selector: "app-dispenser-status",
@@ -25,8 +12,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./dispenser-status.component.scss"],
 })
 export class DispenserStatusComponent{
-  displayedColumns: string[] = ['dispenser', 'dispenserState', 'nozzleState', 'amount', 'volume'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['deliveryID', 'productID', 'productName', 'Volume', 'price', 'amount', 'transDate', 'transTime'];
+  // dataSource = ELEMENT_DATA;
+  dataSource: any;
+
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
+  constructor(private service: AllservicesService) {
+    this.loadDeliveryTotals();
+  }
+
+  registerform = new FormGroup({
+    fromDate: new FormControl(new Date().toISOString().slice(0, 10)),
+    toDate: new FormControl(new Date().toISOString().slice(0, 10))
+  });
+
+  loadDeliveryTotals() {
+    this.service.getAllDeliveryTotals('2022-01-01','2023-05-03').subscribe(response => {
+      this.dataSource = new MatTableDataSource(response);
+       this.dataSource.paginator=this.paginator;
+      console.log(this.registerform.value);
+    });
+  }
 }
 
 

@@ -17,9 +17,8 @@ export class CurrentGradeComponent {
         data: [83.6, 78.8, 98.5, 93.4]
       },
     ],
-    chart: {
-      height: '340',
-      width: '300'
+  credits:{
+    enabled: false
   },
     title: {
       text: 'Current Sales by Grade',

@@ -32,6 +32,9 @@ export class AvarageHourlyGradeComponent {
     chart: {
     
     },
+    credits:{
+      enabled: false
+    },
     title: {
       text: 'Average Hourly Sales by Grade',
       align: 'center'

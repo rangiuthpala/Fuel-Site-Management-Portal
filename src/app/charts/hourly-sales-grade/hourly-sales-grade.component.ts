@@ -31,6 +31,9 @@ export class HourlySalesGradeComponent {
     chart: {
     
     },
+    credits:{
+      enabled: false
+    },
     title: {
       text: 'Hourly Sales by Grade',
       align: 'center'

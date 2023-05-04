@@ -18,9 +18,8 @@ export class CurrentTerminalComponent {
       },
     ],
 
-    chart: {
-      height: '340',
-      width: '300'
+  credits:{
+    enabled: false
   },
     title: {
       text: 'Current Sales by Terminal',
