@@ -7,52 +7,73 @@
 <app-back-button></app-back-button>
 
 <div class="total_sales">
+  <h2>{{ title }}</h2>
 
-    <h2>{{title}}</h2>
+  <div class="example-form-fields">
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        [matDatepicker]="picker1"
+        placeholder="From Date"
+        (dateChange)="onChangeEvent($event)"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker1"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <input
+      _ngcontent-xlg-c152=""
+      matinput=""
+      type="time"
+      formcontrolname="fromTime"
+      class="mat-input-element mat-form-field-autofill-control ng-tns-c108-31 ng-pristine ng-valid cdk-text-field-autofill-monitored ng-touched"
+      id="mat-input-13"
+      aria-invalid="false"
+      aria-required="false"
+    />
 
-    <div class="example-form-fields">
-        <mat-form-field appearance="outline">
-            <mat-label>From Date</mat-label>
-            <input matInput [matDatepicker]="picker1" [formControl]="date">
-            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
-        <!-- <div>
+    <mat-form-field appearance="outline">
+      <mat-label>To Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker2"
+        (dateChange)="onChangeEvent2($event)"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker2"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <input
+      _ngcontent-xlg-c152=""
+      matinput=""
+      type="time"
+      formcontrolname="toTime"
+      class="mat-input-element mat-form-field-autofill-control ng-tns-c108-31 ng-pristine ng-valid cdk-text-field-autofill-monitored ng-touched"
+      id="mat-input-13"
+      aria-invalid="false"
+      aria-required="false"
+    />
+
+    <!-- <div>
             <input type="time" matInput name="week" min="09:00" max="18:00" />
         </div> -->
-        <mat-form-field class="time_field" appearance="outline">
-            <mat-label>Input type time</mat-label>
-            <input type="time" matInput name="week" min="09:00" max="18:00">
-         </mat-form-field>
+  </div>
 
-         
-
-        <mat-form-field appearance="outline">
-            <mat-label>To Date</mat-label>
-            <input matInput [matDatepicker]="picker1" [formControl]="date">
-            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Input type time</mat-label>
-            <input type="time" matInput name="week" min="09:00" max="18:00">
-         </mat-form-field>
-         
-        <!-- <div>
-            <input type="time" matInput name="week" min="09:00" max="18:00" />
-        </div> -->
-
-    
-    </div>
-
-    <div class="btn_set">
-        <button mat-raised-button color="accent">Open Report</button>
-        <button mat-raised-button color="primary">Download Report</button>
-        <button mat-raised-button color="warn">Print Report</button>
-        <button mat-raised-button>Clear</button>
-    </div>
-
-
-
+  <div class="btn_set">
+    <button mat-raised-button [disabled]="isDisabled" color="accent">
+      Open Report
+    </button>
+    <button mat-raised-button [disabled]="isDisabled" color="primary">
+      Download Report
+    </button>
+    <button mat-raised-button [disabled]="isDisabled" color="warn">
+      Print Report
+    </button>
+    <button mat-raised-button>Clear</button>
+  </div>
 </div>
