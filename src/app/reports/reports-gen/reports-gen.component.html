@@ -11,6 +11,7 @@
 
   <div class="example-form-fields">
     <mat-form-field appearance="outline">
+        <mat-label>From Date</mat-label>
       <input
         matInput
         [matDatepicker]="picker1"
@@ -23,16 +24,10 @@
       ></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
-    <input
-      _ngcontent-xlg-c152=""
-      matinput=""
-      type="time"
-      formcontrolname="fromTime"
-      class="mat-input-element mat-form-field-autofill-control ng-tns-c108-31 ng-pristine ng-valid cdk-text-field-autofill-monitored ng-touched"
-      id="mat-input-13"
-      aria-invalid="false"
-      aria-required="false"
-    />
+    <mat-form-field appearance="outline">
+        <mat-label>From Time</mat-label>
+        <input matInput type="time">
+    </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>To Date</mat-label>
@@ -48,17 +43,10 @@
       <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
 
-    <input
-      _ngcontent-xlg-c152=""
-      matinput=""
-      type="time"
-      formcontrolname="toTime"
-      class="mat-input-element mat-form-field-autofill-control ng-tns-c108-31 ng-pristine ng-valid cdk-text-field-autofill-monitored ng-touched"
-      id="mat-input-13"
-      aria-invalid="false"
-      aria-required="false"
-    />
-
+    <mat-form-field appearance="outline">
+        <mat-label>To Time</mat-label>
+        <input matInput type="time">
+    </mat-form-field>
     <!-- <div>
             <input type="time" matInput name="week" min="09:00" max="18:00" />
         </div> -->

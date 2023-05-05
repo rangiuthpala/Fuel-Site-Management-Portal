@@ -12,6 +12,7 @@ export class ReportsGenComponent {
 
   
   defaultValue = { hour: 13, minute: 30 };
+  myTimePicker = {};
 
   title: string = "No Title";
 

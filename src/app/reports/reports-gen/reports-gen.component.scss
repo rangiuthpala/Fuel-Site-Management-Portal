@@ -58,3 +58,7 @@
 .mat-input-element[type=time] {
     line-height: 1;
 }
+
+:host ::ng-deep .mdc-text-field__input::-webkit-calendar-picker-indicator {
+    display: block;
+  }
