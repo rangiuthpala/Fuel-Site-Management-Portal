@@ -19,7 +19,7 @@
                     </form>
                 </div>
                 <div fxFlex="25" [fxFlex.xs]="100" fxLayout='column' fxLayout.xs="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-                    <button [fxFlex.xs]="100" (click)="loginUser()" mat-raised-button color="primary" type="submit">Login</button>
+                    <button [fxFlex.xs]="100" (click)="loginUser()" (keydown.enter)="onKeydown($event)" mat-raised-button color="primary" type="submit">Login</button>
                     <button [fxFlex.xs]="100" mat-raised-button>Clear</button>
                 </div>
             </div>

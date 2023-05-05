@@ -1,29 +1,27 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = 'Fuel-Site-Management-Portal';
+  title = "Fuel-Site-Management-Portal";
   showFiller = false;
   longText = ``;
 
-  ismenurequired=false;
+  ismenurequired = false;
+  drawer: any;
 
-  constructor(private router:Router) {
-  }
-
-  
+  constructor(private router: Router) {}
 
   ngDoCheck(): void {
-    let currenturl=this.router.url;
-    if(currenturl=='/login') {
-      this.ismenurequired=false;
+    let currenturl = this.router.url;
+    if (currenturl == "/login") {
+      this.ismenurequired = false;
     } else {
-      this.ismenurequired=true;
+      this.ismenurequired = true;
     }
   }
 }

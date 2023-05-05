@@ -11,7 +11,7 @@ import { switchMap } from 'rxjs/operators';
 export class ReportsGenComponent {
 
   date = new FormControl(new Date());
-  serializedDate = new FormControl(new Date().toISOString());
+  serializedDate = new FormControl(null);
   
   defaultValue = { hour: 13, minute: 30 };
 

@@ -10,6 +10,9 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ["./login-page.component.scss"],
 })
 export class LoginPageComponent {
+onEnter(arg0: any) {
+throw new Error('Method not implemented.');
+}
   hide = true;
 
   constructor(
@@ -43,4 +46,8 @@ export class LoginPageComponent {
         });
     }
   }
+  onKeydown(event: any) {
+    console.log(event);
+  }
+  
 }
