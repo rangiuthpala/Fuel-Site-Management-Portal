@@ -38,7 +38,9 @@ export class ReportsGenComponent {
     if (this.event2 !== undefined && this.event1 > this.event2) {
       this.isDisabled = true;
       console.log("From date should be before to Date");
-    } 
+    } else if (this.event2 !== undefined && this.event1 <= this.event2) {
+      this.isDisabled = false;
+    }
   }
 
   onChangeEvent2(event: any) {
