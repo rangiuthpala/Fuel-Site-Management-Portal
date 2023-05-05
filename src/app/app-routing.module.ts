@@ -15,9 +15,10 @@ import { AuthGuard } from './guard/auth.guard';
 import { ReportsGenComponent } from './reports/reports-gen/reports-gen.component';
 
 
+
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
-  { path: 'dashboard', component: DashboardComponent , canActivate:[AuthGuard]  },
+  { path: 'fuelsiteadmin/dashboard', component: DashboardComponent , canActivate:[AuthGuard]  },
   { path: 'Transactions', component: TransactionsComponent, canActivate:[AuthGuard]  },
   { path: 'fuel-indicator', component: FuelIndicatorComponent, canActivate:[AuthGuard]   },
   { path: 'dispenser-status', component: DispenserStatusComponent, canActivate:[AuthGuard]   },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'creat-user', component: CreateUserComponent, canActivate:[AuthGuard]   },
   { path: 'reports', component: ReportsComponent, canActivate:[AuthGuard]   },
   { path: 'tank-info', component: TankInfoComponent, canActivate:[AuthGuard]   },
-  { path: 'reports/reports-gen/:id', component: ReportsGenComponent, canActivate:[AuthGuard] }
+  { path: 'reports/reports-gen/:id', component: ReportsGenComponent, canActivate:[AuthGuard] },
+  { path: 'fuelsiteadmin', component: AppComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({
