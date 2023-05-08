@@ -6,42 +6,42 @@
 <div class="dispenserstatus_page">
   <h2 class="page_tittle">Dispenser Status and Electronic Totals</h2>
 
-  <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
+  <table mat-table [dataSource]="dataSourceDispenser" class="mat-elevation-z8">
   
 
     <!-- Dispenser Column -->
-    <!-- <ng-container matColumnDef="dispenser">
+    <ng-container matColumnDef="dispenser">
       <th mat-header-cell *matHeaderCellDef>Dispenser</th>
       <td mat-cell *matCellDef="let element">{{ element.dispenser }}</td>
-    </ng-container> -->
+    </ng-container>
 
     <!-- Dispenser State -->
-    <!-- <ng-container matColumnDef="dispenserState">
+    <ng-container matColumnDef="dispenserState">
       <th mat-header-cell *matHeaderCellDef>Dispenser State</th>
       <td mat-cell *matCellDef="let element">{{ element.dispenserState }}</td>
-    </ng-container> -->
+    </ng-container>
 
     <!-- Nozzle State -->
-    <!-- <ng-container matColumnDef="nozzleState">
+    <ng-container matColumnDef="nozzleState">
       <th mat-header-cell *matHeaderCellDef>Nozzle State</th>
       <td mat-cell *matCellDef="let element">{{ element.nozzleState }}</td>
-    </ng-container> -->
+    </ng-container>
 
     <!-- Amount -->
-    <!-- <ng-container matColumnDef="amount">
+    <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef>Amount</th>
       <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
-    </ng-container> -->
+    </ng-container>
 
     <!-- Amount -->
-    <!-- <ng-container matColumnDef="volume">
+    <ng-container matColumnDef="volume">
       <th mat-header-cell *matHeaderCellDef>Volume</th>
       <td mat-cell *matCellDef="let element">{{ element.volume }}</td>
-    </ng-container> -->
+    </ng-container>
 
-    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> -->
-  <!-- </table> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsdispenser"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsdispenser"></tr>
+  </table>
 
   <mat-paginator
     [pageSizeOptions]="[5, 10, 20]"
@@ -176,42 +176,48 @@
     </div>
   </form>
 
-  <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
-   
-
+  <table mat-table [dataSource]="dataSourceElectronic" class="mat-elevation-z8">
+  
     <!-- Dispenser Column -->
-    <!-- <ng-container matColumnDef="dispenser">
-      <th mat-header-cell *matHeaderCellDef>Dispenser</th>
-      <td mat-cell *matCellDef="let element">{{ element.dispenser }}</td>
-    </ng-container> -->
+    <ng-container matColumnDef="terminal">
+      <th mat-header-cell *matHeaderCellDef>Terminal</th>
+      <td mat-cell *matCellDef="let element">{{ element.terminal }}</td>
+    </ng-container>
 
     <!-- Dispenser State -->
-    <!-- <ng-container matColumnDef="dispenserState">
-      <th mat-header-cell *matHeaderCellDef>Dispenser State</th>
-      <td mat-cell *matCellDef="let element">{{ element.dispenserState }}</td>
-    </ng-container> -->
+    <ng-container matColumnDef="pump">
+      <th mat-header-cell *matHeaderCellDef>Pump</th>
+      <td mat-cell *matCellDef="let element">{{ element.pump }}</td>
+    </ng-container>
 
     <!-- Nozzle State -->
-    <!-- <ng-container matColumnDef="nozzleState">
-      <th mat-header-cell *matHeaderCellDef>Nozzle State</th>
-      <td mat-cell *matCellDef="let element">{{ element.nozzleState }}</td>
-    </ng-container> -->
+    <ng-container matColumnDef="productID">
+      <th mat-header-cell *matHeaderCellDef>Product ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.productID }}</td>
+    </ng-container>
 
     <!-- Amount -->
-    <!-- <ng-container matColumnDef="amount">
+    <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef>Amount</th>
       <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
-    </ng-container> -->
+    </ng-container>
 
     <!-- Amount -->
-    <!-- <ng-container matColumnDef="volume">
+    <ng-container matColumnDef="volume">
       <th mat-header-cell *matHeaderCellDef>Volume</th>
       <td mat-cell *matCellDef="let element">{{ element.volume }}</td>
-    </ng-container> -->
+    </ng-container>
 
-    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> -->
-  <!-- </table> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsElectronic"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsElectronic"></tr>
+  </table>
+  <mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>
+
 <br/>
 <br/>
 </div>

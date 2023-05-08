@@ -15,6 +15,13 @@ export class DispenserStatusComponent{
   displayedColumns: string[] = ['deliveryID', 'productID', 'productName', 'Volume', 'price', 'amount', 'transDate', 'transTime'];
   // dataSource = ELEMENT_DATA;
   dataSource: any;
+ 
+
+  displayedColumnsdispenser: string[] = ['dispenser', 'dispenserState', 'nozzleState', 'amount', 'volume'];
+  dataSourceDispenser: any;
+
+  dataSourceElectronic: any;
+  displayedColumnsElectronic: string[] = ['terminal', 'pump', 'productID', 'amount', 'volume'];
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   constructor(private service: AllservicesService) {
