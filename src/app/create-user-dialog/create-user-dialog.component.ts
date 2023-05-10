@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-user-dialog',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class CreateUserDialogComponent {
   hide = true;
+  constructor(
+    public dialogRef: MatDialogRef<CreateUserDialogComponent>,
+  ) {}
+  onCloseClick(): void {
+    this.dialogRef.close();
+  }
 }

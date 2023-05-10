@@ -24,22 +24,43 @@ export class DispenserStatusComponent{
   displayedColumnsElectronic: string[] = ['terminal', 'pump', 'productID', 'amount', 'volume'];
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
+  atDate: any;
   constructor(private service: AllservicesService) {
     this.loadDeliveryTotals();
   }
 
   registerform = new FormGroup({
-    fromDate: new FormControl(new Date().toISOString().slice(0, 10)),
-    toDate: new FormControl(new Date().toISOString().slice(0, 10))
+    fromDate: new FormControl<Date | null>(new Date()),
+    toDate: new FormControl<Date | null>(new Date())
   });
 
+  fromD = this.service.formatDateNew(this.registerform.value.fromDate?.toLocaleDateString());
+  toD = this.service.formatDateNew(this.registerform.value.toDate?.toLocaleDateString());
+
   loadDeliveryTotals() {
-    this.service.getAllDeliveryTotals('2022-01-01','2023-05-03').subscribe(response => {
+    this.service.getAllDeliveryTotals(this.fromD,this.toD).subscribe(response => {
+      console.log(this.fromD);
+      console.log(this.toD);
       this.dataSource = new MatTableDataSource(response);
        this.dataSource.paginator=this.paginator;
       console.log(this.registerform.value);
     });
   }
+
+  electronicform = new FormGroup({
+    atDate: new FormControl(new Date())
+  })
+
+  loadElectronicTotals() {
+    this.service.getAllElectronicTotals(this.atDate,).subscribe(response => {
+      console.log(this.fromD);
+      console.log(this.toD);
+      this.dataSource = new MatTableDataSource(response);
+       this.dataSource.paginator=this.paginator;
+      console.log(this.registerform.value);
+    });
+  }
+
 }
 
 
