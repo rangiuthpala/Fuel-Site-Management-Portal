@@ -71,10 +71,6 @@ export class TransactionsComponent {
     this.service.postTransactions(requestObj).subscribe(response => {
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator=this.paginator;
-      console.log(requestObj);
-      console.log(this.registerform.value.toDate);
-      console.log(JSON.stringify(this.registerform.value.toDate));
-      console.log(this.service.formatDateNew(this.registerform.value.toDate?.toLocaleDateString()));
     });
   }
   displayedColumns: string[] = ['transactionId', 'terminalId', 'cardNumber', 'amount','transactionData', 'product', 'receipt'];

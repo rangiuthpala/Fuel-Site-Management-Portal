@@ -161,14 +161,14 @@
     <div class="form_set" style="display: flex">
       <mat-form-field appearance="outline">
                 <mat-label>At Date</mat-label>
-                <input matInput [matDatepicker]="picker1" formControlName="atDate" />
+                <input matInput [matDatepicker]="picker3" formControlName="atDate" />
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
+                <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
             </mat-form-field>
 
       <div class="form_btnset">
-        <button class="apply_btn" mat-raised-button color="accent">
+        <button class="apply_btn" mat-raised-button color="accent" (click)="loadElectronicTotals()">
           Apply
         </button>
         <button class="clear_btn" mat-raised-button>Clear</button>

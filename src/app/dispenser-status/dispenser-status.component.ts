@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {FormGroup, FormControl} from '@angular/forms';
-import { error } from "highcharts";
+import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
 import { AllservicesService } from "../service/allservices.service";
 
 
@@ -12,52 +11,49 @@ import { AllservicesService } from "../service/allservices.service";
   styleUrls: ["./dispenser-status.component.scss"],
 })
 export class DispenserStatusComponent{
-  displayedColumns: string[] = ['deliveryID', 'productID', 'productName', 'Volume', 'price', 'amount', 'transDate', 'transTime'];
-  // dataSource = ELEMENT_DATA;
-  dataSource: any;
- 
 
-  displayedColumnsdispenser: string[] = ['dispenser', 'dispenserState', 'nozzleState', 'amount', 'volume'];
-  dataSourceDispenser: any;
-
-  dataSourceElectronic: any;
-  displayedColumnsElectronic: string[] = ['terminal', 'pump', 'productID', 'amount', 'volume'];
-
-  @ViewChild(MatPaginator) paginator !: MatPaginator;
-  atDate: any;
-  constructor(private service: AllservicesService) {
+  constructor(private service: AllservicesService, private builder:FormBuilder) {
     this.loadDeliveryTotals();
   }
+
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
+
+  dataSource: any;
+  dataSourceDispenser: any;
+  dataSourceElectronic: any;
 
   registerform = new FormGroup({
     fromDate: new FormControl<Date | null>(new Date()),
     toDate: new FormControl<Date | null>(new Date())
   });
 
-  fromD = this.service.formatDateNew(this.registerform.value.fromDate?.toLocaleDateString());
-  toD = this.service.formatDateNew(this.registerform.value.toDate?.toLocaleDateString());
+
+  displayedColumns: string[] = ['deliveryID', 'productID', 'productName', 'Volume', 'price', 'amount', 'transDate', 'transTime'];
+  displayedColumnsdispenser: string[] = ['dispenser', 'dispenserState', 'nozzleState', 'amount', 'volume'];  
+  displayedColumnsElectronic: string[] = ['terminal', 'pump', 'productID', 'amount', 'volume'];
+
 
   loadDeliveryTotals() {
-    this.service.getAllDeliveryTotals(this.fromD,this.toD).subscribe(response => {
-      console.log(this.fromD);
-      console.log(this.toD);
+    const fromD = this.service.formatDateNew(this.registerform.value.fromDate?.toLocaleDateString());
+    const toD = this.service.formatDateNew(this.registerform.value.toDate?.toLocaleDateString());
+    this.service.getAllDeliveryTotals(fromD, toD).subscribe(response => {
       this.dataSource = new MatTableDataSource(response);
-       this.dataSource.paginator=this.paginator;
-      console.log(this.registerform.value);
+      this.dataSource.paginator=this.paginator;
     });
   }
 
   electronicform = new FormGroup({
-    atDate: new FormControl(new Date())
-  })
+    atDate: new FormControl<Date | null>(null)
+  });
+
 
   loadElectronicTotals() {
-    this.service.getAllElectronicTotals(this.atDate,).subscribe(response => {
-      console.log(this.fromD);
-      console.log(this.toD);
-      this.dataSource = new MatTableDataSource(response);
-       this.dataSource.paginator=this.paginator;
-      console.log(this.registerform.value);
+    const atDate = this.service.formatDateNew(this.electronicform.value.atDate?.toLocaleDateString());
+    this.service.getAllElectronicTotals(atDate).subscribe(response => {
+      console.log(atDate);
+      this.dataSourceElectronic = new MatTableDataSource(response);
+      this.dataSourceElectronic.paginator=this.paginator;
+      // console.log(this.registerform.value);
     });
   }
 
