@@ -1,0 +1,9 @@
+.create_user{
+    padding-top: 30px;
+    .user_img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}

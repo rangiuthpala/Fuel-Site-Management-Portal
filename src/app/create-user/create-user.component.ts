@@ -32,6 +32,8 @@ export class CreateUserComponent {
       this.dataSource.paginator = this.paginator;
     });
   }
+  hide = true;
+
 
 }
 
