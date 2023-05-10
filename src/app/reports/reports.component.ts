@@ -30,6 +30,14 @@ export class ReportsComponent {
       id: 4,
       reportName: "Sales Comparison",
     },
+    {
+      id: 5,
+      reportName: "Price Break Report",
+    },
+    {
+      id: 6,
+      reportName: "Grade Sales Reporst",
+    },
   ];
   currentItem = 'Television';
 
