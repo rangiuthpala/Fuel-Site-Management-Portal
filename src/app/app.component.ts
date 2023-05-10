@@ -12,6 +12,7 @@ export class AppComponent {
   longText = ``;
 
   ismenurequired = false;
+
   drawer: any;
 
   constructor(private router: Router) {}

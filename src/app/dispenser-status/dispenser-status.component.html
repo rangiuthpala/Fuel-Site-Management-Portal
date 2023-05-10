@@ -56,7 +56,7 @@
 
   <h2 class="page_tittle">Delivery Totals</h2>
 
-  <form [formGroup]="registerform" >
+  <form [formGroup]="registerform">
     <div flexLayout="row" class="form_set"> 
       <mat-form-field appearance="outline">
         <mat-label>From Date</mat-label>
@@ -157,11 +157,11 @@
 
   <h2 class="page_tittle">Electronic Totals</h2>
 
-  <form flexLayout="row">
+  <form  [formGroup]="electronicform"  flexLayout="row">
     <div class="form_set" style="display: flex">
       <mat-form-field appearance="outline">
                 <mat-label>At Date</mat-label>
-                <input matInput [matDatepicker]="picker1">
+                <input matInput [matDatepicker]="picker1" formControlName="atDate" />
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>

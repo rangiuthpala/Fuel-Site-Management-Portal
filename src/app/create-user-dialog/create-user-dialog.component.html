@@ -1,37 +1,57 @@
 <div class="create_user">
+  
+  <div>
 
-<h2>Create User</h2>
+    <button class="close_btn" (click)="onCloseClick()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>close</mat-icon>
+      </button>
 
-    <mat-form-field appearance="outline" class="un_field">
-        <mat-label>User Name</mat-label>
-        <input matInput placeholder="Placeholder">
-    </mat-form-field>
+    <h2>Create User</h2>
 
-<p>
+  </div>
+
+  <mat-form-field appearance="outline" class="un_field">
+    <mat-label>User Name</mat-label>
+    <input matInput placeholder="Placeholder" />
+  </mat-form-field>
+
+  <p>
     <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
     </mat-form-field>
-</p>
+  </p>
 
-<p>
+  <p>
     <mat-form-field appearance="outline">
-        <mat-label>Retype-Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
+      <mat-label>Retype-Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
     </mat-form-field>
-</p>
+  </p>
 
-<div class="example-button-row">
-    <button mat-raised-button color="primary" style="margin-right: 15px;">Create User</button>
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" style="margin-right: 15px">
+      Create User
+    </button>
     <button mat-raised-button>Clear</button>
     <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
-</div>
+  </div>
 </div>
