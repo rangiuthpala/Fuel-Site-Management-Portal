@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
@@ -13,8 +13,6 @@ export class AppComponent {
 
   ismenurequired = false;
 
-  drawer: any;
-
   constructor(private router: Router) {}
 
   ngDoCheck(): void {
@@ -24,5 +22,9 @@ export class AppComponent {
     } else {
       this.ismenurequired = true;
     }
+  }
+
+  logOut() {
+    this.router.navigate(["login"]);
   }
 }

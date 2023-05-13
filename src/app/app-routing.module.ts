@@ -18,17 +18,17 @@ import { ReportsGenComponent } from './reports/reports-gen/reports-gen.component
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
-  { path: 'fuelsiteadmin/dashboard', component: DashboardComponent , canActivate:[AuthGuard]  },
+  { path: 'dashboard', component: DashboardComponent , canActivate:[AuthGuard]  },
   { path: 'Transactions', component: TransactionsComponent, canActivate:[AuthGuard]  },
   { path: 'fuel-indicator', component: FuelIndicatorComponent, canActivate:[AuthGuard]   },
   { path: 'dispenser-status', component: DispenserStatusComponent, canActivate:[AuthGuard]   },
   { path: 'terminal-status', component: TerminalStatusComponent , canActivate:[AuthGuard]  },
   { path: 'update-price', component: UpdatePriceComponent , canActivate:[AuthGuard]  },
-  { path: 'creat-user', component: CreateUserComponent, canActivate:[AuthGuard]   },
+  { path: 'create-user', component: CreateUserComponent, canActivate:[AuthGuard]   },
   { path: 'reports', component: ReportsComponent, canActivate:[AuthGuard]   },
   { path: 'tank-info', component: TankInfoComponent, canActivate:[AuthGuard]   },
   { path: 'reports/reports-gen/:id', component: ReportsGenComponent, canActivate:[AuthGuard] },
-  { path: 'fuelsiteadmin', component: AppComponent, canActivate:[AuthGuard] }
+  { path: '', component: AppComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({

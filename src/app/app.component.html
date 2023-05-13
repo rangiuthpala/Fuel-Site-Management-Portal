@@ -28,7 +28,7 @@
   <!-- <button mat-button class="example-icon"><mat-icon>person</mat-icon> Admin </button> -->
   <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon> Admin</button>
   <mat-menu #menu="matMenu">
-    <button routerLink="/login" mat-menu-item><mat-icon>logout</mat-icon>Logout</button>
+    <button (click)="logOut()" mat-menu-item><mat-icon>logout</mat-icon>Logout</button>
   </mat-menu>
 </mat-toolbar>
 <!-- End Navigation bar -->
@@ -37,7 +37,7 @@
 <mat-drawer-container  class="example-container" autosize>
   <!-- Side Navigation -->
  
-  <mat-drawer   #drawer class="example-sidenav-content site-sidenav" mode="side">
+  <mat-drawer #drawer class="example-sidenav-content site-sidenav" mode="side">
     <div class="profile-card">
       <div class="sidebar-header">
         <div>
