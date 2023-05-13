@@ -4,27 +4,27 @@
 
 <br />
 
-<div fxLayout="row" fxLayoutAlign="space-between">
-    <div fxFlex="33">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between">
+    <div fxFlex="33" fxLayout="row" class="mobile-space">
         <mat-card>
             <app-population-grade></app-population-grade>
         </mat-card>
     </div>
-    <div fxFlex="33">
+    <div fxFlex="33" fxFlex.xs="100" class="mobile-space">
         <mat-card>
             <app-current-grade></app-current-grade>
         </mat-card>
     </div>
-    <div fxFlex="33">
+    <div fxFlex="33" fxFlex.xs="100">
         <mat-card>
             <app-current-terminal></app-current-terminal>
         </mat-card>
     </div>
 </div>
 <br />
-<div fxLayout="row" fxLayoutAlign="space-between">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between">
 
-    <div fxFlex="55">
+    <div fxFlex="55" class="mobile-space">
 
         <mat-card>
             <app-hourly-sales-grade></app-hourly-sales-grade>
@@ -70,9 +70,9 @@
 
 <br />
 
-<div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="space-between" style="margin-bottom: 40px;">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between" style="margin-bottom: 40px;">
 
-    <div fxFlex="55">
+    <div fxFlex="55" class="mobile-space">
 
         <mat-card>
             <app-avarage-hourly-grade></app-avarage-hourly-grade>

@@ -5,65 +5,72 @@
 <br />
 
 <!-- <button mat-raised-button color="primary" (click)="openDialog()">  <mat-icon class="footer-icon" matListItemIcon>add</mat-icon> Create User</button> -->
-
-<mat-card style="width: 50%">
-  <div fxLayout="row" fxLayoutAlign="space-around center" class="create_user">
-    <div fxFlex="20" style="text-align: center;">
-        <img class="user_img" src="https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg">
-    </div>
-    <div fxFlex="40">
-      <mat-form-field appearance="outline" class="un_field">
-        <mat-label>User Name</mat-label>
-        <input matInput placeholder="Placeholder" />
-      </mat-form-field>
-
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-          >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
+<div fxLayout="row">
+  <mat-card fxFlex="50" fxFlex.md="70" fxFlex.sm="100" fxFlex.xs="100" fxFlex.xs="100">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center" class="create_user">
+      <div fxFlex="20" fxFlex.sm="30" fxFlex.xs="100" style="text-align: center">
+        <img
+          class="user_img"
+          src="https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg"
+        />
+      </div>
+      <div fxFlex="40" fxFlex.sm="70" fxFlex.xs="100">
+        <mat-form-field appearance="outline" class="un_field">
+          <mat-label>User Name</mat-label>
+          <input matInput placeholder="Placeholder" />
         </mat-form-field>
-      </p>
 
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Retype-Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" />
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Retype-Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </p>
+      </div>
+      <div fxFlex="20" fxFlex.sm="30" fxFlex.xs="100">
+        <div class="example-button-row">
           <button
-            mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
+            mat-raised-button
+            color="primary" style="margin-bottom: 15px; display: block;"
           >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            Create User
           </button>
-        </mat-form-field>
-      </p>
-    </div>
-    <div fxFlex="20">
-      <div class="example-button-row">
-        <button mat-raised-button color="primary" style="margin-block-end: 15px;">
-          Create User
-        </button>
-        <button style="width: 119px;" mat-raised-button>Clear</button>
-        <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+          <button style="width: 119px; margin-bottom: 15px;" mat-raised-button>Clear</button>
+          <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+        </div>
       </div>
     </div>
-  </div>
-</mat-card>
+  </mat-card>
+</div>
 <br />
 
 <div>
-  <mat-card style="width: 80%">
+  <mat-card fxFlex="80" fxFlex.sm="100" fxFlex.xs="100">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="index">
         <th mat-header-cell *matHeaderCellDef>Index</th>

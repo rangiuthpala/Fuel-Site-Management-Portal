@@ -27,3 +27,9 @@
 .dotted {
   stroke-dasharray: 2;
 }
+
+@media (max-width: 600px) {
+  .mobile-space{
+      margin-bottom: 15px;
+  }
+}
