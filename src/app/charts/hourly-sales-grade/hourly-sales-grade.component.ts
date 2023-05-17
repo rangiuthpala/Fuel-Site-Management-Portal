@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import HighchartsExporting from "highcharts/modules/exporting";
+import HighchartsExportData from "highcharts/modules/export-data";
+
+HighchartsExporting(Highcharts);
+HighchartsExportData(Highcharts);
 
 @Component({
   selector: 'app-hourly-sales-grade',

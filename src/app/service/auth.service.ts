@@ -35,6 +35,21 @@ export class AuthService {
     return this.http.get<Login[]>(`${this.apiServerUrl}/User/${code}`, { headers });
   }
 
+  createUser(user: Login): Observable<Response> {
+    const headers = new HttpHeaders().set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    // Make the HTTP GET request to the /users endpoint
+    return this.http.post<Response>(`${this.apiServerUrl}/User`, user, { headers });
+  }
+  updateUser(user: Login): Observable<Response> {
+    const headers = new HttpHeaders().set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    // Make the HTTP GET request to the /users endpoint
+    return this.http.put<Response>(`${this.apiServerUrl}/User`, user, { headers });
+  }
+
   isLoggedIn() {
     return sessionStorage.getItem('username') != null;
   }
@@ -46,4 +61,9 @@ export interface Login {
   password: string;
   isActive: string;
 
+}
+
+export interface Response {
+  isSucess: boolean,
+  message: string
 }

@@ -163,6 +163,16 @@ export class AllservicesService {
     );
   }
 
+
+  // Charts Services
+  getGradeProportion(): Observable<GradePropotion[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    
+    return this.http.get<GradePropotion[]>(`${this.apiServerUrl}/Dashboard/GradePropotion/2022-04-05`, {headers});
+  }
+
   //format Date
   formatDate(date: Date) {
     const dateSring = date.toISOString();
@@ -311,4 +321,15 @@ export interface TerminalWiseSale {
   quantity: string;
   totalAmt: string;
   dDate: string;
+}
+
+// Grade Propotion
+export interface GradePropotion {
+  gradeID: string;
+  gradeName: string;
+  propotion: string;
+  backColour: string;
+  intR: string;
+  intG: string;
+  intB: string;
 }
