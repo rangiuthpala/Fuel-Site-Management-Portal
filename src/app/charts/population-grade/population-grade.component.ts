@@ -50,6 +50,7 @@ export class PopulationGradeComponent {
     },
     plotOptions: {
       pie: {
+        size:'100%',
         allowPointSelect: true,
         cursor: "pointer",
         dataLabels: {

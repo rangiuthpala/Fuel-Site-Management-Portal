@@ -6,6 +6,7 @@
 <div class="dispenserstatus_page">
   <h2 class="page_tittle">Dispenser Status and Electronic Totals</h2>
 
+  <mat-card>
   <table mat-table [dataSource]="dataSourceDispenser" class="mat-elevation-z8">
   
 
@@ -42,13 +43,13 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumnsdispenser"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnsdispenser"></tr>
   </table>
-
   <mat-paginator
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons
     aria-label="Select page of periodic elements"
   >
   </mat-paginator>
+</mat-card>
 
   <br />
 
@@ -92,6 +93,7 @@
 
   <mat-divider></mat-divider>
 
+  <mat-card>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -152,6 +154,7 @@
   aria-label="Select page of periodic elements"
 >
 </mat-paginator>
+</mat-card>
 
   <mat-divider></mat-divider>
 
@@ -176,6 +179,7 @@
     </div>
   </form>
 
+  <mat-card>
   <table mat-table [dataSource]="dataSourceElectronic" class="mat-elevation-z8">
   
     <!-- Dispenser Column -->
@@ -217,6 +221,7 @@
   aria-label="Select page of periodic elements"
 >
 </mat-paginator>
+</mat-card>
 
 <br/>
 <br/>

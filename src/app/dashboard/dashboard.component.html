@@ -5,7 +5,7 @@
 <br />
 
 <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between">
-    <div fxFlex="33" fxLayout="row" class="mobile-space">
+    <div fxFlex="33"  fxFlex.xs="100"  class="mobile-space">
         <mat-card>
             <app-population-grade></app-population-grade>
         </mat-card>
@@ -34,7 +34,7 @@
 
     <div fxFlex="40">
         <mat-card>
-            <div class="mat-elevation-z8">
+            <div>
                 <table mat-table [dataSource]="dataSource">
 
                     <!-- Name Column -->

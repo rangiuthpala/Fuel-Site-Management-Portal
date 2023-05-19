@@ -32,10 +32,12 @@
           />
         </div>
         <div fxFlex="40" fxFlex.sm="70" fxFlex.xs="100">
+          <p>
           <mat-form-field appearance="outline" class="un_field">
             <mat-label>User Name</mat-label>
             <input matInput placeholder="Placeholder" formControlName="userName"/>
           </mat-form-field>
+          </p>
 
           <p>
             <mat-form-field appearance="outline">
@@ -96,7 +98,7 @@
 <br />
 
 <div>
-  <mat-card fxFlex="80" fxFlex.sm="100" fxFlex.xs="100">
+  <mat-card fxFlex="65" fxFlex.sm="100" fxFlex.xs="100">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="index">
         <th mat-header-cell *matHeaderCellDef>Index</th>
