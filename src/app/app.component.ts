@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
+import { AllservicesService } from "./service/allservices.service";
+import { AuthService } from "./service/auth.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = "Fuel-Site-Management-Portal";
   showFiller = false;
   longText = ``;
@@ -14,13 +16,13 @@ export class AppComponent implements OnInit{
 
   ismenurequired = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private service: AuthService) {
   }
 
-  ngOnInit() {
-    this.userName = sessionStorage.getItem("name");
-
+  getData() {
+    return sessionStorage.getItem('name');
   }
+
   ngDoCheck(): void {
     let currenturl = this.router.url;
     if (currenturl == "/login") {
