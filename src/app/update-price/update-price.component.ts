@@ -19,7 +19,7 @@ export class UpdatePriceComponent {
   productID = new FormControl();
   productName = new FormControl();
   productPrice = new FormControl();
-  fuelindicator: Observable<PriceSign[]> | undefined;
+  fuelindicator: any;
 
   constructor(private service: AllservicesService) {
     this.loadPriceList();
@@ -30,6 +30,8 @@ export class UpdatePriceComponent {
   @ViewChild(MatPaginator) paginator !: MatPaginator;
 
 
+  onSelect(row:PriceSign) {
+  }
 
 
 
@@ -39,13 +41,13 @@ export class UpdatePriceComponent {
   }
 
   loadPriceList() {
-    this.fuelindicator = this.service.getPriceSign();
+    // this.fuelindicator = this.service.getPriceSign();
     this.service.getPriceSign().subscribe(response => {
-      
+      this.fuelindicator = response;
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator = this.paginator;
-      console.log(response);
     });
+    console.log(this.fuelindicator);
   }
 }
 
