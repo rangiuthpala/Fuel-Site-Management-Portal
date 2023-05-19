@@ -13,6 +13,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { TankInfoComponent } from './tank-info/tank-info.component';
 import { AuthGuard } from './guard/auth.guard';
 import { ReportsGenComponent } from './reports/reports-gen/reports-gen.component';
+import { RegulusExtensionComponent } from './regulus-extension/regulus-extension.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'create-user', component: CreateUserComponent, canActivate:[AuthGuard]   },
   { path: 'reports', component: ReportsComponent, canActivate:[AuthGuard]   },
   { path: 'tank-info', component: TankInfoComponent, canActivate:[AuthGuard]   },
+  { path: 'regulus-extension', component: RegulusExtensionComponent, canActivate:[AuthGuard]   },
   { path: 'reports/reports-gen/:id', component: ReportsGenComponent, canActivate:[AuthGuard] },
   { path: '', component: AppComponent, canActivate:[AuthGuard] }
 ];

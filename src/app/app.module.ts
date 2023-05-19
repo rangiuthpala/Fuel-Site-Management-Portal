@@ -48,7 +48,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ReportsGenComponent } from './reports/reports-gen/reports-gen.component';
 import { BackButtonComponent } from './back-button/back-button.component';
 import { RegulusExtensionComponent } from './regulus-extension/regulus-extension.component';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import { PumpsComponent } from './regulus-extension/pumps/pumps.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { RegulusExtensionComponent } from './regulus-extension/regulus-extension
     AvarageHourlyGradeComponent,
     ReportsGenComponent,
     BackButtonComponent,
-    RegulusExtensionComponent
+    RegulusExtensionComponent,
+    PumpsComponent
   ],
   entryComponents: [CreateUserDialogComponent],
   imports: [
@@ -100,6 +102,7 @@ import { RegulusExtensionComponent } from './regulus-extension/regulus-extension
     MatCheckboxModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatTabsModule,
     HighchartsChartModule,
     HttpClientModule,ToastrModule.forRoot(),
     RouterModule.forRoot([
