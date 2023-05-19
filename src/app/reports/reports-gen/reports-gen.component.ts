@@ -115,7 +115,12 @@ export class ReportsGenComponent {
   });
 
   clearFieldsDel() {
-    this.reportform.reset();
+    this.isDisabled = true;
+    this.reportform.reset({fromTime: "00:00", toTime: "00:00"});
+    this.event1 = undefined;
+    this.event2 = undefined;
+    console.log(this.event1);
+    console.log(this.event2);
   }
 
   loadTrasnactionResponse(event: string) {
