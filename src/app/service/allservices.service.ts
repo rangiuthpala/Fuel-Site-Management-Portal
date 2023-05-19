@@ -163,15 +163,29 @@ export class AllservicesService {
     );
   }
 
-
   // Charts Services
   getGradeProportion(): Observable<GradePropotion[]> {
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
-    
-    return this.http.get<GradePropotion[]>(`${this.apiServerUrl}/Dashboard/GradePropotion/2022-04-05`, {headers});
+
+    return this.http.get<GradePropotion[]>(
+      `${this.apiServerUrl}/Dashboard/GradePropotion/2022-04-05`,
+      { headers }
+    );
   }
+
+
+  // Get Pricesign
+  getPriceSign(): Observable<PriceSign[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<PriceSign[]>(`${this.apiServerUrl}/PriceSign`,{ headers });
+  }
+
+
 
   //format Date
   formatDate(date: Date) {
@@ -190,7 +204,6 @@ export class AllservicesService {
   }
 
   getAllElectronicTotals(atDate: any): Observable<ElectronicTotals[]> {
-    
     // Set the headers with the Authorization header
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
@@ -332,4 +345,14 @@ export interface GradePropotion {
   intR: string;
   intG: string;
   intB: string;
+}
+
+//Get Price Details
+export interface PriceSign {
+  panalID: string;
+  productID: string;
+  productName: string;
+  productPrice: string;
+  updatedBy: string;
+  updatedAt: string;
 }

@@ -57,115 +57,45 @@
       </mat-card>
     </div>
 
-    <div fxFlex="40">
-      <mat-card
-        fxlayout="column"
-        fxlayoutalign="space-evenly none"
-        fxlayoutgap="5px"
-        class="mtcard-borad"
-      >
-        <div
-          fxflex="100"
-          class="labelClass ng-star-inserted"
-          style="
-            flex: 1 1 100%;
-            box-sizing: border-box;
-            max-height: 20%;
-            margin-bottom: 5px;
-          "
-        >
-          <h4
-            fxlayout="row"
-            fxlayoutalign="space-evenly none"
-            class="itemsClass"
-            style="
-              flex-direction: row;
-              box-sizing: border-box;
-              display: flex;
-              place-content: stretch space-evenly;
-              align-items: stretch;
-            "
-          >
-            <span c148="" fxflex="24" class="prtitle">Unleaded 91</span>
-            <span fxflex="24" class="prValue"> 3.999</span>
-          </h4>
+
+        <div fxFlex="40">
+            <mat-card fxlayout="column" fxlayoutalign="space-evenly none" fxlayoutgap="5px"
+                class="mtcard-borad">
+                <div fxflex="100" class="labelClass ng-star-inserted"
+                    style="flex: 1 1 100%; box-sizing: border-box; max-height: 20%; margin-bottom: 5px;">
+                    <h4 fxlayout="row" fxlayoutalign="space-evenly none" class="itemsClass"
+                        style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch space-evenly; align-items: stretch;">
+                        <span c148="" fxflex="24" class="prtitle">Unleaded 91</span>
+                        <span fxflex="24" class="prValue"> 3.999</span>
+                    </h4>
+                </div>
+                <div fxflex="100" class="labelClass ng-star-inserted"
+                    style="flex: 1 1 100%; box-sizing: border-box; max-height: 20%; margin-bottom: 5px;">
+                    <h4 fxlayout="row" fxlayoutalign="space-evenly none" class="itemsClass"
+                        style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch space-evenly; align-items: stretch;">
+                        <span fxflex="24" class="prtitle">Unleaded 95</span>
+                        <span fxflex="24" class="prValue"> 4.910</span>
+                    </h4>
+                </div>
+                <div fxflex="100" class="labelClass ng-star-inserted"
+                    style="flex: 1 1 100%; box-sizing: border-box; max-height: 20%; margin-bottom: 5px;">
+                    <h4 fxlayout="row" fxlayoutalign="space-evenly none" class="itemsClass"
+                        style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch space-evenly; align-items: stretch;">
+                        <span fxflex="24" class="prtitle">Diesel</span>
+                        <span fxflex="24" class="prValue"> 3.138</span>
+                    </h4>
+                </div>
+                <div fxflex="100" class="labelClass ng-star-inserted"
+                    style="flex: 1 1 100%; box-sizing: border-box; max-height: 20%;">
+                    <h4 fxlayout="row" fxlayoutalign="space-evenly none" class="itemsClass"
+                        style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch space-evenly; align-items: stretch;">
+                        <span fxflex="24" class="prtitle">Go Clear</span>
+                        <span fxflex="24" class="prValue"> 3.251</span>
+                    </h4>
+                </div>
+            </mat-card>
         </div>
-        <div
-          fxflex="100"
-          class="labelClass ng-star-inserted"
-          style="
-            flex: 1 1 100%;
-            box-sizing: border-box;
-            max-height: 20%;
-            margin-bottom: 5px;
-          "
-        >
-          <h4
-            fxlayout="row"
-            fxlayoutalign="space-evenly none"
-            class="itemsClass"
-            style="
-              flex-direction: row;
-              box-sizing: border-box;
-              display: flex;
-              place-content: stretch space-evenly;
-              align-items: stretch;
-            "
-          >
-            <span fxflex="24" class="prtitle">Unleaded 95</span>
-            <span fxflex="24" class="prValue"> 4.910</span>
-          </h4>
-        </div>
-        <div
-          fxflex="100"
-          class="labelClass ng-star-inserted"
-          style="
-            flex: 1 1 100%;
-            box-sizing: border-box;
-            max-height: 20%;
-            margin-bottom: 5px;
-          "
-        >
-          <h4
-            fxlayout="row"
-            fxlayoutalign="space-evenly none"
-            class="itemsClass"
-            style="
-              flex-direction: row;
-              box-sizing: border-box;
-              display: flex;
-              place-content: stretch space-evenly;
-              align-items: stretch;
-            "
-          >
-            <span fxflex="24" class="prtitle">Diesel</span>
-            <span fxflex="24" class="prValue"> 3.138</span>
-          </h4>
-        </div>
-        <div
-          fxflex="100"
-          class="labelClass ng-star-inserted"
-          style="flex: 1 1 100%; box-sizing: border-box; max-height: 20%"
-        >
-          <h4
-            fxlayout="row"
-            fxlayoutalign="space-evenly none"
-            class="itemsClass"
-            style="
-              flex-direction: row;
-              box-sizing: border-box;
-              display: flex;
-              place-content: stretch space-evenly;
-              align-items: stretch;
-            "
-          >
-            <span fxflex="24" class="prtitle">Go Clear</span>
-            <span fxflex="24" class="prValue"> 3.251</span>
-          </h4>
-        </div>
-      </mat-card>
     </div>
-  </div>
 
   <br />
 
@@ -173,29 +103,30 @@
     <div fxFlex="75">
       <mat-card>
         <table mat-table [dataSource]="dataSource">
-          <!-- Position Column -->
-          <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef>No.</th>
-            <td mat-cell *matCellDef="let element">{{ element.position }}</td>
-          </ng-container>
 
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-          </ng-container>
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
 
-          <!-- Weight Column -->
-          <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef>Weight</th>
-            <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
-          </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
 
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef>Symbol</th>
-            <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
-          </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container> 
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container> 
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
