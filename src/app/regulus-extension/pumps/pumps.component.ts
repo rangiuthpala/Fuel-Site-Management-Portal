@@ -2,16 +2,20 @@ import { Component } from '@angular/core';
 
 
 export interface PeriodicElement {
-  name: string;
   logical_id: number;
   physical_id: number;
-  symbol: string;
+  loop_id: number;
+  protocol: string;
+  model:string;
+  stack_size: string;
+  standalone_enabled: string;
+  disabled: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {logical_id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {logical_id: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {logical_id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'}
+  {logical_id: 1, loop_id: 12, physical_id: 1.0079, protocol: 'H', model:'sss', stack_size:'skjd', standalone_enabled:'aa', disabled: 'asdd'},
+  {logical_id: 2, loop_id: 455, physical_id: 4.0026, protocol: 'He', model:'hshsh', stack_size:'skjd', standalone_enabled: 'sss', disabled: 'sf'},
+  {logical_id: 3, loop_id: 55, physical_id: 6.941, protocol: 'Li', model:'sss', stack_size:'skjd', standalone_enabled: 'sdsd', disabled: 'sds'}
 ];
 
 @Component({
@@ -21,6 +25,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class PumpsComponent {
-  displayedColumns: string[] = ['logical_id', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['logical_id', 'physical_id', 'loop_id', 'protocol', 'model', 'stack_size', 'standalone_enabled', 'disabled'];
   dataSource = ELEMENT_DATA;
 }

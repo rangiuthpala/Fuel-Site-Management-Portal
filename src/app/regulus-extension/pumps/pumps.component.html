@@ -1,35 +1,67 @@
-<mat-card> 
-    
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <!--- Note that these columns can be defined in any order.
+<h2 fxLayout="row" class="page_tittle">Pumps</h2>
+<mat-divider></mat-divider>
+<div fxFlex="100">
+  <mat-card >
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
-      
-        <!-- Position Column -->
-        <ng-container matColumnDef="logical_id">
-          <th mat-header-cell *matHeaderCellDef> Logical ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.logical_id}} </td>
-        </ng-container>
-      
-        <!-- Name Column -->
-        <ng-container matColumnDef="physical_id">
-          <th mat-header-cell *matHeaderCellDef> Physical ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.physical_id}} </td>
-        </ng-container>
-      
-        <!-- Weight Column -->
-        <ng-container matColumnDef="loop_id">
-          <th mat-header-cell *matHeaderCellDef> Loop Id </th>
-          <td mat-cell *matCellDef="let element"> {{element.loop_id}} </td>
-        </ng-container>
-      
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef> Symbol </th>
-          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-</mat-card>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="logical_id">
+        <th mat-header-cell *matHeaderCellDef>Logical ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.logical_id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="physical_id">
+        <th mat-header-cell *matHeaderCellDef>Physical ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.physical_id }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="loop_id">
+        <th mat-header-cell *matHeaderCellDef>Loop Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.loop_id }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="protocol">
+        <th mat-header-cell *matHeaderCellDef>Protocol</th>
+        <td mat-cell *matCellDef="let element">{{ element.protocol }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef>Model</th>
+        <td mat-cell *matCellDef="let element">{{ element.model }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="stack_size">
+        <th mat-header-cell *matHeaderCellDef>Stack Size</th>
+        <td mat-cell *matCellDef="let element">{{ element.stack_size }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="standalone_enabled">
+        <th mat-header-cell *matHeaderCellDef>Standalone Enabled</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.standalone_enabled }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="disabled">
+        <th mat-header-cell *matHeaderCellDef>Disabled</th>
+        <td mat-cell *matCellDef="let element">{{ element.disabled }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card>
+
+  <div class="example-button-row btn_set">
+    <button mat-raised-button class="btn" color="primary">Add</button>
+    <button mat-raised-button>Edit</button>
+    <button mat-raised-button color="warn">Delete</button>
+  </div>
+
+</div>
