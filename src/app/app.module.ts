@@ -47,6 +47,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatMenuModule} from '@angular/material/menu';
 import { ReportsGenComponent } from './reports/reports-gen/reports-gen.component';
 import { BackButtonComponent } from './back-button/back-button.component';
+import { RegulusExtensionComponent } from './regulus-extension/regulus-extension.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { BackButtonComponent } from './back-button/back-button.component';
     HourlySalesGradeComponent,
     AvarageHourlyGradeComponent,
     ReportsGenComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    RegulusExtensionComponent
   ],
   entryComponents: [CreateUserDialogComponent],
   imports: [
