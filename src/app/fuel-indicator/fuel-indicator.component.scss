@@ -1,36 +1,43 @@
-.bounds{
-    margin-bottom: 20px;
-    .content{
-        justify-content: space-between;
-        display: flex;
-        .dashboard-card {
-            padding: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            color: #fff;
-            height: 155px;
-        
-            .card-tittle {
-                color: #fff;
-                font-size: 20px;
-                margin-bottom: 8px;
-            }
-        
-            .footer-icon {
-                transition: all .3s linear;
-                z-index: 0;
-                color: #ffffff59;
-                border-radius: 50%;
-                border: 3px solid;
-                padding: 5px;
-                margin: 10px 0 0;
-            }
-        }
+.bounds {
+  margin-bottom: 20px;
+  .content {
+    justify-content: space-between;
+    display: flex;
+    .dashboard-card {
+      padding: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      color: #fff;
+      height: 155px;
+
+      .card-tittle {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 8px;
       }
+
+      .footer-icon {
+        transition: all 0.3s linear;
+        z-index: 0;
+        color: #ffffff59;
+        border-radius: 50%;
+        border: 3px solid;
+        padding: 5px;
+        margin: 10px 0 0;
+      }
+    }
+  }
+  .date_picker {
+    margin-bottom: -25px;
+    justify-content: right;
+    line-height: -12;
+    display: grid;
+    margin-top: 15px;
+  }
 }
 
 @media (max-width: 600px) {
-    .dashboard-card{
-        margin-bottom: 15px;
-    }
+  .dashboard-card {
+    margin-bottom: 15px;
+  }
 }

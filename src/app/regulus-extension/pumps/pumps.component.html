@@ -60,8 +60,8 @@
   </mat-card>
 
   <div class="example-button-row btn_set">
-    <button mat-raised-button class="btn" color="primary">Add</button>
-    <button mat-raised-button>Edit</button>
+    <button mat-raised-button class="btn" (click)="openDialog()"  color="primary">Add</button>
+    <button mat-raised-button (click)="openDialog()" >Edit</button>
     <button mat-raised-button color="warn">Delete</button>
   </div>
 
@@ -110,8 +110,8 @@
   
 </mat-card>
 <div class="example-button-row btn_set">
-    <button mat-raised-button class="btn" color="primary">Add</button>
-    <button mat-raised-button>Edit</button>
+    <button mat-raised-button class="btn" (click)="openhoseDialog()" color="primary">Add</button>
+    <button mat-raised-button (click)="openhoseDialog()">Edit</button>
     <button mat-raised-button color="warn">Delete</button>
   </div>
 </div>

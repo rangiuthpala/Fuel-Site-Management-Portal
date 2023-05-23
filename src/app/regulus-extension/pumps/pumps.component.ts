@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { PumpsAddEditComponent } from "../pumps/pumps-add-edit/pumps-add-edit.component";
+import { HoseAddEditComponent } from './hose-add-edit/hose-add-edit.component';
 
 export interface PeriodicElement {
   logical_id: number;
@@ -41,4 +43,16 @@ export class PumpsComponent {
   dataSource = ELEMENT_DATA;
   displayedColumnstwo: string[] = ['hoses', 'blend_name', 'tank_number', 'price_level', 'price_id'  ]
   dataSourcetwo = ELEMENT_two;
-}
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog() {
+    this.dialog.open(PumpsAddEditComponent);
+  }
+
+  openhoseDialog(){
+    this.dialog.open(HoseAddEditComponent)
+  }
+
+  }
+

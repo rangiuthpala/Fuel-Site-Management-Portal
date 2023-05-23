@@ -53,6 +53,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { PumpsComponent } from './regulus-extension/pumps/pumps.component';
 import { LoopsComponent } from './regulus-extension/loops/loops.component';
 import { FuelComponent } from './regulus-extension/fuel/fuel.component';
+import { PumpsAddEditComponent } from './regulus-extension/pumps/pumps-add-edit/pumps-add-edit.component';
+import { HoseAddEditComponent } from './regulus-extension/pumps/hose-add-edit/hose-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,8 @@ import { FuelComponent } from './regulus-extension/fuel/fuel.component';
     PumpsComponent,
     LoopsComponent,
     FuelComponent,
+    PumpsAddEditComponent,
+    HoseAddEditComponent,
   ],
   entryComponents: [CreateUserDialogComponent],
   imports: [
