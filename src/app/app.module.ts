@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -35,7 +36,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckbox } from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { PopulationGradeComponent } from './charts/population-grade/population-grade.component';
@@ -50,6 +51,8 @@ import { BackButtonComponent } from './back-button/back-button.component';
 import { RegulusExtensionComponent } from './regulus-extension/regulus-extension.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PumpsComponent } from './regulus-extension/pumps/pumps.component';
+import { LoopsComponent } from './regulus-extension/loops/loops.component';
+import { FuelComponent } from './regulus-extension/fuel/fuel.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,9 @@ import { PumpsComponent } from './regulus-extension/pumps/pumps.component';
     ReportsGenComponent,
     BackButtonComponent,
     RegulusExtensionComponent,
-    PumpsComponent
+    PumpsComponent,
+    LoopsComponent,
+    FuelComponent,
   ],
   entryComponents: [CreateUserDialogComponent],
   imports: [
