@@ -120,9 +120,7 @@ export class CreateUserComponent {
       password: row.password,
       confirmPassword: row.password
     });
-    this.buttonColour = "#999901"
-
-    console.log(row.id);
+    this.buttonColour = "#999901";
   }
 
   clearForm() {

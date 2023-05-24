@@ -185,6 +185,15 @@ export class AllservicesService {
     return this.http.get<PriceSign[]>(`${this.apiServerUrl}/PriceSign`,{ headers });
   }
 
+  // Update Pricesign
+  updatePriceSign(data: any[]): Observable<PriceSignResponse> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.post<PriceSignResponse>(`${this.apiServerUrl}/PriceSign`, data, { headers });
+  }
+
 
 
   //format Date
@@ -355,4 +364,10 @@ export interface PriceSign {
   productPrice: string;
   updatedBy: string;
   updatedAt: string;
+}
+
+//Price Sign Response
+export interface PriceSignResponse {
+  isSucess: string,
+  message: string
 }
