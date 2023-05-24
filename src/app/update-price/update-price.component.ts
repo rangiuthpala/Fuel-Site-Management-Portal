@@ -1,10 +1,8 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {PageEvent} from '@angular/material/paginator';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AllservicesService, PriceSign } from '../service/allservices.service';
-import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -103,6 +101,10 @@ export class UpdatePriceComponent {
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  clearFields() {
+    this.fuelPriceForm.reset();
   }
 }
 
