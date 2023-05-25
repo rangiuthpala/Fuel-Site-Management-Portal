@@ -168,9 +168,10 @@ export class AllservicesService {
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
-
+    //Get now date
+    const date = this.formatDate(new Date());
     return this.http.get<GradePropotion[]>(
-      `${this.apiServerUrl}/Dashboard/GradePropotion/2022-04-05`,
+      `${this.apiServerUrl}/Dashboard/GradePropotion/${date}`,
       { headers }
     );
   }
