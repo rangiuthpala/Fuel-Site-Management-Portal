@@ -188,6 +188,18 @@ export class AllservicesService {
     );
   }
 
+  getTerminalSales(): Observable<TerminalSales[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    //Get now date
+    const date = this.formatDate(new Date());
+    return this.http.get<TerminalSales[]>(
+      `${this.apiServerUrl}/Dashboard/TerminalSales/${date}`,
+      { headers }
+    );
+  }
+
 
   // Get Pricesign
   getPriceSign(): Observable<PriceSign[]> {
@@ -374,6 +386,10 @@ export interface ProductSales {
   productName: string;
   totalAmount: string;
   backColour: string;
+}
+export interface TerminalSales {
+  terminalId: string,
+  terminalName: string
 }
 
 //Get Price Details
