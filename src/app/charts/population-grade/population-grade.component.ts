@@ -38,7 +38,6 @@ export class PopulationGradeComponent {
         dataObj.name = res.gradeName;
         dataObj.y = + res.propotion;
         this.data.push(dataObj);
-        console.log(dataObj);
       });
       const chartOptions: Highcharts.Options = {
         series: [

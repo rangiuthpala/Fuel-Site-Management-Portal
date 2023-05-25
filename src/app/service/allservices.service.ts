@@ -176,6 +176,18 @@ export class AllservicesService {
     );
   }
 
+  getProductSales(): Observable<ProductSales[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    //Get now date
+    const date = this.formatDate(new Date());
+    return this.http.get<ProductSales[]>(
+      `${this.apiServerUrl}/Dashboard/ProductSales/${date}`,
+      { headers }
+    );
+  }
+
 
   // Get Pricesign
   getPriceSign(): Observable<PriceSign[]> {
@@ -355,6 +367,13 @@ export interface GradePropotion {
   intR: string;
   intG: string;
   intB: string;
+}
+//Product Sales
+export interface ProductSales {
+  itemCode: string;
+  productName: string;
+  totalAmount: string;
+  backColour: string;
 }
 
 //Get Price Details
