@@ -14,6 +14,7 @@ import {
 export class PopulationGradeComponent {
 
   data: any[] = [];
+  colours: string[] = [];
 
   constructor(private service: AllservicesService) {
     this.getCharts();
@@ -28,15 +29,19 @@ export class PopulationGradeComponent {
     this.service.getGradeProportion().subscribe((res) => {
       this.chartDetails = res;
       
-      this.chartDetails.forEach(res =>{
+      res.forEach(re =>{
         const dataObj: DataObject = {
           name: '',
           y: 0,
+          color: '',
           sliced: false,
           selected: false
         };
-        dataObj.name = res.gradeName;
-        dataObj.y = + res.propotion;
+        dataObj.name = re.gradeName;
+        dataObj.y = + re.propotion;
+        let number = + re.backColour;
+        let hexStr = '#' +number.toString(16);
+        dataObj.color = hexStr;
         this.data.push(dataObj);
       });
       const chartOptions: Highcharts.Options = {
@@ -49,7 +54,6 @@ export class PopulationGradeComponent {
         credits: {
           enabled: false,
         },
-    
         title: {
           text: "Population of Grades",
           align: "center",
@@ -82,6 +86,7 @@ export class PopulationGradeComponent {
 export interface DataObject {
   name: string,
   y: number,
+  color: string,
   sliced: boolean,
   selected: boolean
 }
