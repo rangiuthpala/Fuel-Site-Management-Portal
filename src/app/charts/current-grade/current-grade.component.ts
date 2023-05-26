@@ -15,7 +15,6 @@ export class CurrentGradeComponent {
   categories: string[] = [];
   data: number[] = [];
   salesData: ProductSales[] = [];
-  colours: string[] = ["#339a0f", "#1406e3", "#1a1c1c", "#1406e3"];
 
   constructor(private service: AllservicesService) {
     this.getChartData();

@@ -200,6 +200,18 @@ export class AllservicesService {
     );
   }
 
+  getHourlySalesCurrent(): Observable<HourlySales[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    //Get now date
+    const date = this.formatDate(new Date());
+    return this.http.get<HourlySales[]>(
+      `${this.apiServerUrl}/Dashboard/HourlySalesCurrent/${date}?uniqueID="AA"`,
+      { headers }
+    );
+  }
+
 
   // Get Pricesign
   getPriceSign(): Observable<PriceSign[]> {
@@ -390,6 +402,16 @@ export interface ProductSales {
 export interface TerminalSales {
   terminalId: string,
   terminalName: string
+}
+
+export interface HourlySales {
+  ItemCode: number,
+  ItemName: string,
+  Sales: Sales[]
+}
+export interface Sales {
+  SaleHour: string,
+  TotalSales: string
 }
 
 //Get Price Details
