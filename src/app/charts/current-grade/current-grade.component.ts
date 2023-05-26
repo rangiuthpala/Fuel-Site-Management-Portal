@@ -12,8 +12,6 @@ import {
 })
 export class CurrentGradeComponent {
   Highcharts: typeof Highcharts = Highcharts;
-  categories: string[] = [];
-  data: number[] = [];
   salesData: ProductSales[] = [];
 
   constructor(private service: AllservicesService) {

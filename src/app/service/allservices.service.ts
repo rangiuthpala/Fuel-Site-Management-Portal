@@ -212,6 +212,18 @@ export class AllservicesService {
     );
   }
 
+  getAvgHourlySalesCurrent(): Observable<HourlySales[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    //Get now date
+    const date = this.formatDate(new Date());
+    return this.http.get<HourlySales[]>(
+      `${this.apiServerUrl}/Dashboard/HourlySalesAvg/${date}?uniqueID="AA"`,
+      { headers }
+    );
+  }
+
 
   // Get Pricesign
   getPriceSign(): Observable<PriceSign[]> {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { AllservicesService } from 'src/app/service/allservices.service';
 
 
 @Component({
@@ -9,61 +10,69 @@ import * as Highcharts from 'highcharts';
 })
 export class AvarageHourlyGradeComponent {
   Highcharts: typeof Highcharts = Highcharts;
+  salesList: Highcharts.SeriesOptionsType[] = [];
 
-  chartOptions: Highcharts.Options = {
-    series: [
-      {
-        type: 'line',
-        name: 'Unleaded 91',
-        data: [83.6, 78.8, 98.5, 93.4]
-      },
-      {
-        type: 'line',
-        name: 'Unleaded 95',
-        data: [90, 95, 92, 87]
-      },
-      {
-        type: 'line',
-        name: 'Diesel',
-        data: [75, 80, 85, 90]
-      }
-    ],
+  constructor(private service: AllservicesService) {
+    this.getCurrentHourlySalesAvg();
+  }
 
-    chart: {
+  getCurrentHourlySalesAvg() {
+    this.service.getHourlySalesCurrent().subscribe((response) => {
+      console.log(response);
+      response.forEach(item => {
+        let dataCat: string[] = [];
+        const sales: Highcharts.SeriesOptionsType = {
+          type: 'line',
+          name: '',
+          data: [],
+        }
+        sales.name = item.ItemName;
+        sales.data = item.Sales.map(a => + a.TotalSales);
+        dataCat = item.Sales.map(a => a.SaleHour);
+        this.salesList.push(sales);
+
+      });
+      console.log(this.salesList);
+      const chartOptions: Highcharts.Options = {
+        series: this.salesList,
     
-    },
-    credits:{
-      enabled: false
-    },
-    title: {
-      text: 'Average Hourly Sales by Grade',
-      align: 'center'
-    },
-    xAxis: {
-      categories: [
-        '5',
-      ],
-      crosshair: true
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: 'Sales'
-      }
-    },
-    tooltip: {
-      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-      footerFormat: '</table>',
-      shared: true,
-      useHTML: true
-    },
-    plotOptions: {
-      column: {
-        pointPadding: 0.2,
-        borderWidth: 0
-      }
-    },
-  };
+        chart: {
+        
+        },
+        credits:{
+          enabled: false
+        },
+        title: {
+          text: 'Average Hourly Sales by Grade',
+          align: 'center'
+        },
+        xAxis: {
+          categories: ["0"],
+          crosshair: true
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Sales'
+          }
+        },
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+          }
+        },
+      };
+      Highcharts.chart("chartLineContainerAvg", chartOptions);
+  });
+}
+
 }
