@@ -1,72 +1,79 @@
-<div style="width: 40%">
+<div>
+  <br />
 
-<br/>
+  <h3 class="sub_topic">Price Delays (secs)</h3>
 
-<h3 class="sub_topic">Price Delays (secs)</h3>
-
-<mat-form-field class="mat-mdc-button-base" appearance="outline">
+  <mat-form-field class="mat-mdc-button-base" appearance="outline">
     <mat-label>Increase</mat-label>
     <textarea rows="1" cols="10" matInput></textarea>
-</mat-form-field>
+  </mat-form-field>
 
-<mat-form-field class="mat-mdc-button-base" appearance="outline">
+  <mat-form-field class="mat-mdc-button-base" appearance="outline">
     <mat-label>Decrease</mat-label>
     <textarea rows="1" cols="10" matInput></textarea>
-</mat-form-field>
+  </mat-form-field>
 
-<mat-form-field appearance="outline">
+  <mat-form-field appearance="outline">
     <mat-label>Price Precision</mat-label>
     <textarea rows="1" cols="10" matInput></textarea>
   </mat-form-field>
 
-
-  <mat-card>
-    <table mat-table [dataSource]="dataSourcetwo">
-      <!--- Note that these columns can be defined in any order.
+  <div style="width: 40%">
+    <mat-card>
+      <table mat-table [dataSource]="dataSourcetwo">
+        <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="blend_id">
-        <th mat-header-cell *matHeaderCellDef>Blend ID</th>
-        <td mat-cell *matCellDef="let element">{{ element.blendID }}</td>
-      </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="blend_id">
+          <th mat-header-cell *matHeaderCellDef>Blend ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.blendID }}</td>
+        </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="blend_name">
-        <th mat-header-cell *matHeaderCellDef>Blend Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.blendName}}</td>
-      </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="blend_name">
+          <th mat-header-cell *matHeaderCellDef>Blend Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.blendName }}</td>
+        </ng-container>
 
-      <!-- Weight Column -->
-      <!-- <ng-container matColumnDef="allocation_limit">
+        <!-- Weight Column -->
+        <!-- <ng-container matColumnDef="allocation_limit">
         <th mat-header-cell *matHeaderCellDef>Allocation Limit</th>
         <td mat-cell *matCellDef="let element">{{ element.allocation_limit }}</td>
       </ng-container> -->
 
-      <!-- Symbol Column -->
-      <!-- <ng-container matColumnDef="limit_type">
+        <!-- Symbol Column -->
+        <!-- <ng-container matColumnDef="limit_type">
         <th mat-header-cell *matHeaderCellDef>Limit Type</th>
         <td mat-cell *matCellDef="let element">{{ element.limit_type }}</td>
       </ng-container> -->
 
-      <ng-container matColumnDef="price_liter">
-        <th mat-header-cell *matHeaderCellDef>Price per Litre</th>
-        <td mat-cell *matCellDef="let element">{{ element.blendPrice }}</td>
-      </ng-container>
+        <ng-container matColumnDef="price_liter">
+          <th mat-header-cell *matHeaderCellDef>Price per Litre</th>
+          <td mat-cell *matCellDef="let element">{{ element.blendPrice }}</td>
+        </ng-container>
 
-      <ng-container matColumnDef="price_id">
-        <th mat-header-cell *matHeaderCellDef>Price ID</th>
-        <td mat-cell *matCellDef="let element">{{ element.priceID }}</td>
-      </ng-container>
+        <ng-container matColumnDef="price_id">
+          <th mat-header-cell *matHeaderCellDef>Price ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.priceID }}</td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumnstwo"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumnstwo"></tr>
-    </table>
-  </mat-card>
+        <tr mat-header-row *matHeaderRowDef="displayedColumnstwo"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnstwo"></tr>
+      </table>
+    </mat-card>
 
-  <div class="example-button-row btn_set">
-    <button mat-raised-button class="btn" color="primary" (click)="openblendAddEdit()" >Add</button>
-    <button mat-raised-button (click)="openblendAddEdit()">Edit</button>
-    <button mat-raised-button color="warn">Delete</button>
+    <div class="example-button-row btn_set">
+      <button
+        mat-raised-button
+        class="btn"
+        color="primary"
+        (click)="openblendAddEdit()"
+      >
+        Add
+      </button>
+      <button mat-raised-button (click)="openblendAddEdit()">Edit</button>
+      <button mat-raised-button color="warn">Delete</button>
+    </div>
   </div>
 </div>
