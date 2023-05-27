@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { LoopAddEditComponent } from './loop-add-edit/loop-add-edit.component';
 
 export interface PeriodicElementtwo {
   hoses: string;
@@ -21,4 +23,11 @@ export class LoopsComponent {
   checked = false;
   displayedColumnstwo: string[] = ['hoses', 'blend_name', 'tank_number', 'price_level', 'price_id'  ]
   dataSourcetwo = ELEMENT_two;
+
+  constructor(public dialog: MatDialog) {}
+  
+  openloopAddEdit(){
+    this.dialog.open(LoopAddEditComponent)
+  }
+
 }

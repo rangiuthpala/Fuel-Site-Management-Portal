@@ -1,0 +1,45 @@
+<div class="loop_dialog">
+<h2 mat-dialog-title style="margin-left: -15px;">Pump Loop Add/Edit</h2>
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between">
+  <div style="margin: 0 10px;">
+    <mat-form-field appearance="outline">
+        <mat-label>Loop ID</mat-label>
+        <input matInput placeholder="Placeholder" />
+      </mat-form-field>
+  </div>
+  <div>
+    <p style="margin-bottom: -10px;">
+        <mat-form-field appearance="outline">
+            <mat-label>Device Type</mat-label>
+            <select matNativeControl>
+              <option value="" selected></option>
+              <option value="volvo">Volvo</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+          </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Protocol</mat-label>
+            <select matNativeControl>
+              <option value="" selected></option>
+              <option value="volvo">Volvo</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+          </mat-form-field>
+    </p>
+  </div>
+  <div style="margin: 0 10px;">
+    <mat-checkbox class="example-margin">Disabled</mat-checkbox>
+  </div>
+</div>
+
+<div class="btn_set" mat-dialog-actions>
+    <button mat-raised-button class="btn" color="primary">OK</button>
+    <button mat-raised-button >Cancel</button>
+  </div>
+
+</div>

@@ -55,6 +55,8 @@ import { LoopsComponent } from './regulus-extension/loops/loops.component';
 import { FuelComponent } from './regulus-extension/fuel/fuel.component';
 import { PumpsAddEditComponent } from './regulus-extension/pumps/pumps-add-edit/pumps-add-edit.component';
 import { HoseAddEditComponent } from './regulus-extension/pumps/hose-add-edit/hose-add-edit.component';
+import { LoopAddEditComponent } from './regulus-extension/loops/loop-add-edit/loop-add-edit.component';
+import { BlendAddEditComponent } from './regulus-extension/fuel/blend-add-edit/blend-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { HoseAddEditComponent } from './regulus-extension/pumps/hose-add-edit/ho
     FuelComponent,
     PumpsAddEditComponent,
     HoseAddEditComponent,
+    LoopAddEditComponent,
+    BlendAddEditComponent,
   ],
   entryComponents: [CreateUserDialogComponent],
   imports: [
