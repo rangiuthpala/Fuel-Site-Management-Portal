@@ -32,7 +32,6 @@ export class AvarageHourlyGradeComponent {
         this.salesList.push(sales);
 
       });
-      console.log(this.salesList);
       const chartOptions: Highcharts.Options = {
         series: this.salesList,
     

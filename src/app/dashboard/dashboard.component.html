@@ -35,24 +35,24 @@
     <div fxFlex="40">
         <mat-card>
             <div>
-                <table mat-table [dataSource]="dataSource">
+                <table mat-table [dataSource]="dataSourcePump">
 
                     <!-- Name Column -->
                     <ng-container matColumnDef="PumpID">
                         <th mat-header-cell *matHeaderCellDef> PumpID </th>
-                        <td mat-cell *matCellDef="let element"> {{element.PumpID}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.pumpID}} </td>
                     </ng-container>
 
                     <!-- Weight Column -->
                     <ng-container matColumnDef="transaction">
                         <th mat-header-cell *matHeaderCellDef> Last Transaction Time </th>
-                        <td mat-cell *matCellDef="let element"> {{element.transaction}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.lastTransTime}} </td>
                     </ng-container>
 
                     <!-- Symbol Column -->
                     <ng-container matColumnDef="time">
                         <th mat-header-cell *matHeaderCellDef> Idle Time(Hrs) </th>
-                        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.idleHours}} </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -83,24 +83,24 @@
     <div fxFlex="40">
         <mat-card>
             <div>
-                <table mat-table [dataSource]="dataSource">
+                <table mat-table [dataSource]="dataSourceTerminal">
 
                     <!-- Name Column -->
                     <ng-container matColumnDef="PumpID">
-                        <th mat-header-cell *matHeaderCellDef> PumpID </th>
-                        <td mat-cell *matCellDef="let element"> {{element.PumpID}} </td>
+                        <th mat-header-cell *matHeaderCellDef> TerminalID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.terminalID}} </td>
                     </ng-container>
 
                     <!-- Weight Column -->
                     <ng-container matColumnDef="transaction">
                         <th mat-header-cell *matHeaderCellDef> Last Transaction Time </th>
-                        <td mat-cell *matCellDef="let element"> {{element.transaction}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.lastTransTime}} </td>
                     </ng-container>
 
                     <!-- Symbol Column -->
                     <ng-container matColumnDef="time">
                         <th mat-header-cell *matHeaderCellDef> Idle Time(Hrs) </th>
-                        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.idleHours}} </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

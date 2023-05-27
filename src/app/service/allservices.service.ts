@@ -224,6 +224,26 @@ export class AllservicesService {
     );
   }
 
+  getPumpIdleStatus(): Observable<PumpIdle[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<PumpIdle[]>(
+      `${this.apiServerUrl}/Dashboard/PumpIdleStatus`,{ headers }
+    );
+  }
+
+  getTerminalIdleStatus(): Observable<TerminalIdle[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<TerminalIdle[]>(
+      `${this.apiServerUrl}/Dashboard/TerminalsIdleStatus`,{ headers }
+    );
+  }
+
 
   // Get Pricesign
   getPriceSign(): Observable<PriceSign[]> {
@@ -424,6 +444,18 @@ export interface HourlySales {
 export interface Sales {
   SaleHour: string,
   TotalSales: string
+}
+
+export interface PumpIdle {
+  pumpID: string,
+  lastTransTime: string,
+  idleHours: string
+}
+
+export interface TerminalIdle {
+  terminalID: string,
+  lastTransTime: string,
+  idleHours: string
 }
 
 //Get Price Details

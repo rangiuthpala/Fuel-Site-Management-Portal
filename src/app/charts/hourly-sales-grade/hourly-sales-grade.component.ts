@@ -37,9 +37,7 @@ export class HourlySalesGradeComponent {
         dataCat = item.Sales.map(a => a.SaleHour);
         this.salesList.push(sales);
 
-      });
-      console.log(this.salesList);
-      
+      });      
 
       const chartOptions: Highcharts.Options = {
         series: this.salesList,

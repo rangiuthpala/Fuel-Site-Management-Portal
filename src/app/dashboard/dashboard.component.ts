@@ -11,29 +11,35 @@ import { AllservicesService } from '../service/allservices.service';
 
 })
 export class DashboardComponent {
+  dataSourcePump: any;
+  dataSourceTerminal: any;
 
 
   constructor(private service: AllservicesService) {
+    this.loadPumpIdleStatus();
+    this.loadTerminalIdleStatus();
   }
 
   displayedColumns: string[] = ['PumpID', 'transaction', 'time'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  }
+
+  loadPumpIdleStatus() {
+    this.service.getPumpIdleStatus().subscribe(response => {
+      this.dataSourcePump = new MatTableDataSource(response);
+      this.dataSourcePump.paginator = this.paginator;
+    });
+  }
+
+  loadTerminalIdleStatus() {
+    this.service.getTerminalIdleStatus().subscribe(response => {
+      this.dataSourceTerminal = new MatTableDataSource(response);
+      this.dataSourceTerminal.paginator = this.paginator;
+    });
   }
 
 
 }
-
-export interface PeriodicElement {
-  PumpID: number;
-  transaction: string;
-  time: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-
-];
 
