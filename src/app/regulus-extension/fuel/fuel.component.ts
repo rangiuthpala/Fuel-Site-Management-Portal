@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { BlendAddEditComponent } from './blend-add-edit/blend-add-edit.component';
 
 export interface PeriodicElementtwo {
   blend_id: string;
@@ -23,4 +25,11 @@ export class FuelComponent {
   checked = false;
   displayedColumnstwo: string[] = ['blend_id', 'blend_name', 'allocation_limit', 'limit_type', 'price_liter', 'price_id'  ]
   dataSourcetwo = ELEMENT_two;
+
+  constructor(public dialog: MatDialog) {}
+  
+  openblendAddEdit(){
+    this.dialog.open(BlendAddEditComponent)
+  }
+  
 }
