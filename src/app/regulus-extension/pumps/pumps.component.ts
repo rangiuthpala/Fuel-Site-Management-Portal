@@ -50,7 +50,6 @@ export class PumpsComponent {
     this.getAllPumps();
   }
 
-
   getAllPumps() {
     this.service.getRegulusAllPumps().subscribe(response => {
       this.dataSourcePumps = new MatTableDataSource(response);
@@ -73,4 +72,3 @@ export class PumpsComponent {
   }
 
   }
-

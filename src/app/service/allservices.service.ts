@@ -302,6 +302,22 @@ export class AllservicesService {
     return this.http.get<RegulusHoses[]>(`${this.apiServerUrl}/RegulusConfig/Hoses/${pumpId}`, { headers });
   }
 
+  getRegulusLoops(): Observable<RegulusLoops[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<RegulusLoops[]>(`${this.apiServerUrl}/RegulusConfig/Loops`, { headers });
+  }
+
+  getRegulusBlends(): Observable<RegulusBlends[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<RegulusBlends[]>(`${this.apiServerUrl}/RegulusConfig/Blends`, { headers });
+  }
+
   //format Date
   formatDate(date: Date) {
     const dateSring = date.toISOString();
@@ -549,4 +565,20 @@ export interface RegulusHoses {
   price: number,
   hoseNumber: number,
   tankID: number,
+}
+
+export interface RegulusLoops {
+  iD_PMP_LP: number,
+  nM_PMP_MK: string,
+  deviceType: string,
+  networkProtsID: number,
+  networkDeviceID: number,
+  iD_PMP_MDL: number
+}
+
+export interface RegulusBlends {
+  blendID: number,
+  blendName: string,
+  blendPrice: number,
+  priceID: number,
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { LoopAddEditComponent } from './loop-add-edit/loop-add-edit.component';
+import { AllservicesService } from 'src/app/service/allservices.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElementtwo {
   hoses: string;
@@ -21,11 +23,20 @@ const ELEMENT_two: PeriodicElementtwo[] = [
 })
 export class LoopsComponent {
   checked = false;
-  displayedColumnstwo: string[] = ['hoses', 'blend_name', 'tank_number', 'price_level', 'price_id'  ]
-  dataSourcetwo = ELEMENT_two;
+  displayedColumnstwo: string[] = ['hoses', 'blend_name', 'tank_number', 'price_level' ]
+  dataSourcetwo: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private service: AllservicesService) {
+    this.getAllLoops();
+  }
   
+
+  getAllLoops() {
+    this.service.getRegulusLoops().subscribe(response => {
+      this.dataSourcetwo = new MatTableDataSource(response);
+    });
+  }
+
   openloopAddEdit(){
     this.dialog.open(LoopAddEditComponent)
   }
