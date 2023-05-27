@@ -137,13 +137,35 @@ export class AllservicesService {
       { headers }
     );
   }
-  getSalesComparison(fromDate: any, toDate: any) {
+  getSalesComparison(fromDate: any, toDate: any): Observable<PriceBreak[]> {
     // Set the headers with the Authorization header
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
-    return this.http.get(
+    return this.http.get<PriceBreak[]>(
       `${this.apiServerUrl}/Reports/SalesComparison?FromDate=${fromDate}&ToDate=${toDate}`,
+      { headers }
+    );
+  }
+
+  getPriceBreakData(fromDate: any, toDate: any): Observable<PriceBreak[]> {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    return this.http.get<PriceBreak[]>(
+      `${this.apiServerUrl}/Reports/PriceBreakReport?FromDate=${fromDate}&ToDate=${toDate}`,
+      { headers }
+    );
+  }
+
+  getGradeSalesData(fromDate: any, toDate: any): Observable<GradeSales[]> {
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    return this.http.get<GradeSales[]>(
+      `${this.apiServerUrl}/Reports/GradeSalesReport?FromDate=${fromDate}&ToDate=${toDate}`,
       { headers }
     );
   }
@@ -263,7 +285,22 @@ export class AllservicesService {
     return this.http.post<PriceSignResponse>(`${this.apiServerUrl}/PriceSign`, data, { headers });
   }
 
+  // Regulus Ext
+  getRegulusAllPumps(): Observable<RegulusAllPumps[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
 
+    return this.http.get<RegulusAllPumps[]>(`${this.apiServerUrl}/RegulusConfig/Pumps/AllPumps`, { headers });
+  }
+
+  getRegulusHoses(pumpId: any): Observable<RegulusHoses[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<RegulusHoses[]>(`${this.apiServerUrl}/RegulusConfig/Hoses/${pumpId}`, { headers });
+  }
 
   //format Date
   formatDate(date: Date) {
@@ -414,6 +451,22 @@ export interface TerminalWiseSale {
   dDate: string;
 }
 
+// Price break Report
+export interface PriceBreak {
+  gradeID: number,
+  gradeName: string,
+  unitPrice: number,
+  totalAmount: number,
+  totalQuantity: number,
+}
+
+export interface GradeSales {
+  gradeID: number,
+  gradeName: string,
+  quantity: number,
+  totalAmount: number,
+}
+
 // Grade Propotion
 export interface GradePropotion {
   gradeID: string;
@@ -472,4 +525,28 @@ export interface PriceSign {
 export interface PriceSignResponse {
   isSucess: string,
   message: string
+}
+
+// Rgulus Config
+export interface RegulusAllPumps {
+  lid: number,
+  pid: number,
+  loopID: string,
+  prot: string,
+  model: string,
+  stSiz: string,
+  iD_PMP_Model: number,
+  iD_PMP_MK: number
+}
+
+export interface RegulusHoses {
+  pumpID: number,
+  hoseid: number,
+  blendID: string,
+  priceID: number,
+  priceLevelID: number,
+  gradeName: string,
+  price: number,
+  hoseNumber: number,
+  tankID: number,
 }

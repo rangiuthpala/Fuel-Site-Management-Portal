@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { PumpsAddEditComponent } from "../pumps/pumps-add-edit/pumps-add-edit.component";
 import { HoseAddEditComponent } from './hose-add-edit/hose-add-edit.component';
+import { AllservicesService, RegulusAllPumps } from 'src/app/service/allservices.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   logical_id: number;
@@ -40,12 +42,28 @@ const ELEMENT_two: PeriodicElementtwo[] = [
 
 export class PumpsComponent {
   displayedColumns: string[] = ['logical_id', 'physical_id', 'loop_id', 'protocol', 'model', 'stack_size', 'standalone_enabled', 'disabled'];
-  dataSource = ELEMENT_DATA;
+  dataSourcePumps: any;
   displayedColumnstwo: string[] = ['hoses', 'blend_name', 'tank_number', 'price_level', 'price_id'  ]
-  dataSourcetwo = ELEMENT_two;
+  dataSourceHoses: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private service: AllservicesService) {
+    this.getAllPumps();
+  }
 
+
+  getAllPumps() {
+    this.service.getRegulusAllPumps().subscribe(response => {
+      this.dataSourcePumps = new MatTableDataSource(response);
+      console.log(this.dataSourcePumps);
+    });
+  }
+
+  onSelect(row: RegulusAllPumps) {
+    console.log(row);
+    this.service.getRegulusHoses(row.lid).subscribe(response => {
+      this.dataSourceHoses = response;
+    });
+  }
   openDialog() {
     this.dialog.open(PumpsAddEditComponent);
   }
