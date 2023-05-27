@@ -55,7 +55,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="onSelect(row)"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="onSelect(row);"></tr>
     </table>
   </mat-card>
 
@@ -114,4 +114,10 @@
     <button mat-raised-button (click)="openhoseDialog()">Edit</button>
     <button mat-raised-button color="warn">Delete</button>
   </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
 </div>
