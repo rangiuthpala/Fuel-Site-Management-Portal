@@ -29,9 +29,9 @@ export class DashboardComponent {
   }
 
   reloadData() {
-
+    console.log(this.date);
   }
-  
+
   loadPumpIdleStatus() {
     this.service.getPumpIdleStatus().subscribe(response => {
       this.dataSourcePump = new MatTableDataSource(response);
