@@ -18,9 +18,9 @@ export class FuelIndicatorComponent {
   }
 
   reloadData() {
-    const dateNew = this.service.formatDateNew(new Date().toLocaleDateString());
-    console.log(dateNew);
-    this.fuelindicator = this.service.getFuelIndicatorlist(dateNew);
+    // const dateNew = this.service.formatDateNew(new Date().toLocaleDateString());
+    // console.log(dateNew);
+    this.fuelindicator = this.service.getFuelIndicatorlist();
   }
 
 }

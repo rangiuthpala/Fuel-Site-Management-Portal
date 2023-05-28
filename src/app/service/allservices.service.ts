@@ -16,14 +16,14 @@ export class AllservicesService {
 
   constructor(private http: HttpClient) {}
 
-  getFuelIndicatorlist(date:any): Observable<Fuelindicator[]> {
+  getFuelIndicatorlist(): Observable<Fuelindicator[]> {
     // Set the headers with the Authorization header
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
 
     //Get now date
-    // const date = this.formatDate(new Date());
+    const date = this.formatDate(new Date());
     return this.http.get<Fuelindicator[]>(
       `${this.apiServerUrl}/Dashboard/Thumbs/${date}`,
       { headers }
