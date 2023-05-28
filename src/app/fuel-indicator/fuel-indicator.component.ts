@@ -13,16 +13,14 @@ export class FuelIndicatorComponent {
 
   fuelindicator: Observable<Fuelindicator[]> | undefined;
 
-  date = new FormControl(new Date());
-
   constructor(private service: AllservicesService) {
     this.reloadData();
   }
 
   reloadData() {
-    const dateNew = this.service.formatDateNew(this.date.value?.toLocaleDateString());
+    const dateNew = this.service.formatDateNew(new Date().toLocaleDateString());
+    console.log(dateNew);
     this.fuelindicator = this.service.getFuelIndicatorlist(dateNew);
-
   }
 
 }

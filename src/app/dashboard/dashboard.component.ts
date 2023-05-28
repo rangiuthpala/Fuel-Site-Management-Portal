@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AllservicesService } from '../service/allservices.service';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { AllservicesService } from '../service/allservices.service';
 export class DashboardComponent {
   dataSourcePump: any;
   dataSourceTerminal: any;
+  date = new FormControl(new Date());
 
 
   constructor(private service: AllservicesService) {
@@ -26,6 +28,10 @@ export class DashboardComponent {
   ngAfterViewInit() {
   }
 
+  reloadData() {
+
+  }
+  
   loadPumpIdleStatus() {
     this.service.getPumpIdleStatus().subscribe(response => {
       this.dataSourcePump = new MatTableDataSource(response);
