@@ -132,6 +132,3 @@ dist
 
 # angular cache
 .angular/
-
-# dist
-dist.zip
