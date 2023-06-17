@@ -405,7 +405,7 @@ export class AllservicesService {
         console.log(month);
         break;
       default:
-        console.log("wada na");
+        console.log("Date formatter failed to get month");
     }
     console.log(date.substring(11, 15) +
     "-" +
