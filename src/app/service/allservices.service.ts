@@ -344,15 +344,7 @@ export class AllservicesService {
   }
 
   formatDateNew(date: any): string {
-    // return (
-    //   date.substring(6, 10) +
-    //   "-" +
-    //   date.substring(3, 5) +
-    //   "-" +
-    //   date.substring(0, 2)
-    // );
-    console.log("+++===+++");
-    console.log(date);
+
     var month = "0";
     var monthString: string = date.substring(4, 7);
     switch (monthString.toLowerCase()) {
@@ -412,6 +404,7 @@ export class AllservicesService {
     month +
     "-" +
     date.substring(8, 10));
+
     return (
       date.substring(11, 15) +
       "-" +
