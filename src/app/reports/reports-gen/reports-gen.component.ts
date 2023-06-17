@@ -21,6 +21,8 @@ import { ToastrService } from "ngx-toastr";
   templateUrl: "./reports-gen.component.html",
   styleUrls: ["./reports-gen.component.scss"],
 })
+
+
 export class ReportsGenComponent {
   defaultValue = { hour: 13, minute: 30 };
   myTimePicker = {};
@@ -134,17 +136,20 @@ export class ReportsGenComponent {
   loadTrasnactionResponse(event: string) {
     const fromDateTime =
       this.service.formatDateNew(
-        this.reportform.value.fromDate?.toLocaleDateString()
+        this.reportform.value.fromDate?.toString()
       ) +
       " " +
       this.reportform.value.fromTime;
+
     const toDateTime =
       this.service.formatDateNew(
-        this.reportform.value.toDate?.toLocaleDateString()
+        this.reportform.value.toDate?.toString()
       ) +
       " " +
       this.reportform.value.toTime;
 
+      console.log("--------------");
+      console.log(this.reportform.value.fromDate?.toString());
     switch (this.route.snapshot.paramMap.get("id")) {
       case "1":
         this.service
@@ -225,7 +230,7 @@ export class ReportsGenComponent {
             {
               width: "*",
               text: `Print Date : ${this.service
-                .formatDateNew(new Date().toLocaleDateString())
+                .formatDateNew(new Date().toString())
                 .replaceAll("-", "/")} \n Print Time: ${new Date()
                 .toTimeString()
                 .slice(0, 8)}\n\n\n`,
@@ -459,7 +464,7 @@ export class ReportsGenComponent {
             {
               width: "*",
               text: `Print Date : ${this.service
-                .formatDateNew(new Date().toLocaleDateString())
+                .formatDateNew(new Date().toString())
                 .replaceAll("-", "/")} \n Print Time: ${new Date()
                 .toTimeString()
                 .slice(0, 8)}\n\n\n`,
@@ -635,7 +640,7 @@ export class ReportsGenComponent {
             {
               width: "*",
               text: `Print Date : ${this.service
-                .formatDateNew(new Date().toLocaleDateString())
+                .formatDateNew(new Date().toString())
                 .replaceAll("-", "/")} \n Print Time: ${new Date()
                 .toTimeString()
                 .slice(0, 8)}\n\n\n`,
@@ -893,7 +898,7 @@ export class ReportsGenComponent {
             {
               width: "*",
               text: `Print Date : ${this.service
-                .formatDateNew(new Date().toLocaleDateString())
+                .formatDateNew(new Date().toString())
                 .replaceAll("-", "/")} \n Print Time: ${new Date()
                 .toTimeString()
                 .slice(0, 8)}\n\n\n`,
@@ -1074,7 +1079,7 @@ export class ReportsGenComponent {
             {
               width: "*",
               text: `Print Date : ${this.service
-                .formatDateNew(new Date().toLocaleDateString())
+                .formatDateNew(new Date().toString())
                 .replaceAll("-", "/")} \n Print Time: ${new Date()
                 .toTimeString()
                 .slice(0, 8)}\n\n\n`,

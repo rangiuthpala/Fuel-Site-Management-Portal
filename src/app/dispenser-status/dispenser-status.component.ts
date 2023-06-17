@@ -34,8 +34,8 @@ export class DispenserStatusComponent{
 
 
   loadDeliveryTotals() {
-    const fromD = this.service.formatDateNew(this.registerform.value.fromDate?.toLocaleDateString());
-    const toD = this.service.formatDateNew(this.registerform.value.toDate?.toLocaleDateString());
+    const fromD = this.service.formatDateNew(this.registerform.value.fromDate?.toString());
+    const toD = this.service.formatDateNew(this.registerform.value.toDate?.toString());
     this.service.getAllDeliveryTotals(fromD, toD).subscribe(response => {
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator=this.paginator;
@@ -48,7 +48,7 @@ export class DispenserStatusComponent{
 
 
   loadElectronicTotals() {
-    const atDate = this.service.formatDateNew(this.electronicform.value.atDate?.toLocaleDateString());
+    const atDate = this.service.formatDateNew(this.electronicform.value.atDate?.toString());
     this.service.getAllElectronicTotals(atDate).subscribe(response => {
       console.log(atDate);
       this.dataSourceElectronic = new MatTableDataSource(response);

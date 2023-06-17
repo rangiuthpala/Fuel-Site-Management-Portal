@@ -252,7 +252,8 @@ export class AllservicesService {
       .set("Authorization", "Basic " + this.encoded);
 
     return this.http.get<PumpIdle[]>(
-      `${this.apiServerUrl}/Dashboard/PumpIdleStatus`,{ headers }
+      `${this.apiServerUrl}/Dashboard/PumpIdleStatus`,
+      { headers }
     );
   }
 
@@ -262,10 +263,10 @@ export class AllservicesService {
       .set("Authorization", "Basic " + this.encoded);
 
     return this.http.get<TerminalIdle[]>(
-      `${this.apiServerUrl}/Dashboard/TerminalsIdleStatus`,{ headers }
+      `${this.apiServerUrl}/Dashboard/TerminalsIdleStatus`,
+      { headers }
     );
   }
-
 
   // Get Pricesign
   getPriceSign(): Observable<PriceSign[]> {
@@ -273,7 +274,9 @@ export class AllservicesService {
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
 
-    return this.http.get<PriceSign[]>(`${this.apiServerUrl}/PriceSign`,{ headers });
+    return this.http.get<PriceSign[]>(`${this.apiServerUrl}/PriceSign`, {
+      headers,
+    });
   }
 
   // Update Pricesign
@@ -282,7 +285,11 @@ export class AllservicesService {
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
 
-    return this.http.post<PriceSignResponse>(`${this.apiServerUrl}/PriceSign`, data, { headers });
+    return this.http.post<PriceSignResponse>(
+      `${this.apiServerUrl}/PriceSign`,
+      data,
+      { headers }
+    );
   }
 
   // Regulus Ext
@@ -291,7 +298,10 @@ export class AllservicesService {
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
 
-    return this.http.get<RegulusAllPumps[]>(`${this.apiServerUrl}/RegulusConfig/Pumps/AllPumps`, { headers });
+    return this.http.get<RegulusAllPumps[]>(
+      `${this.apiServerUrl}/RegulusConfig/Pumps/AllPumps`,
+      { headers }
+    );
   }
 
   getRegulusHoses(pumpId: any): Observable<RegulusHoses[]> {
@@ -299,7 +309,10 @@ export class AllservicesService {
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
 
-    return this.http.get<RegulusHoses[]>(`${this.apiServerUrl}/RegulusConfig/Hoses/${pumpId}`, { headers });
+    return this.http.get<RegulusHoses[]>(
+      `${this.apiServerUrl}/RegulusConfig/Hoses/${pumpId}`,
+      { headers }
+    );
   }
 
   getRegulusLoops(): Observable<RegulusLoops[]> {
@@ -307,7 +320,10 @@ export class AllservicesService {
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
 
-    return this.http.get<RegulusLoops[]>(`${this.apiServerUrl}/RegulusConfig/Loops`, { headers });
+    return this.http.get<RegulusLoops[]>(
+      `${this.apiServerUrl}/RegulusConfig/Loops`,
+      { headers }
+    );
   }
 
   getRegulusBlends(): Observable<RegulusBlends[]> {
@@ -315,7 +331,10 @@ export class AllservicesService {
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
 
-    return this.http.get<RegulusBlends[]>(`${this.apiServerUrl}/RegulusConfig/Blends`, { headers });
+    return this.http.get<RegulusBlends[]>(
+      `${this.apiServerUrl}/RegulusConfig/Blends`,
+      { headers }
+    );
   }
 
   //format Date
@@ -325,12 +344,80 @@ export class AllservicesService {
   }
 
   formatDateNew(date: any): string {
+    // return (
+    //   date.substring(6, 10) +
+    //   "-" +
+    //   date.substring(3, 5) +
+    //   "-" +
+    //   date.substring(0, 2)
+    // );
+    console.log("+++===+++");
+    console.log(date);
+    var month = "0";
+    var monthString: string = date.substring(4, 7);
+    switch (monthString.toLowerCase()) {
+      case "jan":
+        month = "01";
+        console.log(month);
+        break;
+      case "feb":
+        month = "02";
+        console.log(month);
+        break;
+      case "mar":
+        month = "03";
+        console.log(month);
+        break;
+      case "apr":
+        month = "04";
+        console.log(month);
+        break;
+      case "may":
+        month = "05";
+        console.log(month);
+        break;
+      case "jun":
+        month = "06"
+        console.log(month);
+        break;
+      case "jul":
+        month = "07";
+        console.log(month);
+        break;
+      case "aug":
+        month = "08";
+        console.log(month);
+        break;
+      case "sep":
+        month = "09";
+        console.log(month);
+        break;
+      case "oct":
+        month = "10";
+        console.log(month);
+        break;
+      case "nov":
+        month = "11";
+        console.log(month);
+        break;
+      case "dec":
+        month = "12";
+        console.log(month);
+        break;
+      default:
+        console.log("wada na");
+    }
+    console.log(date.substring(11, 15) +
+    "-" +
+    month +
+    "-" +
+    date.substring(8, 10));
     return (
-      date.substring(6, 10) +
+      date.substring(11, 15) +
       "-" +
-      date.substring(3, 5) +
+      month +
       "-" +
-      date.substring(0, 2)
+      date.substring(8, 10)
     );
   }
 
@@ -469,18 +556,18 @@ export interface TerminalWiseSale {
 
 // Price break Report
 export interface PriceBreak {
-  gradeID: number,
-  gradeName: string,
-  unitPrice: number,
-  totalAmount: number,
-  totalQuantity: number,
+  gradeID: number;
+  gradeName: string;
+  unitPrice: number;
+  totalAmount: number;
+  totalQuantity: number;
 }
 
 export interface GradeSales {
-  gradeID: number,
-  gradeName: string,
-  quantity: number,
-  totalAmount: number,
+  gradeID: number;
+  gradeName: string;
+  quantity: number;
+  totalAmount: number;
 }
 
 // Grade Propotion
@@ -501,30 +588,30 @@ export interface ProductSales {
   backColour: string;
 }
 export interface TerminalSales {
-  terminalId: string,
-  terminalName: string
+  terminalId: string;
+  terminalName: string;
 }
 
 export interface HourlySales {
-  ItemCode: number,
-  ItemName: string,
-  Sales: Sales[]
+  ItemCode: number;
+  ItemName: string;
+  Sales: Sales[];
 }
 export interface Sales {
-  SaleHour: string,
-  TotalSales: string
+  SaleHour: string;
+  TotalSales: string;
 }
 
 export interface PumpIdle {
-  pumpID: string,
-  lastTransTime: string,
-  idleHours: string
+  pumpID: string;
+  lastTransTime: string;
+  idleHours: string;
 }
 
 export interface TerminalIdle {
-  terminalID: string,
-  lastTransTime: string,
-  idleHours: string
+  terminalID: string;
+  lastTransTime: string;
+  idleHours: string;
 }
 
 //Get Price Details
@@ -539,46 +626,46 @@ export interface PriceSign {
 
 //Price Sign Response
 export interface PriceSignResponse {
-  isSucess: string,
-  message: string
+  isSucess: string;
+  message: string;
 }
 
 // Rgulus Config
 export interface RegulusAllPumps {
-  lid: number,
-  pid: number,
-  loopID: string,
-  prot: string,
-  model: string,
-  stSiz: string,
-  iD_PMP_Model: number,
-  iD_PMP_MK: number
+  lid: number;
+  pid: number;
+  loopID: string;
+  prot: string;
+  model: string;
+  stSiz: string;
+  iD_PMP_Model: number;
+  iD_PMP_MK: number;
 }
 
 export interface RegulusHoses {
-  pumpID: number,
-  hoseid: number,
-  blendID: string,
-  priceID: number,
-  priceLevelID: number,
-  gradeName: string,
-  price: number,
-  hoseNumber: number,
-  tankID: number,
+  pumpID: number;
+  hoseid: number;
+  blendID: string;
+  priceID: number;
+  priceLevelID: number;
+  gradeName: string;
+  price: number;
+  hoseNumber: number;
+  tankID: number;
 }
 
 export interface RegulusLoops {
-  iD_PMP_LP: number,
-  nM_PMP_MK: string,
-  deviceType: string,
-  networkProtsID: number,
-  networkDeviceID: number,
-  iD_PMP_MDL: number
+  iD_PMP_LP: number;
+  nM_PMP_MK: string;
+  deviceType: string;
+  networkProtsID: number;
+  networkDeviceID: number;
+  iD_PMP_MDL: number;
 }
 
 export interface RegulusBlends {
-  blendID: number,
-  blendName: string,
-  blendPrice: number,
-  priceID: number,
+  blendID: number;
+  blendName: string;
+  blendPrice: number;
+  priceID: number;
 }

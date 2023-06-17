@@ -61,8 +61,8 @@ export class TransactionsComponent {
 
   loadTrasnactionResponse() {
     const requestObj = {
-      "fromDate": this.service.formatDateNew(this.registerform.value.fromDate?.toLocaleDateString()),
-      "toDate": this.service.formatDateNew(this.registerform.value.toDate?.toLocaleDateString()),
+      "fromDate": this.service.formatDateNew(this.registerform.value.fromDate?.toString()),
+      "toDate": this.service.formatDateNew(this.registerform.value.toDate?.toString()),
       "searchText": this.registerform.value.searchText,
       "pumpID": this.registerform.value.pumpID,
       "terminalID": this.registerform.value.terminalID,
