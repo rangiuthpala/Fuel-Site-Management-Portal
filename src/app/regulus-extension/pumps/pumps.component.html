@@ -55,7 +55,8 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="onSelect(row)"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      [class.highlight]="row === selectedRow" (click)="onSelect(row)"></tr>
     </table>
   </mat-card>
 
@@ -105,7 +106,8 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumnstwo"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumnstwo"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnstwo;" 
+    [class.highlight]="row === selectedRowHose" (click)="onSelectHose(row)"></tr>
   </table>
   
 </mat-card>
