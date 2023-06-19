@@ -15,6 +15,16 @@ export class SharedserviceService {
     price: 0,
     hoseNumber: 0,
     tankID: 0};
+  
+  private dashboardDate: string = "";
 
   constructor() { }
+
+  setDashboardDate(date: string) {
+    this.dashboardDate = date;
+  }
+
+  getDashboardDate():string {
+    return this.dashboardDate;
+  }
 }

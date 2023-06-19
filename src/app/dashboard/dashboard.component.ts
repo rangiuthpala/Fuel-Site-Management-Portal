@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AllservicesService } from '../service/allservices.service';
 import { FormControl } from '@angular/forms';
+import { SharedserviceService } from '../service/sharedservice.service';
 
 
 @Component({
@@ -17,9 +18,10 @@ export class DashboardComponent {
   date = new FormControl(new Date());
 
 
-  constructor(private service: AllservicesService) {
+  constructor(private service: AllservicesService, private shared: SharedserviceService) {
     this.loadPumpIdleStatus();
     this.loadTerminalIdleStatus();
+    this.reloadData(); 
   }
 
   displayedColumns: string[] = ['PumpID', 'transaction', 'time'];
@@ -29,7 +31,8 @@ export class DashboardComponent {
   }
 
   reloadData() {
-    console.log(this.date);
+    console.log(this.service.formatDateNew(this.date.value?.toString()));
+    this.shared.setDashboardDate(this.service.formatDateNew(this.date.value?.toString()));
   }
 
   loadPumpIdleStatus() {

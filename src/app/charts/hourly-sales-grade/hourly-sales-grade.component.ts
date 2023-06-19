@@ -3,6 +3,7 @@ import * as Highcharts from "highcharts";
 import HighchartsExporting from "highcharts/modules/exporting";
 import HighchartsExportData from "highcharts/modules/export-data";
 import { AllservicesService } from "src/app/service/allservices.service";
+import { SharedserviceService } from "src/app/service/sharedservice.service";
 
 HighchartsExporting(Highcharts);
 HighchartsExportData(Highcharts);
@@ -18,12 +19,12 @@ export class HourlySalesGradeComponent {
   salesList: Highcharts.SeriesOptionsType[] = [];
   
 
-  constructor(private service: AllservicesService) {
+  constructor(private service: AllservicesService, private shared: SharedserviceService) {
     this.getCurrentHourlySales();
   }
 
   getCurrentHourlySales() {
-    this.service.getHourlySalesCurrent().subscribe((response) => {
+    this.service.getHourlySalesCurrent(this.shared.getDashboardDate()).subscribe((response) => {
       console.log(response);
       response.forEach(item => {
         let dataCat: string[] = [];

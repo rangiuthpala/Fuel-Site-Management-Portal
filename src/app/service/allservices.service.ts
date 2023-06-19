@@ -222,12 +222,14 @@ export class AllservicesService {
     );
   }
 
-  getHourlySalesCurrent(): Observable<HourlySales[]> {
+  getHourlySalesCurrent(pickedDate:string): Observable<HourlySales[]> {
     const headers = new HttpHeaders()
       .set("Content-Type", "application/json")
       .set("Authorization", "Basic " + this.encoded);
     //Get now date
-    const date = this.formatDate(new Date());
+    // const date = this.formatDate(new Date());
+    const date = pickedDate;
+    console.log("date: " + date);
     return this.http.get<HourlySales[]>(
       `${this.apiServerUrl}/Dashboard/HourlySalesCurrent/${date}?uniqueID="AA"`,
       { headers }

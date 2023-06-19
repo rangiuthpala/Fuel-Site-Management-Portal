@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { AllservicesService } from 'src/app/service/allservices.service';
+import { SharedserviceService } from 'src/app/service/sharedservice.service';
 
 
 @Component({
@@ -12,12 +13,12 @@ export class AvarageHourlyGradeComponent {
   Highcharts: typeof Highcharts = Highcharts;
   salesList: Highcharts.SeriesOptionsType[] = [];
 
-  constructor(private service: AllservicesService) {
+  constructor(private service: AllservicesService, private shared: SharedserviceService) {
     this.getCurrentHourlySalesAvg();
   }
 
   getCurrentHourlySalesAvg() {
-    this.service.getHourlySalesCurrent().subscribe((response) => {
+    this.service.getHourlySalesCurrent(this.shared.getDashboardDate()).subscribe((response) => {
       console.log(response);
       response.forEach(item => {
         let dataCat: string[] = [];
