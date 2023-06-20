@@ -18,4 +18,7 @@ export class HoseAddEditComponent {
     console.log(this.shared.selectedHoseValue);
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

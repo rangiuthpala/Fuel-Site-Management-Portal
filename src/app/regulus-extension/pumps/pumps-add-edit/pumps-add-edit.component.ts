@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 
 @Component({
@@ -7,7 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./pumps-add-edit.component.scss']
 })
 export class PumpsAddEditComponent {
-  dialogRef: any;
+  constructor(
+    public dialogRef: MatDialogRef<PumpsAddEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+      dialogRef.disableClose = true;
+    }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

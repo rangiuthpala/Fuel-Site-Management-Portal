@@ -66,6 +66,8 @@ export class PumpsComponent {
   }
   openDialog() {
     this.dialog.open(PumpsAddEditComponent);
+    
+    // this.dialog.open(PumpsAddEditComponent, { disableClose: true });
   }
 
   openhoseDialog(){
