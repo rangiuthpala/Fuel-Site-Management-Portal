@@ -3,55 +3,44 @@
   <p>
     <mat-form-field appearance="outline">
       <mat-label>Logical ID</mat-label>
-      <input matInput placeholder="Placeholder" />
+      <input matInput placeholder="Placeholder" [formControl]="logicalID" readonly/>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Physical ID</mat-label>
-      <select matNativeControl>
-        <option value="" selected></option>
-        <option value="volvo">Volvo</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
+      <mat-select matNativeControl [formControl]="physicalID">
+        <mat-option *ngFor="let id of physicalIds" [value]="id.phisicalID" selected>{{id.phisicalID}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Loop ID</mat-label>
-      <select matNativeControl>
-        <option value="" selected></option>
-        <option value="volvo">Volvo</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
+      <mat-select matNativeControl [formControl]="loopID">
+        <mat-option *ngFor="let loop of loopIDs" [value]="loop" selected>{{loop}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-checkbox class="example-margin">Disabled</mat-checkbox>
   </p>
   <p>
     <mat-form-field appearance="outline" style="width: 100%;">
         <mat-label>Protocol</mat-label>
-        <select matNativeControl>
-            <option value="" selected></option>
-            <option value="volvo">Volvo</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
+        <mat-select matNativeControl [formControl]="protocol">
+            <mat-option *ngFor="let id of protocols" [value]="id.nM_PMP_MK" selected>{{id.nM_PMP_MK}}</mat-option>
+          </mat-select>
       </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="outline" style="width: 100%;">
         <mat-label>Model:</mat-label>
-        <select matNativeControl>
-            <option value="" selected></option>
-            <option value="volvo">Volvo</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
+        <mat-select matNativeControl [formControl]="model">
+            <mat-option *ngFor="let id of models" [value]="id.nM_PMP_MK" selected>{{id.nM_PMP_MK}}</mat-option>
+          </mat-select>
       </mat-form-field>
   </p>
   <p style="margin-bottom: 0;">
     <mat-form-field appearance="outline">
         <mat-label>Stack Size</mat-label>
-        <input matInput placeholder="Placeholder" />
-      </mat-form-field>
+        <input matInput placeholder="Placeholder" [formControl]="stackSize"/>
+    </mat-form-field>
+    
       <mat-checkbox class="example-margin">Standalone Operation Enabled</mat-checkbox>
   </p>
   <div class="btn_set" mat-dialog-actions>

@@ -10,6 +10,7 @@ import { SharedserviceService } from 'src/app/service/sharedservice.service';
   styleUrls: ['./hose-add-edit.component.scss']
 })
 export class HoseAddEditComponent {
+  dialogRef: any;
   constructor(public dialog: MatDialog, private service: AllservicesService, private shared: SharedserviceService) {
   }
 

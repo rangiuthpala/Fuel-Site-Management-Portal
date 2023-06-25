@@ -339,6 +339,50 @@ export class AllservicesService {
     );
   }
 
+  getRegulusDevices(): Observable<RegulusDevices[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<RegulusDevices[]>(
+      `${this.apiServerUrl}/RegulusConfig/OtherReferences/Devices`,
+      { headers }
+    );
+  }
+
+  getRegulusProtocols(): Observable<RegulusProtocols[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<RegulusProtocols[]>(
+      `${this.apiServerUrl}/RegulusConfig/OtherReferences/Protocols`,
+      { headers }
+    );
+  }
+
+  getRegulusPumpModelsByPump(pumpId: any): Observable<RegulusPumpModels[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<RegulusPumpModels[]>(
+      `${this.apiServerUrl}/RegulusConfig/OtherReferences/Protocols?pumpid=${pumpId}`,
+      { headers }
+    );
+  }
+
+  getRegulusPhysicalIds(): Observable<RegulusPhysicalIds[]> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+
+    return this.http.get<RegulusPhysicalIds[]>(
+      `${this.apiServerUrl}/RegulusConfig/OtherReferences/PhisicalID`,
+      { headers }
+    );
+  }
+
   //format Date
   formatDate(date: Date) {
     const dateSring = date.toISOString();
@@ -663,4 +707,23 @@ export interface RegulusBlends {
   blendName: string;
   blendPrice: number;
   priceID: number;
+}
+
+export interface RegulusDevices {
+  id: number,
+  devicetype: string
+}
+
+export interface RegulusProtocols {
+  iD_PMP_MK:number,
+  nM_PMP_MK: string
+}
+
+export interface RegulusPumpModels {
+  iD_PMP_MK:number,
+  nM_PMP_MK: string
+}
+
+export interface RegulusPhysicalIds {
+  phisicalID: number
 }
