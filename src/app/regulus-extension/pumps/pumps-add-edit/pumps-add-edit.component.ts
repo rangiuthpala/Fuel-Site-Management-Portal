@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { AllservicesService, RegulusDevices, RegulusPhysicalIds, RegulusProtocols, RegulusPumpModels } from 'src/app/service/allservices.service';
+import { AllservicesService, RegulusAllPumps, RegulusDevices, RegulusPhysicalIds, RegulusProtocols, RegulusPumpModels } from 'src/app/service/allservices.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 
 
@@ -17,6 +17,7 @@ export class PumpsAddEditComponent {
   protocols: RegulusProtocols[] = [];
   loopIDs: string[] = ['1'];
   models: RegulusPumpModels[] = [];
+  pumps: RegulusAllPumps | undefined;
 
   logicalID = new FormControl(this.shared.getPumpValue().lid);
   physicalID = new FormControl(this.shared.getPumpValue().pid);
@@ -54,6 +55,21 @@ export class PumpsAddEditComponent {
       // console.log(response);
     });
   }
+
+  addAPump() {
+    
+    const pump = { "lid": this.logicalID.value,
+            "pid": this.physicalID.value,
+            "loopID": this.loopID.value,
+            "prot": this.protocol.value,
+            "model": this.model.value,
+            "stSiz": this.stackSize.value,
+            "iD_PMP_Model": 6,
+            "iD_PMP_MK": 1};
+            console.log(pump);
+  }
+
+
   onNoClick(): void {
     this.dialogRef.close();
   }

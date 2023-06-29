@@ -367,7 +367,7 @@ export class AllservicesService {
       .set("Authorization", "Basic " + this.encoded);
 
     return this.http.get<RegulusPumpModels[]>(
-      `${this.apiServerUrl}/RegulusConfig/OtherReferences/Protocols?pumpid=${pumpId}`,
+      `${this.apiServerUrl}/RegulusConfig/OtherReferences/PumpModels/${pumpId}`,
       { headers }
     );
   }
@@ -720,8 +720,10 @@ export interface RegulusProtocols {
 }
 
 export interface RegulusPumpModels {
-  iD_PMP_MK:number,
-  nM_PMP_MK: string
+  iD_PMP_MDL:number,
+  nM_PMP_MDL: string,
+  nM_PMP_MK: string,
+  iD_PMP_MK: number
 }
 
 export interface RegulusPhysicalIds {
