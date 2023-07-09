@@ -1,11 +1,17 @@
-.btn_set{
-    text-align: right;
-    padding: 15px 0; 
+.btn_set {
+  text-align: right;
+  padding: 15px 0;
 }
 .example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
-  }
-  .timeout-text{
-    width: 355px;
-    margin: 0 20px;
-  }
+  margin: 8px 8px 8px 0;
+}
+.timeout-text {
+  width: 355px;
+  margin: 0 20px;
+}
+.highlight {
+  background: #3f62d4; /* green */
+}
+.highlight:hover {
+  background-color: #0f2d8d !important;
+}

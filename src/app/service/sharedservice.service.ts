@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegulusAllPumps, RegulusBlends, RegulusHoses } from './allservices.service';
+import { RegulusAllPumps, RegulusBlends, RegulusHoses, RegulusLoops } from './allservices.service';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,15 @@ export class SharedserviceService {
     priceID: 0
   };
   
+  selectedLoopValue: RegulusLoops = {
+    iD_PMP_LP: 0,
+    nM_PMP_MK: "",
+    deviceType: "",
+    networkProtsID: 0,
+    networkDeviceID: 0,
+    iD_PMP_MDL: 0
+  };
+
   private dashboardDate: string = "";
   private addOrEditPump: number = 0;
   private addOrEditHose: number = 0;
@@ -92,6 +101,24 @@ export class SharedserviceService {
       blendName: "",
       blendPrice: 0,
       priceID: 0
+    };
+  }
+
+  getLoopValue(): RegulusLoops {
+    return this.selectedLoopValue;
+  }
+  setLoopValue(value: RegulusLoops) {
+    this.selectedLoopValue = value;
+  }
+
+  resetLoopValue() {
+    this.selectedLoopValue = {
+      iD_PMP_LP: 0,
+      nM_PMP_MK: "",
+      deviceType: "",
+      networkProtsID: 0,
+      networkDeviceID: 0,
+      iD_PMP_MDL: 0
     };
   }
 }

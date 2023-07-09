@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { LoopAddEditComponent } from './loop-add-edit/loop-add-edit.component';
-import { AllservicesService } from 'src/app/service/allservices.service';
+import { AllservicesService, RegulusLoops, RegulusProtocols } from 'src/app/service/allservices.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { SharedserviceService } from 'src/app/service/sharedservice.service';
+import { ToastrService } from 'ngx-toastr';
 
 export interface PeriodicElementtwo {
   hoses: string;
@@ -23,22 +25,78 @@ const ELEMENT_two: PeriodicElementtwo[] = [
 })
 export class LoopsComponent {
   checked = false;
-  displayedColumnstwo: string[] = ['hoses', 'blend_name', 'tank_number', 'price_level' ]
-  dataSourcetwo: any;
+  selectedRow:any;
+  displayedColumns: string[] = ['loopId', 'deviceName', 'protocol', 'disabled' ]
+  dataSource: any;
+  protocols: RegulusProtocols[] = [];
+  displayedLoops: DisplayedLoops[] = [];
+  selectedLoopValue: RegulusLoops[] = [];
 
-  constructor(public dialog: MatDialog, private service: AllservicesService) {
+  constructor(public dialog: MatDialog, private service: AllservicesService, 
+    private toastr: ToastrService, private shared: SharedserviceService) {
     this.getAllLoops();
   }
   
+  onSelect(row: any) {
+    this.selectedRow = row;
+  }
 
   getAllLoops() {
+    this.service.getRegulusProtocols().subscribe(response => {
+      this.protocols = response;
+    });
     this.service.getRegulusLoops().subscribe(response => {
-      this.dataSourcetwo = new MatTableDataSource(response);
+      this.selectedLoopValue = response;
+      for(var resp of response) {
+        const displayLoop: DisplayedLoops = {
+          loopID: resp.iD_PMP_LP,
+          device: resp.deviceType,
+          protocolName: resp.nM_PMP_MK,
+          disabled: "No"
+        }
+        this.displayedLoops.push(displayLoop);
+         
+      }
+      console.log(this.displayedLoops);
+      this.dataSource = new MatTableDataSource(this.displayedLoops);
     });
   }
 
-  openloopAddEdit(){
-    this.dialog.open(LoopAddEditComponent)
+  openLoopAdd(){
+    if (this.selectedRow !== undefined) {
+      this.shared.resetLoopValue();
+      this.dialog.open(LoopAddEditComponent);
+    } else {
+      this.toastr.error('Please Select a Loop to proceed');
+    }
   }
 
+  openLoopEdit(){
+    if (this.selectedRow !== undefined) {
+      for(var loop of this.selectedLoopValue) {
+        if(this.selectedRow.loopID === loop.iD_PMP_LP) {
+          this.shared.setLoopValue(loop);
+        }
+      }
+      this.dialog.open(LoopAddEditComponent);
+    } else {
+      this.toastr.error('Please Select a Loop to proceed');
+    }
+  }
+
+  deleteLoop() {
+    if (this.selectedRow !== undefined) {
+
+    } else {
+      this.toastr.error('Please Select a Loop to proceed');
+    }
+  }
+
+}
+
+export interface DisplayedLoops {
+  loopID: number,
+  device: string,
+  protocolName: string,
+  disabled: string
 }

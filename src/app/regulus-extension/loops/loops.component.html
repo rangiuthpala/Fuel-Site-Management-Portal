@@ -10,47 +10,48 @@
 
 <div style="width: 40%;">
 <mat-card>
-  <table mat-table [dataSource]="dataSourcetwo">
+  <table mat-table [dataSource]="dataSource">
     <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
-    <ng-container matColumnDef="hoses">
+    <ng-container matColumnDef="loopId">
       <th mat-header-cell *matHeaderCellDef>Loop ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.iD_PMP_LP }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.loopID}}</td>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="blend_name">
+    <ng-container matColumnDef="deviceName">
       <th mat-header-cell *matHeaderCellDef>Device</th>
-      <td mat-cell *matCellDef="let element">{{ element.deviceType }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.device }}</td>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="tank_number">
+    <ng-container matColumnDef="protocol">
       <th mat-header-cell *matHeaderCellDef>Protocol</th>
-      <td mat-cell *matCellDef="let element">{{ element.networkProtsID }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.protocolName }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="price_level">
+    <ng-container matColumnDef="disabled">
       <th mat-header-cell *matHeaderCellDef>Disabled</th>
-      <td mat-cell *matCellDef="let element">{{ element.iD_PMP_MDL }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.disabled }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="price_id">
+    <!-- <ng-container matColumnDef="price_id">
       <th mat-header-cell *matHeaderCellDef>Price ID</th>
       <td mat-cell *matCellDef="let element">{{ element.price_id }}</td>
-    </ng-container>
+    </ng-container> -->
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumnstwo"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumnstwo"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      [class.highlight]="row === selectedRow" (click)="onSelect(row)"></tr>
   </table>
   
 </mat-card>
 <div class="example-button-row btn_set">
-    <button mat-raised-button class="btn" (click)="openloopAddEdit()" color="primary">Add</button>
-    <button mat-raised-button (click)="openloopAddEdit()" >Edit</button>
-    <button mat-raised-button color="warn">Delete</button>
+    <button mat-raised-button class="btn" (click)="openLoopAdd()" color="primary">Add</button>
+    <button mat-raised-button (click)="openLoopEdit()" >Edit</button>
+    <button mat-raised-button color="warn" (click)="deleteLoop()">Delete</button>
   </div>
 </div>

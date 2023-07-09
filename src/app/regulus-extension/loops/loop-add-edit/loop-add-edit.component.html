@@ -5,30 +5,24 @@
   <div style="margin: 0 10px;">
     <mat-form-field appearance="outline">
         <mat-label>Loop ID</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input matInput placeholder="Placeholder" [formControl]="loopID" readonly/>
       </mat-form-field>
   </div>
   <div>
     <p style="margin-bottom: -10px;">
         <mat-form-field appearance="outline">
             <mat-label>Device Type</mat-label>
-            <select matNativeControl>
-              <option value="" selected></option>
-              <option value="volvo">Volvo</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
+            <mat-select matNativeControl [formControl]="deviceType">
+              <mat-option *ngFor="let id of devices" [value]="id.devicetype" selected>{{id.devicetype}}</mat-option>
+            </mat-select>
           </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Protocol</mat-label>
-            <select matNativeControl>
-              <option value="" selected></option>
-              <option value="volvo">Volvo</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
+            <mat-select matNativeControl [formControl]="protocolName">
+              <mat-option *ngFor="let id of protocols" [value]="id.nM_PMP_MK" selected>{{id.nM_PMP_MK}}</mat-option>
+            </mat-select>
           </mat-form-field>
     </p>
   </div>
