@@ -7,7 +7,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Physical ID</mat-label>
-      <mat-select matNativeControl [formControl]="physicalID">
+      <mat-select matNativeControl [formControl]="physicalID" >
         <mat-option *ngFor="let id of physicalIds" [value]="id.phisicalID" selected>{{id.phisicalID}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -23,7 +23,7 @@
     <mat-form-field appearance="outline" style="width: 100%;">
         <mat-label>Protocol</mat-label>
         <mat-select matNativeControl [formControl]="protocol">
-            <mat-option *ngFor="let id of protocols" [value]="id.nM_PMP_MK" selected>{{id.nM_PMP_MK}}</mat-option>
+            <mat-option *ngFor="let id of protocols" [value]="id.nM_PMP_MK" selected disabled="true">{{id.nM_PMP_MK}}</mat-option>
           </mat-select>
       </mat-form-field>
   </p>

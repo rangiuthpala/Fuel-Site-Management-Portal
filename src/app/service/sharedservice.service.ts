@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegulusAllPumps, RegulusHoses } from './allservices.service';
+import { RegulusAllPumps, RegulusBlends, RegulusHoses } from './allservices.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,13 @@ export class SharedserviceService {
     stSiz: "",
     iD_PMP_Model: 0,
     iD_PMP_MK: 0
+  };
+
+  selectedBlendValue: RegulusBlends = {
+    blendID: 0,
+    blendName: "",
+    blendPrice: 0,
+    priceID: 0
   };
   
   private dashboardDate: string = "";
@@ -70,5 +77,21 @@ export class SharedserviceService {
 
   setHoseValue(value: RegulusHoses) {
     this.selectedHoseValue = value;
+  }
+
+  getBlendValue(): RegulusBlends {
+    return this.selectedBlendValue;
+  }
+  setBlendValue(value: RegulusBlends) {
+    this.selectedBlendValue = value;
+  }
+
+  resetBlendValue() {
+    this.selectedBlendValue = {
+      blendID: 0,
+      blendName: "",
+      blendPrice: 0,
+      priceID: 0
+    };
   }
 }

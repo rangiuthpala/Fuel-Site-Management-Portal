@@ -5,22 +5,22 @@
 
   <mat-form-field class="mat-mdc-button-base" appearance="outline">
     <mat-label>Increase</mat-label>
-    <textarea rows="1" cols="10" matInput></textarea>
+    <textarea rows="1" cols="10" matInput disabled>30</textarea>
   </mat-form-field>
 
   <mat-form-field class="mat-mdc-button-base" appearance="outline">
     <mat-label>Decrease</mat-label>
-    <textarea rows="1" cols="10" matInput></textarea>
+    <textarea rows="1" cols="10" matInput disabled> 30</textarea>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Price Precision</mat-label>
-    <textarea rows="1" cols="10" matInput></textarea>
+    <textarea rows="1" cols="10" matInput disabled>3</textarea>
   </mat-form-field>
 
   <div style="width: 40%">
     <mat-card>
-      <table mat-table [dataSource]="dataSourcetwo">
+      <table mat-table [dataSource]="dataSource">
         <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
@@ -58,8 +58,9 @@
           <td mat-cell *matCellDef="let element">{{ element.priceID }}</td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumnstwo"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumnstwo"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      [class.highlight]="row === selectedRow" (click)="onSelect(row)"></tr>
       </table>
     </mat-card>
 
@@ -68,12 +69,12 @@
         mat-raised-button
         class="btn"
         color="primary"
-        (click)="openblendAddEdit()"
+        (click)="openblendAdd()"
       >
         Add
       </button>
-      <button mat-raised-button (click)="openblendAddEdit()">Edit</button>
-      <button mat-raised-button color="warn">Delete</button>
+      <button mat-raised-button (click)="openblendEdit()">Edit</button>
+      <button mat-raised-button color="warn" (click)="deleteBlend()">Delete</button>
     </div>
   </div>
 </div>
