@@ -39,7 +39,7 @@ export class PumpsAddEditComponent {
     // this.logicalID = this.shared.getPumpValue().lid.toString();
     this.service.getRegulusPhysicalIds().subscribe(response => {
       this.physicalIds = response;
-      console.log(this.physicalIds);
+      // console.log(this.physicalIds);
     });
     this.service.getRegulusDevices().subscribe(response => {
       this.devices = response;

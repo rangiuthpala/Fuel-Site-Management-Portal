@@ -63,4 +63,12 @@ export class SharedserviceService {
   setAddEditPumpValue(value: number) {
     this.addOrEditPump = value;
   }
+
+  getHoseValue(): RegulusHoses {
+    return this.selectedHoseValue;
+  }
+
+  setHoseValue(value: RegulusHoses) {
+    this.selectedHoseValue = value;
+  }
 }

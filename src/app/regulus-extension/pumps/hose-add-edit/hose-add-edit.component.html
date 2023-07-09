@@ -3,41 +3,35 @@
   <p>
     <mat-form-field appearance="outline">
       <mat-label>Hose</mat-label>
-      <input matInput placeholder="Placeholder" />
+      <input matInput placeholder="Placeholder" [formControl]="hoseId" readonly/>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Blend  Name</mat-label>
-      <select matNativeControl>
-        <option value="" selected></option>
-        <option value="volvo">Volvo</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
+      <mat-select matNativeControl [formControl]="blendName">
+        <mat-option *ngFor="let blend of blendNames" [value]="blend.blendName" selected>{{blend.blendName}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Tank</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input matInput placeholder="Placeholder" [formControl]="tankId"/>
       </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="outline">
         <mat-label>Price Level</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input matInput placeholder="Placeholder"[formControl]="priceLevel" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Price ID</mat-label>
-        <select matNativeControl>
-            <option value="" selected></option>
-            <option value="volvo">Volvo</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
+        <mat-select matNativeControl [formControl]="priceId">
+            <mat-option *ngFor="let id of priceIds" [value]="id" selected>{{id}}</mat-option>
+          </mat-select>
       </mat-form-field>
   </p>
 
   <div class="btn_set" mat-dialog-actions>
     <button mat-raised-button class="btn" color="primary" (click)="hoseValuesMethod()">OK</button>
-    <button mat-raised-button >Cancel</button>
+    <button mat-raised-button (click)="onNoClick()">Cancel</button>
   </div>
 </div>
 
