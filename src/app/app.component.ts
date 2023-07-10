@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { AllservicesService } from "./service/allservices.service";
 import { AuthService } from "./service/auth.service";
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: "app-root",
@@ -16,6 +17,7 @@ export class AppComponent {
 
   ismenurequired = false;
 
+  @ViewChild('drawer') drawer: MatDrawer | undefined;
   constructor(private router: Router, private service: AuthService) {
   }
 
@@ -27,6 +29,7 @@ export class AppComponent {
     let currenturl = this.router.url;
     if (currenturl == "/login") {
       this.ismenurequired = false;
+      this.drawer?.close();
     } else {
       this.ismenurequired = true;
     }

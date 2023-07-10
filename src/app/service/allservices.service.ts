@@ -383,6 +383,35 @@ export class AllservicesService {
     );
   }
 
+  createANewPump(inputData:any): Observable<BasicResponse> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    
+    return this.http.post<BasicResponse>(
+      `${this.apiServerUrl}/RegulusConfig/Pumps`, inputData,
+    { headers });
+  }
+
+  updateAPump(inputData:any): Observable<BasicResponse> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    
+    return this.http.put<BasicResponse>(
+      `${this.apiServerUrl}/RegulusConfig/Pumps`, inputData,
+    { headers });
+  }
+
+  createANewHose(inputData:any): Observable<BasicResponse> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    
+    return this.http.post<BasicResponse>(
+      `${this.apiServerUrl}/RegulusConfig/Hoses`, inputData,
+    { headers });
+  }
   //format Date
   formatDate(date: Date) {
     const dateSring = date.toISOString();
@@ -728,4 +757,9 @@ export interface RegulusPumpModels {
 
 export interface RegulusPhysicalIds {
   phisicalID: number
+}
+
+export interface BasicResponse {
+  isSucess: boolean,
+  message: string
 }

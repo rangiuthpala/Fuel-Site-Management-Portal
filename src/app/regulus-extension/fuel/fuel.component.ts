@@ -44,6 +44,7 @@ export class FuelComponent {
 
   openblendAdd(){
     if (this.selectedRow !== undefined) {
+      this.shared.setAddEdit(true);
       this.shared.resetBlendValue();
       this.dialog.open(BlendAddEditComponent);
     } else {
@@ -54,6 +55,7 @@ export class FuelComponent {
 
   openblendEdit(){
     if (this.selectedRow !== undefined) {
+      this.shared.setAddEdit(false);
       this.shared.setBlendValue(this.selectedRow);
       this.dialog.open(BlendAddEditComponent);
     } else {

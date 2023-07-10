@@ -43,9 +43,11 @@ export class SharedserviceService {
     iD_PMP_MDL: 0
   };
 
+  add_edit: boolean = false;
+
   private dashboardDate: string = "";
-  private addOrEditPump: number = 0;
-  private addOrEditHose: number = 0;
+  private addOrEditClick: number = 0;
+  // private addOrEditHose: number = 0;
 
   constructor() { }
 
@@ -56,7 +58,7 @@ export class SharedserviceService {
   getDashboardDate():string {
     return this.dashboardDate;
   }
-
+// Pump
   getPumpValue(): RegulusAllPumps {
     return this.selectedPumpValue;
   }
@@ -65,21 +67,27 @@ export class SharedserviceService {
     this.selectedPumpValue = value;
   }
 
-  getAddEditHoseValue(): number {
-    return this.addOrEditHose;
+  resetPumpValue() {
+    this.selectedPumpValue = {
+      lid: 0,
+      pid: 0,
+      loopID: "",
+      prot: "",
+      model: "",
+      stSiz: "",
+      iD_PMP_Model: 0,
+      iD_PMP_MK: 0
+    };
   }
 
-  setAddEditHoseValue(value: number) {
-    this.addOrEditHose = value;
-  }
-  getAddEditPumpValue(): number {
-    return this.addOrEditPump;
+  getAddEditClickValue(): number {
+    return this.addOrEditClick;
   }
 
-  setAddEditPumpValue(value: number) {
-    this.addOrEditPump = value;
+  setAddEditClickValue(value: number) {
+    this.addOrEditClick = value;
   }
-
+// Hose
   getHoseValue(): RegulusHoses {
     return this.selectedHoseValue;
   }
@@ -88,6 +96,18 @@ export class SharedserviceService {
     this.selectedHoseValue = value;
   }
 
+  resetHoseValue() {
+    this.selectedHoseValue = {pumpID: 0,
+      hoseid: 0,
+      blendID: "",
+      priceID: 0,
+      priceLevelID: 0,
+      gradeName: "",
+      price: 0,
+      hoseNumber: 0,
+      tankID: 0};
+  }
+// Blend
   getBlendValue(): RegulusBlends {
     return this.selectedBlendValue;
   }
@@ -103,7 +123,7 @@ export class SharedserviceService {
       priceID: 0
     };
   }
-
+// Loop
   getLoopValue(): RegulusLoops {
     return this.selectedLoopValue;
   }
@@ -120,5 +140,12 @@ export class SharedserviceService {
       networkDeviceID: 0,
       iD_PMP_MDL: 0
     };
+  }
+  setAddEdit(value:boolean) {
+    this.add_edit = value;
+  }
+  // True = add, False = edit
+  getAddOrEdit(): boolean {
+    return this.add_edit;
   }
 }

@@ -64,34 +64,34 @@ export class PumpsComponent {
 
   onSelectHose(row:RegulusHoses) {
     this.selectedRowHose = row;
-    this.shared.selectedHoseValue = row;
+    // this.shared.selectedHoseValue = row;
     console.log(row);
   }
 
   openAddDialog() {
     if(this.selectedRow !== undefined) {
-      this.shared.setAddEditPumpValue(1);
+      this.shared.setAddEdit(true);
+      this.shared.resetPumpValue();
       this.dialog.open(PumpsAddEditComponent);
     } else {
       this.toastr.error('Please Select a Pump to proceed');
     }
-    // this.dialog.open(PumpsAddEditComponent, { disableClose: true });
   }
 
   openEditDialog() {
     if(this.selectedRow !== undefined) {
-      this.shared.setAddEditPumpValue(2);
+      this.shared.setAddEdit(false);
+      this.shared.setPumpValue(this.selectedRow);
       this.dialog.open(PumpsAddEditComponent);
     } else {
       this.toastr.error('Please Select a Pump to proceed');
     }
-    
-    // this.dialog.open(PumpsAddEditComponent, { disableClose: true });
   }
 
   openhoseAddDialog(){
-    console.log(this.selectedRowHose);
     if(this.selectedRow !== undefined && this.selectedRowHose !== undefined) {
+      this.shared.setAddEditClickValue(1);
+      this.shared.resetHoseValue();
       this.dialog.open(HoseAddEditComponent);      
     } else {
       this.toastr.error('Please Select a Hose to proceed');
@@ -99,6 +99,8 @@ export class PumpsComponent {
   }
   openhoseEditDialog(){
     if(this.selectedRow !== undefined && this.selectedRowHose !== undefined) {
+      this.shared.setAddEditClickValue(2);
+      this.shared.setHoseValue(this.selectedRowHose);
       this.dialog.open(HoseAddEditComponent);      
     } else {
       this.toastr.error('Please Select a Hose to proceed');

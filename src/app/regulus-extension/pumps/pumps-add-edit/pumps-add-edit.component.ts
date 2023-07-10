@@ -35,38 +35,49 @@ export class PumpsAddEditComponent {
     }
 
   setPumpValues() {
-    console.log(this.shared.getPumpValue());
     // this.logicalID = this.shared.getPumpValue().lid.toString();
     this.service.getRegulusPhysicalIds().subscribe(response => {
       this.physicalIds = response;
-      // console.log(this.physicalIds);
     });
     this.service.getRegulusDevices().subscribe(response => {
       this.devices = response;
-      // console.log(response);
     });
     this.service.getRegulusProtocols().subscribe(response => {
       this.protocols = response;
-      // console.log(response);
     });
-    console.log(this.shared.getPumpValue().lid);
     this.service.getRegulusPumpModelsByPump(this.shared.getPumpValue().lid).subscribe(response => {
       this.models = response;
-      // console.log(response);
+      console.log(this.models);
     });
   }
 
   addAPump() {
     
-    const pump = { "lid": this.logicalID.value,
+    const pump = { 
             "pid": this.physicalID.value,
             "loopID": this.loopID.value,
             "prot": this.protocol.value,
             "model": this.model.value,
-            "stSiz": this.stackSize.value,
-            "iD_PMP_Model": 6,
-            "iD_PMP_MK": 1};
-            console.log(pump);
+            "stSiz": this.stackSize.value};
+    
+    if(this.shared.getAddOrEdit()) {
+      //To change when pump models endpoint created
+      this.service.getRegulusPumpModelsByPump(this.physicalID.value).subscribe(response => {
+        this.models = response;
+        console.log(this.models);
+      });
+      console.log("Add");
+      this.service.createANewPump(pump).subscribe(response => {
+        console.log(pump);
+        console.log(response);
+      });
+      this.dialogRef.close();
+    } else {
+      this.service.updateAPump(pump).subscribe(response => {
+        console.log(response);
+      });
+      this.dialogRef.close();
+    }
   }
 
 

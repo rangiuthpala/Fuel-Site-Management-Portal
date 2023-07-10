@@ -64,6 +64,7 @@ export class LoopsComponent {
 
   openLoopAdd(){
     if (this.selectedRow !== undefined) {
+      this.shared.setAddEdit(true);
       this.shared.resetLoopValue();
       this.dialog.open(LoopAddEditComponent);
     } else {
@@ -75,6 +76,7 @@ export class LoopsComponent {
     if (this.selectedRow !== undefined) {
       for(var loop of this.selectedLoopValue) {
         if(this.selectedRow.loopID === loop.iD_PMP_LP) {
+          this.shared.setAddEdit(false);
           this.shared.setLoopValue(loop);
         }
       }
