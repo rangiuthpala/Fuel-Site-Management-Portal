@@ -5,7 +5,7 @@
   <div style="margin: 0 10px;">
     <mat-form-field appearance="outline">
         <mat-label>Loop ID</mat-label>
-        <input matInput placeholder="Placeholder" [formControl]="loopID" readonly/>
+        <input matInput placeholder="Placeholder" [formControl]="loopID"/>
       </mat-form-field>
   </div>
   <div>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="btn_set" mat-dialog-actions>
-    <button mat-raised-button class="btn" color="primary">OK</button>
+    <button mat-raised-button class="btn" color="primary" (click)="loopCreation()">OK</button>
     <button mat-raised-button (click)="onNoClick()">Cancel</button>
   </div>
 

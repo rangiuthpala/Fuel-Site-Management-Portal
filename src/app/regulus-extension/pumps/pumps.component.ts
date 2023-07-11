@@ -90,7 +90,7 @@ export class PumpsComponent {
 
   openhoseAddDialog(){
     if(this.selectedRow !== undefined && this.selectedRowHose !== undefined) {
-      this.shared.setAddEditClickValue(1);
+      this.shared.setAddEdit(true);
       this.shared.resetHoseValue();
       this.dialog.open(HoseAddEditComponent);      
     } else {
@@ -99,7 +99,7 @@ export class PumpsComponent {
   }
   openhoseEditDialog(){
     if(this.selectedRow !== undefined && this.selectedRowHose !== undefined) {
-      this.shared.setAddEditClickValue(2);
+      this.shared.setAddEdit(false);
       this.shared.setHoseValue(this.selectedRowHose);
       this.dialog.open(HoseAddEditComponent);      
     } else {

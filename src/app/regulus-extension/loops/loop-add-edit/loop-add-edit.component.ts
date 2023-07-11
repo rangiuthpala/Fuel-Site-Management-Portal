@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { AllservicesService, RegulusDevices, RegulusProtocols } from 'src/app/service/allservices.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 
@@ -22,7 +23,7 @@ export class LoopAddEditComponent {
   constructor(
     public dialogRef: MatDialogRef<LoopAddEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private shared:SharedserviceService,
-    private service: AllservicesService) {
+    private service: AllservicesService, private toastr: ToastrService) {
       dialogRef.disableClose = true;
       this.setLoopValues();
     }
@@ -34,6 +35,26 @@ export class LoopAddEditComponent {
     this.service.getRegulusProtocols().subscribe(response => {
       this.protocols = response;
     });
+  }
+
+  loopCreation() {
+    const loop = {
+      "iD_PMP_LP": this.loopID.value,
+      "nM_PMP_MK": this.protocolName.value,
+      "deviceType": this.deviceType.value
+    };
+    if (this.shared.getAddOrEdit()) {
+      this.service.createANewLoop(loop).subscribe(response => {
+        if (response.isSucess) {
+          this.toastr.info(response.message);
+        } else {
+          this.toastr.error(response.message);
+        }
+      });
+      this.dialogRef.close();
+    } else {
+      this.dialogRef.close();
+    }
   }
 
   onNoClick(): void {

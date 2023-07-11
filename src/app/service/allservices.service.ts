@@ -412,6 +412,27 @@ export class AllservicesService {
       `${this.apiServerUrl}/RegulusConfig/Hoses`, inputData,
     { headers });
   }
+
+  createANewLoop(inputData:any): Observable<BasicResponse> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    
+    return this.http.post<BasicResponse>(
+      `${this.apiServerUrl}/RegulusConfig/Loops`, inputData,
+    { headers });
+  }
+
+  createANewBlend(inputData:any): Observable<BasicResponse> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", "Basic " + this.encoded);
+    
+    return this.http.post<BasicResponse>(
+      `${this.apiServerUrl}/RegulusConfig/Blends`, inputData,
+    { headers });
+  }
+
   //format Date
   formatDate(date: Date) {
     const dateSring = date.toISOString();
